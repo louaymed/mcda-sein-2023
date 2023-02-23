@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="../res/style/style.css">
+    <title>Aide à la décision</title>
+    <script type="text/javascript" src="../js/post_request_phase1.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <img src="../../draw/Asqii.png" alt height="50px" />
+      <h1>MCDA: Cancer du Sein</h1>
+    </header>
+    <h4>Patient: X</h4>
+    <h1>Premiere Phase de recolte d'information</h1>
+    <form id="phase-1">
+      <fieldset>
+        <div id="person">
+          <label id="sexe">Sexe: </label>
+          <select id="sexe-select" required onchange="hideDivSex(this);">
+            <option value="Homme">Homme</option>
+            <option value="Femme">Femme</option>
+          </select>
+          <br />
+          <br />
+          <label id="age-label">Age: </label>
+          <input
+            id="age"
+            type="number"
+            name="age-input"
+            placeholder="18"
+            max="85"
+            min="18"
+            onchange="menoposieStatus();"
+            required
+          />
+        </div>
+        <br />
+        <h2>Facteur de Risque</h2>
+
+        <div id="habitude">
+          <label id="tabac-label">Tabac: </label>
+            <select id="tabac" onchange="disableSevrage(this)">
+              <option value="">Type de Tabac</option>
+              <option value="1">Cigarette</option>
+              <option value="2">Chicha</option>
+              <option value="3">Neffa</option>
+              <option value="4">Tabouna</option>
+              <option value="5">Non</option>
+            </select>
+            <label id="paquetannee-label" hidden>Paquetannée: </label>
+            <input id="paquetannee" type="number" min="1" max="50" placeholder="1" hidden> 
+          </div>
+          <br>
+          <br>
+          <label id="sevrage-label">Sevrage: </label>
+          <select id="Sevrage" disabled="">
+            <option value="oui">Oui</option>
+            <option value="non">Non</option>
+          </select>
+
+          <br />
+          <br />
+          <label id="alcool-label">Alcool: </label>
+          <select id="alcool">
+            <option value="oui">Oui</option>
+            <option value="non">Non</option>
+          </select>
+          <script type="text/javascript">
+            function disableSevrage(tabac) {
+              if (tabac.value == "5") {
+                document.getElementById("Sevrage").disabled = true;
+              } else {
+                document.getElementById("Sevrage").disabled = false;
+              }
+              if (tabac.value != "1") {
+                document.getElementById("paquetannee-label").setAttribute("hidden", "")
+                document.getElementById("paquetannee").setAttribute("hidden", "");
+              } else {
+                document.getElementById("")
+                document.getElementById("paquetannee-label").removeAttribute("hidden");
+                document.getElementById("paquetannee").removeAttribute("hidden");
+              }
+            }
+          </script>
+          <br />
+          <br />
+          <label id="alimentation-label">Régime Alimentaire: </label>
+          <select id="regime-alimentaire">
+            <option value="">Choisir le type de Régime</option>
+            <option value="1">
+              Riche en graisse et pauvre en protéine et fibres
+            </option>
+            <option value="2">équilibré</option>
+          </select>
+          <br />
+          <br />
+        </div>
+        <div id="women-specific" hidden>
+            <h2>Gynéco-Obstétrie</h2>
+            <label id="gestie">Gestité Parité: </label>
+            <select id="gestie-options">
+              <option value="">G0P0</option>
+              <option value="">G1P0</option>
+              <option value="">G1P1</option>
+              <option value="">G1P2</option>
+              <option value="">G2P0</option>
+              <option value="">G2P1</option>
+              <option value="">G2P2</option>
+              <option value="">G2P3</option>
+              <option value="">G2P4</option>
+              <option value="">G3P0</option>
+              <option value="">G3P1</option>
+              <option value="">G3P2</option>
+              <option value="">G3P3</option>
+              <option value="">G3P4</option>
+              <option value="">G3P5</option>
+              <option value="">G4P2</option>
+              <option value="">G4P3</option>
+              <option value="">G4P4</option>
+              <option value="">G4P5</option>
+              <option value="">G4P6</option>
+            </select> 
+            <br />
+            <br />
+            <label id="age-régle">Age de Premier Règle: </label>
+            <select id="age-regle">
+              <option value="">Age 1er Regle</option>
+              <option value="<12"> Sous 12 </option>
+              <option value=">=12"> Plus que 12 (inclus) </option>
+            </select>
+            <br />
+            <br />
+            <!-- Calculate this value from previous inputs-->
+            <label id="menopausique-label">Statut Ménopausique: </label>
+            <label id="status-menopausique" class="result"></label>
+            <br />
+            <br />
+            <label id="dosage">Dosages_hormonaux_FSH_E2</label>
+            <select id="dosage-option" disabled>
+              <option value="">Dosage</option>
+              <option value="0">Compatible avec une ménoapuse</option>
+              <option value="1">Non compatible avec une ménoapuse</option>
+            </select>
+            <br />
+            <br />
+            <label id="">Allaitement</label>
+            <select id="align-option">
+              <option value="1">Oui</option>
+              <option value="0">Non</option>
+              <option value="2"> Non Concerné </option>
+            </select>
+            <br />
+            <br />
+            <label id="">Contraception</label>
+            <select id="contra-option">
+              <option value="1"> Oui </option>
+              <option value="0"> Non </option>
+              <option value="2"> Non Concerné </option> 
+            </select>
+            <br />
+            <br />
+            <label id="age-grossesse">Age Premiere Grossesse</label>
+            <select id="age-grossesse-option">
+              <option value="">Age Grossesse</option>
+              <option value="<35">Sous 35</option>
+              <option value=">=35">Plus de 35</option>
+            </select>
+            <br />
+            <br />
+            <label id="grossesse">Grossesse</label>
+            <select id="grossesse-option">
+              <option value="1">Oui</option>
+              <option value="0">Non</option>
+            </select>
+        </div>
+
+        <script type="text/javascript">
+          function hideDivSex(sex) {
+            if (sex.value == "Homme") {
+              document.getElementById("women-specific").setAttribute("hidden", "");
+            } else {
+              document.getElementById("women-specific").removeAttribute("hidden");
+            }
+          }
+        </script>
+
+        <div id="antecedent">
+          <h2>Antécidents</h2>
+          
+        <button id="enquete-btn" type="submit" onclick="redirectPage();" disabled>Enquete</button>
+        <script>
+          function disableButton(label) {
+            if (label.innerHTML == "Non") {
+              document.getElementById("enquete-btn").disabled = true;
+            } else {
+              document.getElementById("enquete-btn").disabled = false;
+            }
+          }
+          function redirectPage() {
+            const form = document.getElementById("phase-1");
+            const age = document.getElementById("age");
+            const sexe = document.getElementById("sexe-select");
+
+            form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const ageValue = age.value;
+            const sexeValue = sexe.value;
+
+            window.localStorage.setItem('age', ageValue);
+            window.localStorage.setItem('sexe', sexeValue);
+            
+            window.location.href = "phase_2.html";
+            })
+          }
+        </script>
+      </fieldset>
+    </form>
+
+  </body>
+</html>

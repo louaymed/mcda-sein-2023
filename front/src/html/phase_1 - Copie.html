@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Aide à la décision</title>
+    <script type="text/javascript" src="../js/post_request_phase1.js"></script>
+
+
+
+    </script>
+
+
+    <script type="text/javascript">
+      function disableSevrage(tabac) {
+        if (tabac.value == "5") {
+          document.getElementById("Sevrage").disabled = true;
+        } else {
+          document.getElementById("Sevrage").disabled = false;
+        }
+        if (tabac.value != "1") {
+          document.getElementById("paquetannee-label").setAttribute("hidden", "")
+          document.getElementById("paquetannee").setAttribute("hidden", "");
+        } else {
+          document.getElementById("")
+          document.getElementById("paquetannee-label").removeAttribute("hidden");
+          document.getElementById("paquetannee").removeAttribute("hidden");
+        }
+      }
+    </script>
+
+    <script type="text/javascript">
+      function hideDivSex(sex) {
+        if (sex.value == "Homme") {
+          document.getElementById("women-specific").setAttribute("hidden", "");
+        } else {
+          document.getElementById("women-specific").removeAttribute("hidden");
+        }
+      }
+    </script>
+    <script type="text/javascript">
+      function blockNext(data) {
+        if (data.value == "0") {
+          document.getElementById("type-cancer").disabled = true;
+          document.getElementById("enquete").disabled = true;
+        } else {
+          document.getElementById("type-cancer").disabled = false;
+          document.getElementById("enquete").disabled = false;
+        }
+      }
+    </script>
+    <script>
+      function disableButton(label) {
+        if (label.innerHTML == "Non") {
+          document.getElementById("enquete-btn").disabled = true;
+        } else {
+          document.getElementById("enquete-btn").disabled = false;
+        }
+      }
+      function redirectPage() {
+        const form = document.getElementById("phase-1");
+        const age = document.getElementById("age");
+        const sexe = document.getElementById("sexe-select");
+
+        form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const ageValue = age.value;
+        const sexeValue = sexe.value;
+
+        window.localStorage.setItem('age', ageValue);
+        window.localStorage.setItem('sexe', sexeValue);
+
+        window.location.href = "phase_2.html";
+        })
+      }
+    </script>
+
+
+
+  </head>
+
+  <body>
+    <script type="js/jquery-3.6.1.min.js"></script>
+    <script type="js/bootstrap.min.js"></script>
+
+
+
+
+
+
+    <header>
+
+      <div class="row">
+        <div class="col-sm-8">
+      <img src="../../draw/Asqii.png" alt height="50px" />
+    </div>
+    <div class="col-sm-4">
+      <p class="titre1">AIDE A LA DECISION</p>
+      <p class="titre5">Cancer du sein </p> </div>
+    </div>
+
+    </header>
+
+    <div class="row">
+      <div class="col-sm-8 saisie_header">
+        <div class="row">
+
+
+            <h2 class="btn btn-light col-sm-4">Profil du patient</h2>
+          <h2 class="btn btn-light col-sm-4">Antécédents</h2>
+            <h2 class="btn btn-primary col-sm-4">Habitudes</h2>
+
+
+      </div>
+    </div>
+
+
+
+    <!--  2 eme section -->
+
+      <div class="col-sm-4 lecture_header">
+        <h4 class="titre4">Fiche Patient: X</h4>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="row">
+        <div class="col-sm-8 saisie_section">
+          <div class="row">
+            <div class="col-sm-12 ">
+              <div class="container marges">
+
+
+              <h2 class="titre2">Habitudes</h2>
+              <label id="tabac-label">Tabac: </label>
+                <select id="tabac" onchange="disableSevrage(this)">
+                  <option value="">Type de Tabac</option>
+                  <option value="1">Cigarette</option>
+                  <option value="2">Chicha</option>
+                  <option value="3">Neffa</option>
+                  <option value="4">Tabouna</option>
+                  <option value="5">Non</option>
+                </select>
+                <label id="paquetannee-label" hidden>Paquetannée: </label>
+                <input id="paquetannee" type="number" min="1" max="50" placeholder="1" hidden>
+
+              <br>
+              <br>
+              <label id="sevrage-label">Sevrage: </label>
+              <select id="Sevrage" disabled="">
+                <option value="oui">Oui</option>
+                <option value="non">Non</option>
+              </select>
+
+              <!-- TODO: change this in front of the type de tabac with hidden feature -->
+              <br />
+              <br />
+              <label id="alcool-label">Alcool: </label>
+              <select id="alcool">
+                <option value="oui">Oui</option>
+                <option value="non">Non</option>
+              </select>
+
+              <br />
+              <br />
+              <label id="alimentation-label">Régime Alimentaire:
+              <select id="regime-alimentaire">
+                <option value="">Choisir le type de Régime</option>
+                <option value="1">
+                  Riche en graisse et pauvre en protéine et fibres
+                </option>
+                <option value="2">équilibré</option>
+              </select>
+              <br />
+              <br />
+          </div></div>
+
+        </div>
+        </div>
+
+<!--  2 eme section -->
+
+        <div class="col-sm-4 lecture_section">
+          <div class="row">
+
+                <div class="col-sm-3">
+            <label id="sexe" >
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+  </svg>Sexe
+</div><div class="col-sm-3"><span class="champs">Homme</span> </label></div>
+<div class="col-sm-3">
+<label id="Age" >
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg>Age
+</div><div class="col-sm-3"><span class="champs">45 ANS </span> </label></div>
+
+</div>
+
+<hr>
+
+<label id="Age" class="col-sd-6" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+  <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
+</svg> ATCD Médicaux : <span class="champs">Non</span> </label>
+<label id="Age" lass="col-sd-6" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+  <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
+</svg> ATCD Médicaux : <span class="champs">Non</span> </label>
+<label id="Age" lass="col-sd-6" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+  <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
+</svg> ATCD Familiaux : <span class="champs">Non</span> </label>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    </form>
+
+
+
+
+
+
+
+  </body>
+</html>

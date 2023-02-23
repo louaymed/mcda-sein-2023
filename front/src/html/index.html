@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Aide a la Decision </title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+        <!-- Scripts -->
+        <script type="text/javascript">
+            function disableSevrage(tabac) {
+              if (tabac.value == "5") {
+                document.getElementById("Sevrage").disabled = true;
+              } else {
+                document.getElementById("Sevrage").disabled = false;
+              }
+              if (tabac.value != "1") {
+                document.getElementById("paquetannee-label").setAttribute("hidden", "")
+                document.getElementById("paquetannee").setAttribute("hidden", "");
+              } else {
+                document.getElementById("")
+                document.getElementById("paquetannee-label").removeAttribute("hidden");
+                document.getElementById("paquetannee").removeAttribute("hidden");
+              }
+            }
+          </script>
+
+          <script type="text/javascript">
+            function hideDivSex(sex) {
+              if (sex.value == "Homme") {
+                document.getElementById("genico").setAttribute("hidden", "");
+              } else {
+                document.getElementById("genico").removeAttribute("hidden");
+              }
+            }
+          </script>
+          <script type="text/javascript">
+            function blockNext(data) {
+              if (data.value == "0") {
+                document.getElementById("type-cancer").disabled = true;
+                document.getElementById("enquete").disabled = true;
+              } else {
+                document.getElementById("type-cancer").disabled = false;
+                document.getElementById("enquete").disabled = false;
+              }
+            }
+          </script>
+          <script type="text/javascript">
+            function disableButton(label) {
+              if (label.innerHTML == "Non") {
+                document.getElementById("enquete-btn").disabled = true;
+              } else {
+                document.getElementById("enquete-btn").disabled = false;
+              }
+            }
+            function redirectPage() {
+              const form = document.getElementById("phase-1");
+              const age = document.getElementById("age");
+              const sexe = document.getElementById("sexe-select");
+
+              form.addEventListener('submit', function(e) {
+              e.preventDefault();
+
+              const ageValue = age.value;
+              const sexeValue = sexe.value;
+
+              window.localStorage.setItem('age', ageValue);
+              window.localStorage.setItem('sexe', sexeValue);
+
+              window.location.href = "phase_2.html";
+              })
+            }
+          </script>
+          <script type="text/javascript">
+            function openOnglet(event, ongletName) {
+              var i, tabDiv, tabBtn, onglets;
+              tabDiv = document.getElementsByClassName("onglet");
+              tabBtn = document.getElementsByClassName("btn");
+              for(i = 0; i< tabDiv.length ; i++) {
+                tabDiv[i].style.display = "none";
+              }
+              for(i = 0; i <tabBtn.length ; i++) {
+                tabBtn[i].classList.replace("btn-primary", "btn-light");
+              }
+              onglets = document.getElementsByClassName("onglet");
+              for (i = 0; i < tabDiv.length; i++) {
+                onglets[i].className = onglets[i].className.replace(" actif", "");
+              }
+
+              document.getElementById(ongletName).style.display = "block";
+              event.currentTarget.className += "actif";
+              event.currentTarget.classList.replace("btn-light", "btn-primary");
+
+
+            }
+          </script>
+          <script type="text/javascript">
+            function navigate_profile() {
+
+              // save the data
+            }
+          </script>
+    </head>
+
+    <body>
+      <div class="container-fluid">
+
+
+        <script type="js/jquery-3.6.1.min.js"></script>
+        <script type="js/bootstrap.min.js"></script>
+
+        <header>
+            <div class="row">
+                <div class="col-sm-8">
+                    <img src="../../draw/Asqii.png" alt height="50px" />
+                </div>
+                <div class="col-sm-4">
+                    <p class="titre1">AIDE A LA DECISION</p>
+                    <p class="titre5">Cancer du sein </p> </div>
+                </div>
+        </header>
+
+        <nav id="navbar" class="container-fluid">
+            <div class="row">
+                <div class="col-sm-8 saisie_header">
+                  <div class="row">
+                    <div class="scroll">
+                      <button id="profile-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'person')">Profil</button>
+                      <button id="habitude-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'habitudes')">Habitudes</button>
+                      <button id="antecedent-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'antecedents');">Antécédents</button>
+                      <button id="gyneco-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'genico');">Gynéco</button>
+                      <button id="clinique-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'clinique');">Clinique</button>
+                      <button id="ctnm-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'ctnm');">cTNM</button>
+                      <button id="examen-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'examen-diagnostic');">Examens</button>
+                      <button id="biopsie-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'biopsie');">Biopsie</button>
+                      <button id="bilan-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'bilan-extension');">Bilan d'Extension</button>
+                      <button id="chirurgie-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'chirurgie');">Chirurgie</button>
+                      <button id="decision-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'decision');">Decision</button>
+                    </div>
+                 </div>
+                </div>
+                <div class="col-sm-3 lecture_header">
+                  <h4 class="titre4">Fiche Patient: X</h4>
+                </div>
+                <div class="col-sm-1 lecture_header">
+                  <h4 class="icone"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-stack" viewBox="0 0 16 16">
+  <path d="m14.12 10.163 1.715.858c.22.11.22.424 0 .534L8.267 15.34a.598.598 0 0 1-.534 0L.165 11.555a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.66zM7.733.063a.598.598 0 0 1 .534 0l7.568 3.784a.3.3 0 0 1 0 .535L8.267 8.165a.598.598 0 0 1-.534 0L.165 4.382a.299.299 0 0 1 0-.535L7.733.063z"/>
+  <path d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z"/>
+</svg></h4>
+                </div>
+              </div>
+        </nav>
+
+        <section  id="form-fiche">
+            <div class="row ">
+                <div class="col-sm-8  ">
+                  <div class="container">
+
+
+
+                  <div class="row">
+                    <div class="col-sm-12 saisie_section">
+                        <!-- form of onglet -->
+                        <div id="person" class="onglet">
+                            <label id="sexe">Sexe: </label>
+                            <select id="sexe-select" required onchange="hideDivSex(this);">
+                                <option value="Homme">Homme</option>
+                                <option value="Femme">Femme</option>
+                            </select>
+                            <label id="age-label">Age: </label>
+                            <input
+                              id="age"
+                              type="number"
+                              name="age-input"
+                              placeholder="18"
+                              max="85"
+                              min="18"
+                              onchange="menoposieStatus();"
+                              required
+                            />
+                            <button type="submit" onclick="navigate();">Submit</button>
+                        </div>
+
+                        <div id="habitudes" class="onglet">
+                            <div class"sub_title">
+                              <div class="row">
+                                <div class="col-sm-10">
+                                    <h2 class="titre_champ">Habitudes</h2>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" class="btn btn-next" name="button">Next</button>
+                                </div>
+
+                              </div>
+                            </div>
+                            <label id="tabac-label">Tabac: </label>
+                            <select id="tabac" onchange="disableSevrage(this)">
+                              <option value="">Type de Tabac</option>
+                              <option value="1">Cigarette</option>
+                              <option value="2">Chicha</option>
+                              <option value="3">Neffa</option>
+                              <option value="4">Tabouna</option>
+                              <option value="5">Non</option>
+                            </select>
+                            <label id="paquetannee-label" hidden>Paquetannée: </label>
+                            <input id="paquetannee" type="number" min="1" max="50" placeholder="1" hidden>
+                            </br>
+                          <label id="sevrage-label">Sevrage: </label>
+                          <select id="Sevrage" disabled="">
+                            <option value="oui">Oui</option>
+                            <option value="non">Non</option>
+                          </select>
+                          </br>
+                          <label id="alcool-label">Alcool: </label>
+                          <select id="alcool">
+                            <option value="oui">Oui</option>
+                            <option value="non">Non</option>
+                          </select>
+                          </br>
+                          <label id="alimentation-label">Régime Alimentaire: </label>
+                          <select id="regime-alimentaire">
+                            <option value="">Choisir le type de Régime</option>
+                            <option value="1">
+                              Riche en graisse et pauvre en protéine et fibres
+                            </option>
+                            <option value="2">équilibré</option>
+                          </select>
+                          <br />
+                          <br />
+                        </div>
+
+                        <div id="antecedents" class="onglet">
+                          <div class"sub_title">
+                            <div class="row">
+                              <div class="col-sm-10">
+                                  <h2 class="titre_champ">Antécédents</h2>
+                              </div>
+                              <div class="col-sm-2">
+                                  <button type="button" class="btn btn-next" name="button">Next</button>
+                              </div>
+
+                            </div>
+                          </div>
+                            <label id="atcd-med"> Antécédents médicaux </label>
+                            <select size="1" multiple>
+                              <option value="hta"> HTA </option>
+                              <option value="diabete"> Diabète </option>
+                              <option value="cardiaque"> Insuffisance Cardiaque </option>
+                              <option value="autre"> Autre </option>
+                            </select>
+                            <label id="atcd-chirugie"> Antécédents Chirurgie mammaire</label>
+                            <select>
+                              <option value="0">Non</option>
+                              <option value="1">Pathologie bénigne mammaire</option>
+                              <option value="2">Pathologie maligne mammaire</option>
+                            </select>
+                            <label> Antécédents RT de thorax </label>
+                            <select id="atcd-RT-de-thorax">
+                              <option value="1">Oui</option>
+                              <option value="0">Non</option>
+                            </select>
+                            <label> Antécédents Familiaux </label>
+                            <select id="atcd-fam" onchange="blockNext(this);">
+                              <option value="1">Oui</option>
+                              <option value="0">Non</option>
+                            </select>
+
+                            <label> Type de Cancer </label>
+                            <select id="type-cancer" size="2" style="height: 24pt" multiple>
+                              <option value="Sein">Sein</option>
+                              <option value="Ovaire">Ovaire</option>
+                              <option value="Pancréas">Pancréas</option>
+                              <option value="Prostate">Prostate</option>
+                              <option value="Cerveau">Cerveau</option>
+                              <option value="Poumon">Poumon</option>
+                              <option value="Lymphome de Hodgkin">Lymphome de Hodgkin</option>
+                              <option value="Colorectal">Colorectal</option>
+                              <option value="Gastrique">Gastrique</option>
+                              <option value="Hépatobiliaire">Hépatobiliaire</option>
+                              <option value="Aucun">Aucun</option>
+                              <option value="Autre">Autre</option>
+                            </select>
+                            <label>Enqête Génétique faite?</label>
+                            <select id="enquete">
+                              <option value="Oui">Oui</option>
+                              <option value="Non">Non</option>
+                            </select>
+                          </div>
+
+                          <div id="genico" class="onglet">
+                            <div class"sub_title">
+                              <div class="row">
+                                <div class="col-sm-10">
+                                    <h2 class="titre_champ">Gényco</h2>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" class="btn btn-next" name="button">Next</button>
+                                </div>
+
+                              </div>
+                            </div>
+                              <label id="gestie">Gestité Parité: </label>
+                              <select id="gestie-options">
+                                <option value="">G0P0</option>
+                                <option value="">G1P0</option>
+                                <option value="">G1P1</option>
+                                <option value="">G1P2</option>
+                                <option value="">G2P0</option>
+                                <option value="">G2P1</option>
+                                <option value="">G2P2</option>
+                                <option value="">G2P3</option>
+                                <option value="">G2P4</option>
+                                <option value="">G3P0</option>
+                                <option value="">G3P1</option>
+                                <option value="">G3P2</option>
+                                <option value="">G3P3</option>
+                                <option value="">G3P4</option>
+                                <option value="">G3P5</option>
+                                <option value="">G4P2</option>
+                                <option value="">G4P3</option>
+                                <option value="">G4P4</option>
+                                <option value="">G4P5</option>
+                                <option value="">G4P6</option>
+                              </select>
+                              <label id="age-régle">Age de Premier Règle: </label>
+                              <select id="age-regle">
+                                <option value="">Age 1er Regle</option>
+                                <option value="<12"> Sous 12 </option>
+                                <option value=">=12"> Plus que 12 (inclus) </option>
+                              </select>
+                              <!-- Calculate this value from previous inputs-->
+                              <label id="menopausique-label">Statut Ménopausique: </label>
+                              <label id="status-menopausique" class="result"></label>
+                              <label id="dosage">Dosages_hormonaux_FSH_E2</label>
+                              <select id="dosage-option" disabled>
+                                <option value="">Dosage</option>
+                                <option value="0">Compatible avec une ménoapuse</option>
+                                <option value="1">Non compatible avec une ménoapuse</option>
+                              </select>
+                              <label id="">Allaitement</label>
+                              <select id="align-option">
+                                <option value="1">Oui</option>
+                                <option value="0">Non</option>
+                                <option value="2"> Non Concerné </option>
+                              </select>
+                              <label id="">Contraception</label>
+                              <select id="contra-option">
+                                <option value="1"> Oui </option>
+                                <option value="0"> Non </option>
+                                <option value="2"> Non Concerné </option>
+                              </select>
+                              <label id="age-grossesse">Age Premiere Grossesse</label>
+                              <select id="age-grossesse-option">
+                                <option value="">Age Grossesse</option>
+                                <option value="<35">Sous 35</option>
+                                <option value=">=35">Plus de 35</option>
+                              </select>
+                              <label id="grossesse">Grossesse</label>
+                              <select id="grossesse-option">
+                                <option value="1">Oui</option>
+                                <option value="0">Non</option>
+                              </select>
+                          </div>
+
+                          <div id="clinique"class="onglet">
+                            <div class"sub_title">
+                              <div class="row">
+                                <div class="col-sm-10">
+                                    <h2 class="titre_champ">Clinique</h2>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" class="btn btn-next" name="button">Next</button>
+                                </div>
+
+                              </div>
+                            </div>
+                              <label> Signes Associés</label>
+                              <select id="signe-associes" multiple>
+                                  <option value="Douleur mammaire">Douleur mammaire</option>
+                                  <option value="Alteration de l'état général">Alteration de l'état général</option>
+                                  <option value="Saignement">Saignement </option>
+                                  <option value="Ecoulement mammaire">Ecoulement mammaire</option>
+                                  <option value="Déformation mammaire">Déformation mammaire </option>
+                                  <option value="Œdème / érythème au moins ⅓ du sein">Œdème / érythème au moins ⅓ du sein</option>
+                                  <option value="Ulcération de la peau du sein ">Ulcération de la peau du sein </option>
+                                  <option value="Nodules de perméation situés sur la peau du sein">Nodules de perméation situés sur la peau du sein</option>
+                              </select>
+                          </div>
+
+                          <div id="ctnm" class="onglet">
+                            <div class"sub_title">
+                              <div class="row">
+                                <div class="col-sm-10">
+                                    <h2 class="titre_champ">cTNM</h2>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" class="btn btn-next" name="button">Next</button>
+                                </div>
+
+                              </div>
+                            </div>
+                            <label id="description-t-label"> Description Taille:</label>
+                            <select id="description-t-option"  onchange="resultatT();" required >
+                                <option value=""> Description T</option>
+                                <option value="0">Extension à la paroi thoracique (côtes, muscles intercostaux) en excluant les muscles pectoraux</option>
+                                <option value="1">Œdème (y compris peau d’orange) et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du même sein</option>
+                                <option value="2">Extension à la paroi thoracique avec œdème et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du même sein</option>
+                                <option value="3">Œdème/érythème atteignant plus du 1/3 du sein</option>
+                                <option value="4">Tumeur palpable</option>
+                            </select>
+                            <br>
+                              <label id="t">T: </label>
+                              <input id="taille-tumeur" type="number" min="1" max="10" placeholder="en mm"  required>
+                              <br>
+                              <label id="description-n-label"> Description N: </label>
+                              <select id="description-n"  required>
+                                  <option value=""> Description N</option>
+                                  <option value="0"> Absence de métastase ganglionnaire </option>
+                                  <option value="1"> Métastase mobile dans les ganglions homolatéraux de niveau I/II</option>
+                                  <option value="2"> Métastase fixée dans les ganglions homolatéraux de niveau I/II</option>
+                                  <option value="3"> Métastase dans les ganglions mammaires internes sans envahissement axillaire </option>
+                                  <option value="4"> Métastase dans les ganglions sous-claviculaires homolatéraux </option>
+                                  <option value="5"> Métastase dans les ganglions mammaires internes avec envahissement axillaire </option>
+                                  <option value="6"> Métastase dans les ganglions sur-claviculaires homolatéraux </option>
+                              </select>
+                              <label id="metastase-suspecte-label"> Metastase Suspecte</label>
+                              <select id="metastase-suspecte">
+                                  <option value=""></option>
+                                  <option value="M0"> Oui </option>
+                                  <option value="M1"> Non </option>
+                              </select>
+                              <label id="liste-possible-label"> Liste possible </label>
+                              <select id="liste-possible">
+                                  <option value=""> Rien </option>
+                                  <option value="1"> Ovaire </option>
+                                  <option value="2"> Pancréas </option>
+                                  <option value="3"> Cerveau </option>
+                              </select>
+                          </div>
+
+                          <div id="examen-diagnostic" class="onglet">
+                            <div class"sub_title">
+                              <div class="row">
+                                <div class="col-sm-10">
+                                    <h2 class="titre_champ">Examens</h2>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" class="btn btn-next" name="button">Next</button>
+                                </div>
+
+                              </div>
+                            </div>
+                              <label id="echomamo-label"> Echomamographie Droite: </label>
+                              <select id="echomamo-options" required>
+                                  <option value=""> Echomamographie </option>
+                                  <option value="0"> ACR1 </option>
+                                  <option value="1"> ACR2 </option>
+                                  <option value="2"> ACR3 </option>
+                                  <option value="3"> ACR4 </option>
+                                  <option value="4"> ACR5 </option>
+                                  <option value="5"> ACR6 </option>
+                              </select>
+                              <br>
+                              <label id="echomamo-label"> Echomamographie Gauche: </label>
+                              <select id="echomamo-options" required>
+                                  <option value=""> Echomamographie </option>
+                                  <option value="0"> ACR1 </option>
+                                  <option value="1"> ACR2 </option>
+                                  <option value="2"> ACR3 </option>
+                                  <option value="3"> ACR4 </option>
+                                  <option value="4"> ACR5 </option>
+                                  <option value="5"> ACR6 </option>
+                              </select>
+                              <br>
+                              <label id="irm"> IRM: </label>
+                              <select id="irm-option">
+                                  <option value="0"></option>
+                                  <option value="1"> Multifocalité </option>
+                                  <option value="1"> Microcalcification </option>
+                                  <option value="1"> Rien </option>
+                              </select>
+                          </div>
+
+                          <div id="biopsie" class="onglet">
+                            <div class"sub_title">
+                              <div class="row">
+                                <div class="col-sm-10">
+                                    <h2 class="titre_champ">Biopsie</h2>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" class="btn btn-next" name="button">Next</button>
+                                </div>
+
+                              </div>
+                            </div>
+                              <div id="biopsie-droite">
+                                <h4>Biopsie Droite</h4>
+                                  <label> Histologie: </label>
+                                  <select id="histo-options" required>
+                                      <option value=""> Type d'Histologie </option>
+                                      <option value="0"> Carcinome canalaire invasif </option>
+                                      <option value="1"> Carcinome lobulaire invasif </option>
+                                  </select>
+                                  <label> Grade_SBR: </label>
+                                  <select id="grade-options" required>
+                                      <option value=""> Type Garde </option>
+                                      <option value="1"> Grade I </option>
+                                      <option value="2"> Grade II </option>
+                                      <option value="3"> Grade III </option>
+                                  </select>
+                                  <label> RH_E: </label>
+                                  <select id="rhe_options" required>
+                                      <option value=""> Type RH_E </option>
+                                      <option value="1"> Positif </option>
+                                      <option value="0"> Negatif </option>
+                                  </select>
+                                  <br>
+                                  <label> RH_P: </label>
+                                  <select id="rhp_options" required>
+                                      <option value=""> Type RH_P </option>
+                                      <option value="1"> Positif </option>
+                                      <option value="0"> Negatif </option>
+                                  </select>
+                                  <label> HER2: </label>
+                                  <select id="her2_options" required>
+                                      <option value=""> Type HER2 </option>
+                                      <option value="1"> Positif </option>
+                                      <option value="0"> Negatif </option>
+                                  </select>
+                                  <label> Ki67: </label>
+                                  <select id="ki67_options" required>
+                                      <option value=""> Type Ki67 </option>
+                                      <option value="1"> Sous 15-20% </option>
+                                      <option value="0"> plus de 15-20% inclue </option>
+                                  </select>
+                                  <label> Index Mitotique </label>
+                                  <select id="index-options" required>
+                                      <option value=""> Type Index</option>
+                                      <option value="1"> Faible </option>
+                                      <option value="0"> Elevé </option>
+                                  </select>
+                                  <label> EV et/ou EPN </label>
+                                  <select id="ev-epn-options" required>
+                                      <option value="1"> Oui </option>
+                                      <option value="0"> Non </option>
+                                  </select>
+                                  <label> TILS </label>
+                                  <select id="tils-options" required>
+                                      <option value="0"> </option>
+                                      <option value="1"> Cancer du sein à prédominance lymphocytaire (> 50%) </option>
+                                      <option value="2"> Non (<50%) </option>
+                                  </select>
+                                  <label> MSS/MSI </label>
+                                  <select id="mss-msi-options" required>
+                                      <option value="mss"> MSS </option>
+                                      <option value="msi"> MSI </option>
+                                      <option value="negatif"> Negatif </option>
+                                  </select>
+                                  <label> PDL </label>
+                                  <select id="pdl-options" required>
+                                      <option value="1"> Positif </option>
+                                      <option value="0"> Negatif </option>
+                                  </select>
+                              </div>
+                              <div id="biopsie-gauche">
+                                <h4>Biopsie Gauche</h4>
+                                  <label> Histologie: </label>
+                                  <select id="histo-options" required>
+                                      <option value=""> Type d'Histologie </option>
+                                      <option value="0"> Carcinome canalaire invasif </option>
+                                      <option value="1"> Carcinome lobulaire invasif </option>
+                                  </select>
+                                  <label> Grade_SBR: </label>
+                                  <select id="grade-options" required>
+                                      <option value=""> Type Garde </option>
+                                      <option value="1"> Grade I </option>
+                                      <option value="2"> Grade II </option>
+                                      <option value="3"> Grade III </option>
+                                  </select>
+                                  <label> RH_E: </label>
+                                  <select id="rhe_options" required>
+                                      <option value=""> Type RH_E </option>
+                                      <option value="1"> Positif </option>
+                                      <option value="0"> Negatif </option>
+                                  </select>
+                                  <label> RH_P: </label>
+                                  <select id="rhp_options" required>
+                                      <option value=""> Type RH_P </option>
+                                      <option value="1"> Positif </option>
+                                      <option value="0"> Negatif </option>
+                                  </select>
+                                </br>
+                                  <label> HER2: </label>
+                                  <select id="her2_options" required>
+                                      <option value=""> Type HER2 </option>
+                                      <option value="1"> Positif </option>
+                                      <option value="0"> Negatif </option>
+                                  </select>
+                                  <label> Ki67: </label>
+                                  <select id="ki67_options" required>
+                                      <option value=""> Type Ki67 </option>
+                                      <option value="1"> Sous 15-20% </option>
+                                      <option value="0"> plus de 15-20% inclue </option>
+                                  </select>
+                                  <label> Index Mitotique </label>
+                                  <select id="index-options" required>
+                                      <option value=""> Type Index</option>
+                                      <option value="1"> Faible </option>
+                                      <option value="0"> Elevé </option>
+                                  </select>
+                                  <label> EV et/ou EPN </label>
+                                  <select id="ev-epn-options" required>
+                                      <option value="1"> Oui </option>
+                                      <option value="0"> Non </option>
+                                  </select>
+                                  <label> TILS </label>
+                                  <select id="tils-options" required>
+                                      <option value="0"> </option>
+                                      <option value="1"> Cancer du sein à prédominance lymphocytaire (> 50%) </option>
+                                      <option value="2"> Non (<50%) </option>
+                                  </select>
+                                  <label> MSS/MSI </label>
+                                  <select id="mss-msi-options" required>
+                                      <option value="mss"> MSS </option>
+                                      <option value="msi"> MSI </option>
+                                      <option value="negatif"> Negatif </option>
+                                  </select>
+                                  <label> PDL </label>
+                                  <select id="pdl-options" required>
+                                      <option value="1"> Positif </option>
+                                      <option value="0"> Negatif </option>
+                                  </select>
+                              </div>
+                              <div id="biopsie-ganglionnaire">
+                                <h4>Biopsie Ganglionnaire</h4>
+                                  <label> Histologie: </label>
+                                  <select id="histo-options" required>
+                                      <option value=""> Type d'Histologie </option>
+                                      <option value="0"> Carcinome canalaire invasif </option>
+                                      <option value="1"> Carcinome lobulaire invasif </option>
+                                  </select>
+                                  <label> Grade_SBR: </label>
+                                  <select id="grade-options" required>
+                                      <option value=""> Type Garde </option>
+                                      <option value="1"> Grade I </option>
+                                      <option value="2"> Grade II </option>
+                                      <option value="3"> Grade III </option>
+                                  </select>
+                                  <label> RH_E: </label>
+                                  <select id="rhe_options" required>
+                                      <option value=""> Type RH_E </option>
+                                      <option value="1"> Positif </option>
+                                      <option value="0"> Negatif </option>
+                                  </select>
+                                  <label> RH_P: </label>
+                                  <select id="rhp_options" required>
+                                      <option value=""> Type RH_P </option>
+                                      <option value="1"> Positif </option>
+                                      <option value="0"> Negatif </option>
+                                  </select>
+                                  <label> HER2: </label>
+                                  <select id="her2_options" required>
+                                      <option value=""> Type HER2 </option>
+                                      <option value="1"> Positif </option>
+                                      <option value="0"> Negatif </option>
+                                  </select>
+                                  <label> Ki67: </label>
+                                  <select id="ki67_options" required>
+                                      <option value=""> Type Ki67 </option>
+                                      <option value="1"> Sous 15-20% </option>
+                                      <option value="0"> plus de 15-20% inclue </option>
+                                  </select>
+                                  <label> Index Mitotique </label>
+                                  <select id="index-options" required>
+                                      <option value=""> Type Index</option>
+                                      <option value="1"> Faible </option>
+                                      <option value="0"> Elevé </option>
+                                  </select>
+                                  <label> EV et/ou EPN </label>
+                                  <select id="ev-epn-options" required>
+                                      <option value="1"> Oui </option>
+                                      <option value="0"> Non </option>
+                                  </select>
+                                  <label> TILS </label>
+                                  <select id="tils-options" required>
+                                      <option value="0"> </option>
+                                      <option value="1"> Cancer du sein à prédominance lymphocytaire (> 50%) </option>
+                                      <option value="2"> Non (<50%) </option>
+                                  </select>
+                                  <label> MSS/MSI </label>
+                                  <select id="mss-msi-options" required>
+                                      <option value="mss"> MSS </option>
+                                      <option value="msi"> MSI </option>
+                                      <option value="negatif"> Negatif </option>
+                                  </select>
+                                  <label> PDL </label>
+                                  <select id="pdl-options" required>
+                                      <option value="1"> Positif </option>
+                                      <option value="0"> Negatif </option>
+                                  </select>
+                              </div>
+                          </div>
+
+                          <div id="bilan-extension" class="onglet">
+                          </div>
+
+                          <div id="chirurgie" class="onglet">
+                          </div>
+
+                          <div id="decision" class="onglet">
+
+                          </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-sm-4 lecture_section">
+                    <div class="row">
+                      <div class="col-sm-3 ">
+                          <!-- form of onglet -->
+                          <label id="sexe" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>Sexe
+              </div>
+              <div class="col-sm-3"><span class="champs">Homme</span> </label></div>
+              <div class="col-sm-3">
+              <label id="Age" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>Age
+                </div>
+                <div class="col-sm-3">
+                <span class="champs">45 ANS </span>
+              </label>
+              </div>
+
+              </div>
+
+              <hr>
+
+              <label id="Age" class="col-sd-6" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+              <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
+              </svg> ATCD Médicaux : <span class="champs">Non</span> </label>
+              <label id="Age" lass="col-sd-6" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+              <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
+              </svg> ATCD Médicaux : <span class="champs">Non</span> </label>
+              <label id="Age" lass="col-sd-6" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+              <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
+              </svg> ATCD Familiaux : <span class="champs">Non</span> </label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+
+
+
+</div>
+    </body>
+</html>
