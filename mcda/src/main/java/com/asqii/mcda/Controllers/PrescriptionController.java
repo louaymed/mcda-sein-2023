@@ -18,6 +18,7 @@ import com.asqii.mcda.Exceptions.PrescriptionException;
 import com.asqii.mcda.Models.Prescription;
 import com.asqii.mcda.Services.PrescriptionService;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/Prescription")
 public class PrescriptionController {
