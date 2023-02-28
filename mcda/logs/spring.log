@@ -1,20 +1,20 @@
-2023-02-23 14:02:02.731  INFO 17452 --- [main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8888
-2023-02-23 14:02:02.826  INFO 17452 --- [main] c.c.c.ConfigServicePropertySourceLocator : Connect Timeout Exception on Url - http://localhost:8888. Will be trying the next url if available
-2023-02-23 14:02:02.826  WARN 17452 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/mcda/default": Connection refused: no further information; nested exception is java.net.ConnectException: Connection refused: no further information
-2023-02-23 14:02:02.829  INFO 17452 --- [main] com.asqii.mcda.SaisieApplication         : No active profile set, falling back to 1 default profile: "default"
-2023-02-23 14:02:03.431  INFO 17452 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-02-23 14:02:03.580  INFO 17452 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 142 ms. Found 5 JPA repository interfaces.
-2023-02-23 14:02:03.854  INFO 17452 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=e90dbb8b-40ae-3337-9fea-a4547f0a511f
-2023-02-23 14:02:04.239  INFO 17452 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-02-23 14:02:04.249  INFO 17452 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-02-23 14:02:04.250  INFO 17452 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
-2023-02-23 14:02:04.307  INFO 17452 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/mcda]   : Initializing Spring embedded WebApplicationContext
-2023-02-23 14:02:04.307  INFO 17452 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1454 ms
-2023-02-23 14:02:04.731  INFO 17452 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-02-23 14:02:04.780  INFO 17452 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.12.Final
-2023-02-23 14:02:04.914  INFO 17452 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-02-23 14:02:04.988  INFO 17452 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-02-23 14:02:06.101 ERROR 17452 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2023-02-28 11:28:01.978  INFO 13408 --- [main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8888
+2023-02-28 11:28:02.077  INFO 13408 --- [main] c.c.c.ConfigServicePropertySourceLocator : Connect Timeout Exception on Url - http://localhost:8888. Will be trying the next url if available
+2023-02-28 11:28:02.078  WARN 13408 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/mcda/default": Connection refused: no further information; nested exception is java.net.ConnectException: Connection refused: no further information
+2023-02-28 11:28:02.081  INFO 13408 --- [main] com.asqii.mcda.SaisieApplication         : No active profile set, falling back to 1 default profile: "default"
+2023-02-28 11:28:02.613  INFO 13408 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-02-28 11:28:02.676  INFO 13408 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 5 JPA repository interfaces.
+2023-02-28 11:28:02.867  INFO 13408 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a7db8d36-3078-3587-84cd-dd846dc4e76f
+2023-02-28 11:28:03.272  INFO 13408 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-02-28 11:28:03.283  INFO 13408 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-02-28 11:28:03.283  INFO 13408 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2023-02-28 11:28:03.358  INFO 13408 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/mcda]   : Initializing Spring embedded WebApplicationContext
+2023-02-28 11:28:03.358  INFO 13408 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1262 ms
+2023-02-28 11:28:03.749  INFO 13408 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-02-28 11:28:03.792  INFO 13408 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.12.Final
+2023-02-28 11:28:03.909  INFO 13408 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-02-28 11:28:03.981  INFO 13408 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-02-28 11:28:05.070 ERROR 13408 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
@@ -103,7 +103,7 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-j-8.0.31.jar!/:8.0.31]
 	... 58 common frames omitted
 
-2023-02-23 14:02:06.111  WARN 17452 --- [main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+2023-02-28 11:28:05.080  WARN 13408 --- [main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
 
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
@@ -192,9 +192,9 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-j-8.0.31.jar!/:8.0.31]
 	... 58 common frames omitted
 
-2023-02-23 14:02:06.133  INFO 17452 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-2023-02-23 14:02:06.571  INFO 17452 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-02-23 14:02:07.610 ERROR 17452 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2023-02-28 11:28:05.099  INFO 13408 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2023-02-28 11:28:05.531  INFO 13408 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-02-28 11:28:06.589 ERROR 13408 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
@@ -283,17 +283,17 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-j-8.0.31.jar!/:8.0.31]
 	... 58 common frames omitted
 
-2023-02-23 14:02:07.620  WARN 17452 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
-2023-02-23 14:02:07.621 ERROR 17452 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Communications link failure
+2023-02-28 11:28:06.600  WARN 13408 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
+2023-02-28 11:28:06.601 ERROR 13408 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-2023-02-23 14:02:07.624 ERROR 17452 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-2023-02-23 14:02:07.625  WARN 17452 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-2023-02-23 14:02:07.627  INFO 17452 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2023-02-23 14:02:07.639  INFO 17452 --- [main] ConditionEvaluationReportLoggingListener : 
+2023-02-28 11:28:06.604 ERROR 13408 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+2023-02-28 11:28:06.606  WARN 13408 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+2023-02-28 11:28:06.608  INFO 13408 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-02-28 11:28:06.620  INFO 13408 --- [main] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-02-23 14:02:07.656 ERROR 17452 --- [main] o.s.boot.SpringApplication               : Application run failed
+2023-02-28 11:28:06.639 ERROR 13408 --- [main] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.23.jar!/:5.3.23]

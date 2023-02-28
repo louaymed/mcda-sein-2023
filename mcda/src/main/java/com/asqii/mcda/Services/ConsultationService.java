@@ -252,7 +252,11 @@ public class ConsultationService {
 
     public String calculerT(Integer classe_tumeur, String description_t) {
         String t = "";
-        if (classe_tumeur <= 20) {
+        if (description_t.equals("T0")) {
+            t = "T0";
+        } else if (description_t.equals("Tis")) {
+            t = "Tis";
+        } else if (classe_tumeur <= 20) {
             if (description_t.equals(
                     "Extension à la paroi thoracique (côtes, muscles intercostaux) en excluant les muscles pectoraux")) {
                 t = "T4a";
@@ -303,13 +307,13 @@ public class ConsultationService {
     }
 
     public String calculerCtnm(String t, String n, String m) {
-        String[] T = { "T1", "T2", "T3", "T4a", "T4b", "T4c", "T4d" };
-        String[] N = { "N0", "N1", "N2a", "N2b", "N3a", "N3b", "N3c" };
+        String[] T = { "T0", "T1", "T2", "T3", "T4a", "T4b", "T4c", "T4d","Tis" };
+        String[] N = { "N0", "N1", "N2", "N3" };
         String[] M = { "M0", "Mx" };
         String ctnm = "";
 
         for (String ta : T) {
-            if (t.equals(ta) ) {
+            if (t.equals(ta)) {
                 for (String na : N) {
                     if (na.equals(n)) {
                         for (String ma : M) {
