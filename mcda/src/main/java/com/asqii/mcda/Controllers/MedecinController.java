@@ -20,6 +20,7 @@ import com.asqii.mcda.Exceptions.MedecinException;
 import com.asqii.mcda.Models.Medecin;
 import com.asqii.mcda.Services.MedecinService;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/Medecin")
 public class MedecinController {
