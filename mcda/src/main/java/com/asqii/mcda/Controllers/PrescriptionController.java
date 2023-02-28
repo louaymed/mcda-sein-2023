@@ -3,6 +3,7 @@ package com.asqii.mcda.Controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.asqii.mcda.Exceptions.PrescriptionException;
 import com.asqii.mcda.Models.Prescription;
 import com.asqii.mcda.Services.PrescriptionService;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/Prescription")
 public class PrescriptionController {
