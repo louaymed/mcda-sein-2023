@@ -19,6 +19,7 @@ import com.asqii.mcda.Services.PatientService;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(path = "/api/patients")
 public class PatientController {
