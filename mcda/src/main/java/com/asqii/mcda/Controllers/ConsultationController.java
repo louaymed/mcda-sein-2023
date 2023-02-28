@@ -19,6 +19,7 @@ import com.asqii.mcda.Services.ConsultationService;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(path = "api/consultation")
 public class ConsultationController {
