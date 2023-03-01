@@ -220,7 +220,7 @@ function calcT() {
     console.log(myMap);
     var myMapJson = JSON.stringify(myMap);
     console.log(myMapJson)
-    fetch("http://localhost:8081/api/consultation/taille", {
+    fetch("http://localhost:8081/mcda/api/consultation/taille", {
         method: "post",
         headers: {
             "Content-type": "application/json"
@@ -321,7 +321,7 @@ function getCtnm() {
     console.log(myMap);
     var myMapJson = JSON.stringify(myMap);
     console.log(myMapJson)
-    fetch("http://localhost:8081/api/consultation/calc-ctnm", {
+    fetch("http://localhost:8081/mcda/api/consultation/calc-ctnm", {
         method: "post",
         headers: {
             "Content-type": "application/json"
@@ -696,7 +696,7 @@ function getTraitment() {
     console.log(myMap);
     var myMapJson = JSON.stringify(myMap);
     console.log(myMapJson)
-    fetch("http://localhost:8081/api/treatment/chimio", {
+    fetch("http://localhost:8081/mcda/api/treatment/chimio", {
         method: "post",
         headers: {
             "Content-type": "application/json"

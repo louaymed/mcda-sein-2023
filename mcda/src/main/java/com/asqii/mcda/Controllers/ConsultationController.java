@@ -33,9 +33,7 @@ public class ConsultationController {
 
     public ConsultationController(ConsultationService consultationService) {
         this.consultationService = consultationService;
-
-    }
-
+}
     @PostMapping("/taille")
     @ResponseBody
     public String calculerT(@RequestBody Map<String, String> tum) {
@@ -50,7 +48,6 @@ public class ConsultationController {
     }
 
     @PostMapping("/calc-ctnm")
-    @ResponseBody
     public String calculerCtnm(@RequestBody Map<String, String> tnm) {
         String T, N, M;
         T = tnm.get("T");
