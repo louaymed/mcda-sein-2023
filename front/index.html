@@ -56,6 +56,8 @@
         <div class="col-sm-8 " style="padding-left: 30px;">
           <div class="scroll row saisie_header" style="overflow: auto;">
             <div>
+              <button id="profile-h" class="btn btn-light col-sm-2"
+                onclick="openOnglet(event, 'profil')">Profile</button>
               <button id="habitude-h" class="btn btn-light col-sm-2"
                 onclick="openOnglet(event, 'habitudes')">Habitudes</button>
               <button id="antecedent-h" class="btn btn-light col-sm-2"
@@ -122,10 +124,10 @@
                 <!-- form of onglet -->
 
                 <!-- Profil Onglet -->
-                <!-- <div id="profil" class="onglet"> -->
+                <div id="profil" class="onglet">
 
-                <!-- Title -->
-                <!-- <div class="sub_title">
+                  <!-- Title -->
+                  <div class="sub_title">
                     <div class="row">
                       <div class="col-sm-10">
                         <h2 class="titre_champ">Profil</h2>
@@ -135,17 +137,17 @@
                           onclick="navigate('profil', 'habitude-h', 'sexe-display','age-display');">Next</button>
                       </div>
                     </div>
-                  </div> -->
-                <!--End  Title -->
+                  </div>
+                  <!--End  Title -->
 
-                <!-- <label id="sexe">Sexe: </label>
+                  <label id="sexe">Sexe: </label>
                   <select id="sexe-select" name="sexe" required>
                     <option value="Homme">Homme</option>
                     <option value="Femme">Femme</option>
                   </select>
                   <label id="age-label">Age: </label>
                   <input id="age" type="number" name="age" placeholder="18" max="85" min="18" required />
-                </div> -->
+                </div>
                 <!-- End Profil Onglet -->
 
 
@@ -874,6 +876,8 @@
                           <option value=""> </option>
                           <option value="0"> Carcinome canalaire invasif </option>
                           <option value="1"> Carcinome lobulaire invasif </option>
+                          <option value="3"> Carcinome mixte </option>
+                          <option value="autre">Autre </option>
                         </select><br>
                         <label> Grade_SBR: </label>
                         <select id="grade-options" required>
@@ -885,14 +889,18 @@
                         <label> RH_E: </label>
                         <select id="rhe_options" required>
                           <option value=""> </option>
-                          <option value="1"> Positif </option>
-                          <option value="0"> Negatif </option>
+                          <option value="0">
+                            < 10% </option>
+                          <option value="1"> Entre 10% et 20% </option>
+                          <option value="2"> > 20% </option>
                         </select><br>
                         <label> RH_P: </label>
                         <select id="rhp_options" required>
                           <option value=""> </option>
-                          <option value="1"> Positif </option>
-                          <option value="0"> Negatif </option>
+                          <option value="0">
+                            < 10% </option>
+                          <option value="1"> Entre 10% et 20% </option>
+                          <option value="2"> > 20% </option>
                         </select><br>
                         <label> HER2: </label>
                         <select id="her2_options" required>
@@ -900,24 +908,41 @@
                           <option value="0"> + </option>
                           <option value="1"> ++ </option>
                           <option value="2"> +++ </option>
-
+                        </select><br>
+                        <label> FISH: </label>
+                        <select id="fish" required>
+                          <option value=""> </option>
+                          <option value="0"> Non </option>
+                          <option value="1"> Oui </option>
+                        </select><br>
+                        <label> Résultat : </label>
+                        <select id="fish" required>
+                          <option value=""> </option>
+                          <option value="0"> Non surexprimé </option>
+                          <option value="1"> Surexrpimé </option>
                         </select><br>
                         <label> Ki67: </label>
                         <select id="ki67_options" required>
                           <option value=""> </option>
                           <option value="0">
                             < 15-20% </option>
-                          <option value="1"> > 15-20% inclue </option>
+                          <option value="1"> >= 15-20% </option>
                         </select><br>
                         <label> Index Mitotique </label>
                         <select id="index-options" required>
                           <option value=""></option>
                           <option value="0"> Faible </option>
-                          <option value="1"> Intermidi </option>
+                          <option value="1"> Intermédiaire </option>
                           <option value="2"> Elevé </option>
                         </select><br>
-                        <label> EV et/ou EPN </label>
-                        <select id="ev-epn-options" required>
+                        <label> EV </label>
+                        <select id="ev-options" required>
+                          <option value=""></option>
+                          <option value="0"> Non </option>
+                          <option value="1"> Oui </option>
+                        </select><br>
+                        <label> EPN </label>
+                        <select id="epn-options" required>
                           <option value=""></option>
                           <option value="0"> Non </option>
                           <option value="1"> Oui </option>
@@ -1062,18 +1087,20 @@
 
                 <!--PEC Onglet -->
                 <div id="PEC" class="onglet">
-                  <h2 class="titre_champ">Prise En Charge Initial Recommandée :</h2>
+                  <h2 class="titre_champ">Prise En Charge Initial :</h2>
                   <form>
-                    <label id="ct" for="chimio-t">Chimiothérapie :</label>
-                    <input type="checkbox" id="chimio-t" name="chimio">
+                    <!-- <h4>Recommandation :</h4> -->
+                    <label id="chimio-label" for="chimio">Chimiothérapie :</label>
+                    <input type="checkbox" id="chimio" name="chimio" onchange="enableChimioType(this)">
+                    <label id="chimio-type-label" hidden> Type :</label>
+                    <select id="chimio-type" hidden>
+                      <option value=""></option>
+                      <option value="0">Chimiothérapie néoadjuvante</option>
+                      <option value="1">Chimiothérapie adjuvante</option>
+                      <option value="2">Chimiothérapie paliative</option>
+                    </select>
                     <br>
-                    <label id="cn" for="chimio-n">Chimiothérapie neoadjuvante:</label>
-                    <input type="checkbox" id="chimio-n" name="chimio-n">
-                    <br>
-                    <label id="ca" for="chimio-a">Chimiothérapie adjuvante:</label>
-                    <input type="checkbox" id="chimio-a" name="chimio-a">
-                    <br>
-                    <label id="r" for="radio">Radiothérapie:</label>
+                    <label id="r" for="radio hidden">Radiothérapie:</label>
                     <input type="checkbox" id="radio" name="radio">
                     <br>
                     <label id="c" for="chirurgie">Chirurgie:</label>
@@ -1083,7 +1110,30 @@
                     <input type="checkbox" id="hormo" name="hormo">
                     <br>
                   </form>
+                  <!-- <form>
+                    <h4>Autre :</h4>
+                    <label id="chimio-aut-label" for="chimio-aut">Chimiothérapie :</label>
+                    <input type="checkbox" id="chimio-aut" name="chimio" onchange="enableChimioType(this)">
+                    <label id="chimio-aut-type-label" hidden> Type :</label>
+                    <select id="chimio-aut-type" hidden>
+                      <option value=""></option>
+                      <option value="0">Chimiothérapie néoadjuvante</option>
+                      <option value="1">Chimiothérapie adjuvante</option>
+                      <option value="2">Chimiothérapie paliative</option>
+                    </select>
+                    <br>
+                    <label id="r-aut" for="radio-aut">Radiothérapie:</label>
+                    <input type="checkbox" id="radio-aut" name="radio">
+                    <br>
+                    <label id="c-aut" for="chirurgie-aut">Chirurgie:</label>
+                    <input type="checkbox" id="chirurgie-aut" name="chirurgie">
+                    <br>
+                    <label id="h-aut" for="hormo-aut">Hormonothérapie:</label>
+                    <input type="checkbox" id="hormo-aut" name="hormo">
+                    <br>
+                  </form> -->
                 </div>
+
                 <!--End PEC Onglet -->
 
                 <!-- Chimio Onglet -->
@@ -1109,8 +1159,8 @@
                   <label id="chir-type-label" for="chir-type" hidden>Type :</label>
                   <select id="chir-type" hidden onchange="disableRecons(this)">
                     <option value=""></option>
-                    <option value="0">Conservratise</option>
-                    <option value="1">Radicale</option>
+                    <option value="1">Conservratise</option>
+                    <option value="0">Radicale</option>
                   </select>
                   <br>
                   <label id="recons-label" for="recons" hidden>Reconstruction mammaire :</label>
@@ -1134,6 +1184,8 @@
                     <option value="1">Curage ganglionnaire </option>
                   </select>
                   <br>
+                  <label id="date-hot-label" for="date-hot">Date d'Hôspitalisation :</label>
+                  <input type="date" id="date-hot">
                   <br>
                   <br>
                   <br>
@@ -1141,7 +1193,8 @@
                   <br>
                   <br>
                   <br>
-                  <div id="anto" hidden>
+                  <br>
+                  <!-- <div id="anto" hidden>
                     <h3 class="titre_champ"> Antomopathologie :</h3>
                     <label id="RCB-label" for="RCB">RCB :</label>
                     <select id="RCB">
@@ -1163,7 +1216,7 @@
                     <label id="limite-s-label" for="limite-s">Nombre Ganglion Envahis :</label>
                     <input type="nubmer" id="nbr-gang">
                     <br>
-                  </div>
+                  </div>-->
                 </div>
                 <!--End Chirurgie Onglet -->
 

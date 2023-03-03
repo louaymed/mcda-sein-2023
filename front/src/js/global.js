@@ -511,6 +511,25 @@ function getCrise() {
 
 }
 
+function enableChimioType(that) {
+    if (that.id == "chimio") {
+        if (document.getElementById("chimio").checked) {
+            document.getElementById("chimio-type-label").removeAttribute("hidden");
+            document.getElementById("chimio-type").removeAttribute("hidden");
+        } else {
+            document.getElementById("chimio-type-label").setAttribute("hidden", "");
+            document.getElementById("chimio-type").setAttribute("hidden", "");
+        }
+    } else {
+        if (document.getElementById("chimio-aut").checked) {
+            document.getElementById("chimio-aut-type-label").removeAttribute("hidden");
+            document.getElementById("chimio-aut-type").removeAttribute("hidden");
+        } else {
+            document.getElementById("chimio-aut-type-label").setAttribute("hidden", "");
+            document.getElementById("chimio-aut-type").setAttribute("hidden", "");
+        }
+    }
+}
 
 //PEC 
 document.addEventListener("DOMContentLoaded", function () {
@@ -520,6 +539,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function getMet() {
+
+        // set recommendations hidden
+        // document.getElementById("chimio-label").setAttribute("hidden", "");
+        // document.getElementById("chimio").setAttribute("hidden", "");
+        // document.getElementById("chimio-type-label").setAttribute("hidden", "");
+        // document.getElementById("chimio-type").setAttribute("hidden", "");
+        // document.getElementById("r").setAttribute("hidden", "");
+        // document.getElementById("radio").setAttribute("hidden", "");
+        // document.getElementById("c").setAttribute("hidden", "");
+        // document.getElementById("chirurgie").setAttribute("hidden", "");
+        // document.getElementById("h").setAttribute("hidden", "");
+        // document.getElementById("hormo").setAttribute("hidden", "");
+
+
+
         sexe = document.getElementById("sexe-select").value;
         age = document.getElementById("age").value;
         var her2_value = document.getElementById("her2_options").value;
@@ -535,32 +569,35 @@ document.addEventListener("DOMContentLoaded", function () {
         var chirurgie = document.getElementById("chirurgie-h");
         var hormo = document.getElementById("hormo-h");
 
+
+
+
         // test if any choice has already been selected so that it dosent hide it again if they go back to PEC onglet
         if (window.getComputedStyle(chimio).display === 'none' && window.getComputedStyle(radio).display === 'none' && window.getComputedStyle(chirurgie).display === 'none' && window.getComputedStyle(hormo).display === 'none') {
-            //set to disabled
 
+            //set to disabled
             document.getElementById("chimio-h").setAttribute("hidden", "");
             document.getElementById("radio-h").setAttribute("hidden", "");
             document.getElementById("chirurgie-h").setAttribute("hidden", "");
             document.getElementById("hormo-h").setAttribute("hidden", "");
         }
 
-        // console.log("this is M")
+        // console.log("this is Hiba")
         // console.log(M)
         if (M == "M1") {
-            // console.log("im testing M")
-            document.getElementById("ct").removeAttribute("hidden");
-            document.getElementById("chimio-t").removeAttribute("hidden");
+            console.log("im testing M")
+            document.getElementById("chimio-label").removeAttribute("hidden");
+            document.getElementById("chimio").removeAttribute("hidden");
 
         } else if (sexe == "Femme" && age >= 80) {
-            console.log("im testing sexe and age")
-            // console.log("first step");
+            console.log("im testing sexe and age");
+            console.log("first step");
             if (output == "Oui") {
-                // console.log("second step");
+                console.log("second step");
                 if (rhe == 1 && rhp == 1 && her2_value == 0) {
-                    // console.log("third step");
+                    console.log("third step");
                     if (ki67 == 0) {
-                        // console.log("fourth step");
+                        console.log("fourth step");
                         document.getElementById("c").removeAttribute("hidden");
                         document.getElementById("chirurgie").removeAttribute("hidden");
                         document.getElementById("h").removeAttribute("hidden");
@@ -569,13 +606,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         } else if ((T == "T4a" || T == "T4b" || T == "T4c" || T == "T4d" || N == "N2a" || N == "N3a" || N == "N3b" || N == "N3c") || ((T == "T2" || T == "T3" || N == "N1" || N == "N2a" || N == "N2b") && (her2_value == 1)) || ((T == "T2" || T == "T3" || N == "N1" || N == "N2a" || N == "N2b") && (rhe == 0 && rhp == 0 && her2_value == 0))) {
-            // console.log("this is T")
-            // console.log(T);
-            // console.log(N);
-            document.getElementById("cn").removeAttribute("hidden");
-            document.getElementById("chimio-a").removeAttribute("hidden");
-            document.getElementById("ca").removeAttribute("hidden");
-            document.getElementById("chimio-n").removeAttribute("hidden");
+            console.log("this is T")
+            console.log(T);
+            console.log(N);
+            document.getElementById("chimio-label").removeAttribute("hidden");
+            document.getElementById("chimio").removeAttribute("hidden");
             document.getElementById("r").removeAttribute("hidden");
             document.getElementById("radio").removeAttribute("hidden");
             document.getElementById("c").removeAttribute("hidden");
@@ -583,8 +618,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("h").removeAttribute("hidden");
             document.getElementById("hormo").removeAttribute("hidden");
         } else {
-            document.getElementById("ca").removeAttribute("hidden");
-            document.getElementById("chimio-a").removeAttribute("hidden");
+            document.getElementById("chimio-label").removeAttribute("hidden");
+            document.getElementById("chimio").removeAttribute("hidden");
             document.getElementById("c").removeAttribute("hidden");
             document.getElementById("chirurgie").removeAttribute("hidden");
             document.getElementById("h").removeAttribute("hidden");
@@ -603,14 +638,12 @@ document.addEventListener("DOMContentLoaded", function () {
 },)
 
 function showPec() {
-    var chimio = document.getElementById("chimio-t");
-    var chimio_a = document.getElementById("chimio-a");
-    var chimio_n = document.getElementById("chimio-n");
+    var chimio = document.getElementById("chimio");
     var radio = document.getElementById("radio");
     var chirurgie = document.getElementById("chirurgie");
     var hormo = document.getElementById("hormo");
 
-    if (chimio.checked || chimio_a.checked || chimio_n.checked) {
+    if (chimio.checked) {
         document.getElementById("chimio-h").removeAttribute("hidden");
         document.getElementById("radio-h").setAttribute("hidden", "");
         document.getElementById("chirurgie-h").setAttribute("hidden", "");
