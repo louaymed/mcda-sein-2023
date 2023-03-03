@@ -1,4 +1,4 @@
-// DEFINE GENERAL VARIABLES
+// DEFINE GLOBAL VARIABLES
 
 // M 
 var M = "M0";
@@ -17,6 +17,111 @@ var crise;
 // sexe
 var sexe = "Homme";
 
+//End Global Variables
+
+
+
+// Functions
+
+// set first screen to Habtitude onglet
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("habitude-h").click();
+})
+
+
+///////////////////////
+// global Autre text Field Function
+function enableAutre(that) {
+    var id = that.id;
+    console.log(id + "-autre-label");
+
+    // set them hidden first just incase
+    document.getElementById(id + "-autre-label").setAttribute("hidden", "");
+    document.getElementById(id + "-autre").setAttribute("hidden", "");
+
+    // test on autre value
+    if (that.value == "autre") {
+        document.getElementById(id + "-autre-label").removeAttribute("hidden");
+        document.getElementById(id + "-autre").removeAttribute("hidden");
+    } else {
+        document.getElementById(id + "-autre-label").setAttribute("hidden", "");
+        document.getElementById(id + "-autre").setAttribute("hidden", "");
+    }
+
+}
+
+
+///////////////////////
+// global Date Field Function
+function enableDate(there) {
+    var id = there.id;
+    // console.log(there.value);
+
+    // set them hidden first just incase
+    document.getElementById(id + "-date-label").setAttribute("hidden", "");
+    document.getElementById(id + "-date").setAttribute("hidden", "");
+
+
+    // test on value being not 0 / Non or empty 
+    if (there.value != 0) {
+        document.getElementById(id + "-date-label").removeAttribute("hidden");
+        document.getElementById(id + "-date").removeAttribute("hidden");
+    } else {
+        document.getElementById(id + "-date-label").setAttribute("hidden", "");
+        document.getElementById(id + "-date").setAttribute("hidden", "");
+    }
+
+}
+
+
+///////////////////////
+
+
+function openOnglet(event, ongletName) {
+    var i, tabDiv, tabBtn, onglets;
+    tabDiv = document.getElementsByClassName("onglet");
+    tabBtn = document.getElementsByClassName("btn");
+    for (i = 0; i < tabDiv.length; i++) {
+        tabDiv[i].style.display = "none";
+    }
+    for (i = 0; i < tabBtn.length; i++) {
+        tabBtn[i].classList.replace("btn-primary", "btn-light");
+    }
+    onglets = document.getElementsByClassName("onglet");
+    for (i = 0; i < tabDiv.length; i++) {
+        onglets[i].className = onglets[i].className.replace(" actif", "");
+    }
+
+    document.getElementById(ongletName).style.display = "block";
+    event.currentTarget.className += "actif";
+    event.currentTarget.classList.replace("btn-light", "btn-primary");
+}
+
+function disableButton(label) {
+    if (label.innerHTML == "Non") {
+        document.getElementById("enquete-btn").disabled = true;
+    } else {
+        document.getElementById("enquete-btn").disabled = false;
+    }
+}
+function redirectPage() {
+    const form = document.getElementById("phase-1");
+    const age = document.getElementById("age");
+    const sexe = document.getElementById("sexe-select");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const ageValue = age.value;
+        const sexeValue = sexe.value;
+
+        window.localStorage.setItem("age", ageValue);
+        window.localStorage.setItem("sexe", sexeValue);
+
+        window.location.href = "phase_2.html";
+    });
+}
+
 
 function navigate(divID, nextDivID, ...display) {
     sexe = document.getElementById("sexe-select").value;
@@ -32,7 +137,7 @@ function navigate(divID, nextDivID, ...display) {
             document.getElementById("gyneco-h").removeAttribute("disabled");
         }
     });
-    console.log(data_element);
+    // console.log(data_element);
     if (sexe == "Homme") {
         console.log("this is sex value :" + sexe)
         document.getElementById("autre-label").removeAttribute("hidden");
@@ -41,8 +146,8 @@ function navigate(divID, nextDivID, ...display) {
     // display info on the side document
     for (i = 0; i < data_element.length; i++) {
         var age = document.getElementById("age").value;
-        console.log(age);
-        console.log("this is :" + data_element[i].value);
+        // console.log(age);
+        // console.log("this is :" + data_element[i].value);
         document.getElementById("sexe-display").innerHTML = sexe;
         document.getElementById("age-display").innerHTML = age;
 
@@ -59,7 +164,7 @@ function navigate_profile() {
     // get the data
     sexe = document.getElementById("sexe-select").value;
     age = document.getElementById("age").value;
-    console.log(sexe)
+    // console.log(sexe)
     // local storage
     localStorage.setItem("sexe", sexe);
     localStorage.setItem("age", age);
@@ -101,102 +206,6 @@ function nav7() {
 }
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    var chir = document.getElementById("chirurgie-o");
-    if (chir) {
-        chir.addEventListener('click', getAnto);
-    }
-},)
-function getAnto(anto) {
-    var mam = document.getElementById("chir-m").value
-    var gang = document.getElementById("chir-gang").value
-    console.log(mam);
-    console.log(gang);
-
-    if (mam == 1 || gang == 1) {
-        console.log("im here");
-        document.getElementById("anto").removeAttribute("hidden");
-    } else {
-        document.getElementById("anto").setAttribute("hidden", "");
-    }
-}
-
-
-
-
-// bilan date aff
-document.addEventListener("DOMContentLoaded", function () {
-    var bilan = document.getElementById("bilan-extension");
-    if (bilan) {
-        bilan.addEventListener('click', affichage);
-    }
-},)
-
-
-function affichage() {
-    var tap = document.getElementById("tap").value;
-    var cere = document.getElementById("cere").value;
-    var pet = document.getElementById("pet").value;
-    var scintigraphie = document.getElementById("scintigraphie").value;
-    var irm_m = document.getElementById("irm-m").value;
-    var autre = document.getElementById("autre-exa").value;
-    var conc = document.getElementById("conc").value;
-
-    if (tap == "1") {
-        console.log("im done")
-        document.getElementById("tap-date-label").removeAttribute("hidden");
-        document.getElementById("tap-date").removeAttribute("hidden");
-    } else {
-        document.getElementById("tap-date-label").setAttribute("hidden", "");
-        document.getElementById("tap-date").setAttribute("hidden", "");
-    }
-    if (cere == "1") {
-        document.getElementById("cere-date-label").removeAttribute("hidden");
-        document.getElementById("cere-date").removeAttribute("hidden");
-    }
-    else {
-        document.getElementById("cere-date-label").setAttribute("hidden", "");
-        document.getElementById("cere-date").setAttribute("hidden", "");
-    }
-    if (pet == "1") {
-        document.getElementById("pet-date-label").removeAttribute("hidden");
-        document.getElementById("pet-date").removeAttribute("hidden");
-    } else {
-        document.getElementById("pet-date-label").setAttribute("hidden", "");
-        document.getElementById("pet-date").setAttribute("hidden", "");
-    }
-    if (scintigraphie == "1") {
-        document.getElementById("scin-date-label").removeAttribute("hidden");
-        document.getElementById("scin-date").removeAttribute("hidden");
-    } else {
-        document.getElementById("scin-date-label").setAttribute("hidden", "");
-        document.getElementById("scin-date").setAttribute("hidden", "");
-    }
-    if (irm_m == "1") {
-        document.getElementById("irm-date-label").removeAttribute("hidden");
-        document.getElementById("irm-date").removeAttribute("hidden");
-    } else {
-        document.getElementById("irm-date-label").setAttribute("hidden", "");
-        document.getElementById("irm-date").setAttribute("hidden", "");
-    }
-    if (autre == "1") {
-        document.getElementById("aut-date-label").removeAttribute("hidden");
-        document.getElementById("aut-date").removeAttribute("hidden");
-    } else {
-        document.getElementById("aut-date-label").setAttribute("hidden", "");
-        document.getElementById("aut-date").setAttribute("hidden", "");
-    }
-    if (conc == "1") {
-        document.getElementById("conc-t-label").removeAttribute("hidden");
-        document.getElementById("conc-t").removeAttribute("hidden");
-    } else {
-        document.getElementById("conc-t-label").setAttribute("hidden", "");
-        document.getElementById("conc-t").setAttribute("hidden", "");
-    }
-
-
-}
-
 
 
 
@@ -211,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function calcT() {
     var taille = document.getElementById("taille-tumeur").value;
     var description = document.getElementById("description-t-option").value;
-    console.log("this is taille :" + JSON.stringify(taille));
+    // console.log("this is taille :" + JSON.stringify(taille));
 
     var myMap = {
         taille: taille,
@@ -228,8 +237,8 @@ function calcT() {
         body: myMapJson
     }).then((response) => response.text())
         .then((data) => {
-            console.log("this is data");
-            console.log(data);
+            // console.log("this is data");
+            // console.log(data);
             T = data;
             console.log(T)
         })
@@ -287,10 +296,10 @@ function getHer2() {
         her2_value = document.getElementById("her2_options").value;
         her2 = "surexprime"
     }
-    console.log("RH")
-    console.log(rh)
-    console.log("Her2")
-    console.log(her2)
+    // console.log("RH")
+    // console.log(rh)
+    // console.log("Her2")
+    // console.log(her2)
 
 }
 
@@ -308,17 +317,17 @@ document.addEventListener("DOMContentLoaded", function () {
 function getCtnm() {
     var N = document.getElementById("description-n-option").value;
     var M = document.getElementById("metastase-suspecte-option").value;
-    console.log("this N");
-    console.log(N);
-    console.log("this M");
-    console.log(M);
+    // console.log("this N");
+    // console.log(N);
+    // console.log("this M");
+    // console.log(M);
 
     var myMap = {
         T: T,
         N: N,
         M: M,
     };
-    console.log(myMap);
+    // console.log(myMap);
     var myMapJson = JSON.stringify(myMap);
     console.log(myMapJson)
     fetch("http://localhost:8081/mcda/api/consultation/calc-ctnm", {
@@ -329,9 +338,9 @@ function getCtnm() {
         body: myMapJson
     }).then((response) => response.text())
         .then((data) => {
-            console.log("this is CTNM ");
+            // console.log("this is CTNM ");
             CTNM = data
-            console.log(CTNM)
+            // console.log(CTNM)
             document.getElementById("ctnm-display").innerHTML = CTNM;
         })
         .catch(error => {
@@ -355,26 +364,26 @@ document.addEventListener("DOMContentLoaded", function () {
             var ki67 = document.getElementById("ki67_options").value;
             var soutype;
             if (RH_E == "0" && PR == "0" && HER2 == "0") {
-                console.log("triple negatif");
+                // console.log("triple negatif");
                 soutype = "triple negatif";
                 document.getElementById("pdl1-label").removeAttribute("hidden");
                 document.getElementById("pdl1-options").removeAttribute("hidden");
                 document.getElementById("soutype-display").innerHTML = soutype
             }
             else if (RH_E == "0" && PR == "0" && HER2 == "1") {
-                console.log("HER2 positif");
+                // console.log("HER2 positif");
                 soutype = "HER2 positif";
                 document.getElementById("soutype-display").innerHTML = soutype
             }
 
             else if (RH_E == "1" || PR == "1" && RH_E == "1" || ki67 == "0") {
-                console.log("luminalB");
+                // console.log("luminalB");
                 soutype = "luminalB";
                 document.getElementById("soutype-display").innerHTML = soutype
             }
 
             else if (RH_E == "1" || PR == "1" && RH_E == "0" || ki67 == "1") {
-                console.log("luninalA");
+                // console.log("luninalA");
                 soutype = "luninalA";
                 document.getElementById("soutype-display").innerHTML = soutype
             }
@@ -383,10 +392,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (spectre == 0) {
                 spectre_BRCA = "pas mutation germinale BRCA1 ou 2"
-                console.log(spectre_BRCA);
+                // console.log(spectre_BRCA);
             } else {
                 spectre_BRCA = "mutation germinale BRCA1 ou 2"
-                console.log(spectre_BRCA);
+                // console.log(spectre_BRCA);
             }
 
 
@@ -410,28 +419,28 @@ document.addEventListener("DOMContentLoaded", function () {
 function getMenoOutput() {
     var statut = document.getElementById("menopose").value;
     var dosage = document.getElementById("dosage-option").value;
-    console.log(statut)
+    // console.log(statut)
 
     if (statut == "Ménoposé") {
         var statut = document.getElementById("menopose").value;
         output = "Oui";
-        console.log("this is output");
-        console.log(output);
+        // console.log("this is output");
+        // console.log(output);
     } else if (statut == "Non Ménoposé") {
         var statut = document.getElementById("menopose").value;
         output = "Non";
-        console.log("this is output");
-        console.log(output);
+        // console.log("this is output");
+        // console.log(output);
     } else if (statut == "PériMénoposé") {
         var dosage = document.getElementById("dosage-option").value;
         if (dosage == 0) {
             output = "Oui";
-            console.log("this is output");
-            console.log(output);
+            // console.log("this is output");
+            // console.log(output);
         } else {
             output = "Non";
-            console.log("this is output");
-            console.log(output);
+            // console.log("this is output");
+            // console.log(output);
 
         }
     } else {
@@ -451,7 +460,7 @@ document.addEventListener("DOMContentLoaded", function () {
 },)
 
 function getBilan() {
-    var scin = document.getElementById("scintigraphie").value;
+    var scin = document.getElementById("scin").value;
     var pet = document.getElementById("pet").value;
 
 
@@ -461,7 +470,7 @@ function getBilan() {
     } else {
         m_ossuse = "Oui";
     }
-    console.log(m_ossuse)
+    // console.log(m_ossuse)
     // M
     if (scin == 0 && pet == 0) {
         M = "M0";
@@ -495,8 +504,8 @@ function getCrise() {
         } else {
             crise = "Oui";
         }
-        console.log("Crise : ");
-        console.log(crise);
+        // console.log("Crise : ");
+        // console.log(crise);
     }
 
 
@@ -518,45 +527,40 @@ document.addEventListener("DOMContentLoaded", function () {
         var rhp = document.getElementById("rhp_options").value;
         var ki67 = document.getElementById("ki67_options").value;
         var N = document.getElementById("description-n-option").value;
-        console.log("this is N")
-        console.log(N);
+        // console.log("this is N")
+        // console.log(N);
 
+        var chimio = document.getElementById("chimio-h");
+        var radio = document.getElementById("radio-h");
+        var chirurgie = document.getElementById("chirurgie-h");
+        var hormo = document.getElementById("hormo-h");
 
-        //set to disabled 
-        document.getElementById("chimio-h").setAttribute("hidden", "");
-        document.getElementById("radio-h").setAttribute("hidden", "");
-        document.getElementById("chirurgie-h").setAttribute("hidden", "");
-        document.getElementById("hormo-h").setAttribute("hidden", "");
+        // test if any choice has already been selected so that it dosent hide it again if they go back to PEC onglet
+        if (window.getComputedStyle(chimio).display === 'none' && window.getComputedStyle(radio).display === 'none' && window.getComputedStyle(chirurgie).display === 'none' && window.getComputedStyle(hormo).display === 'none') {
+            //set to disabled
 
-        //checkbox
-        document.getElementById("ct").setAttribute("hidden", "");
-        document.getElementById("chimio-t").setAttribute("hidden", "");
-        document.getElementById("cn").setAttribute("hidden", "");
-        document.getElementById("chimio-a").setAttribute("hidden", "");
-        document.getElementById("ca").setAttribute("hidden", "");
-        document.getElementById("chimio-n").setAttribute("hidden", "");
-        document.getElementById("r").setAttribute("hidden", "");
-        document.getElementById("radio").setAttribute("hidden", "");
-        document.getElementById("c").setAttribute("hidden", "");
-        document.getElementById("chirurgie").setAttribute("hidden", "");
-        document.getElementById("h").setAttribute("hidden", "");
-        document.getElementById("hormo").setAttribute("hidden", "");
-        console.log("this is M")
-        console.log(M)
+            document.getElementById("chimio-h").setAttribute("hidden", "");
+            document.getElementById("radio-h").setAttribute("hidden", "");
+            document.getElementById("chirurgie-h").setAttribute("hidden", "");
+            document.getElementById("hormo-h").setAttribute("hidden", "");
+        }
+
+        // console.log("this is M")
+        // console.log(M)
         if (M == "M1") {
-            console.log("im testing M")
+            // console.log("im testing M")
             document.getElementById("ct").removeAttribute("hidden");
             document.getElementById("chimio-t").removeAttribute("hidden");
 
         } else if (sexe == "Femme" && age >= 80) {
             console.log("im testing sexe and age")
-            console.log("first step");
+            // console.log("first step");
             if (output == "Oui") {
-                console.log("second step");
+                // console.log("second step");
                 if (rhe == 1 && rhp == 1 && her2_value == 0) {
-                    console.log("third step");
+                    // console.log("third step");
                     if (ki67 == 0) {
-                        console.log("fourth step");
+                        // console.log("fourth step");
                         document.getElementById("c").removeAttribute("hidden");
                         document.getElementById("chirurgie").removeAttribute("hidden");
                         document.getElementById("h").removeAttribute("hidden");
@@ -565,9 +569,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         } else if ((T == "T4a" || T == "T4b" || T == "T4c" || T == "T4d" || N == "N2a" || N == "N3a" || N == "N3b" || N == "N3c") || ((T == "T2" || T == "T3" || N == "N1" || N == "N2a" || N == "N2b") && (her2_value == 1)) || ((T == "T2" || T == "T3" || N == "N1" || N == "N2a" || N == "N2b") && (rhe == 0 && rhp == 0 && her2_value == 0))) {
-            console.log("this is T")
-            console.log(T);
-            console.log(N);
+            // console.log("this is T")
+            // console.log(T);
+            // console.log(N);
             document.getElementById("cn").removeAttribute("hidden");
             document.getElementById("chimio-a").removeAttribute("hidden");
             document.getElementById("ca").removeAttribute("hidden");
@@ -607,19 +611,25 @@ function showPec() {
     var hormo = document.getElementById("hormo");
 
     if (chimio.checked || chimio_a.checked || chimio_n.checked) {
-        console.log(chimio.checked)
-        console.log(chimio_a.checked)
-        console.log(chimio_n.checked)
-
         document.getElementById("chimio-h").removeAttribute("hidden");
+        document.getElementById("radio-h").setAttribute("hidden", "");
+        document.getElementById("chirurgie-h").setAttribute("hidden", "");
+        document.getElementById("hormo-h").setAttribute("hidden", "");
     } else if (radio.checked) {
-        console.log(radio.checked)
-
         document.getElementById("radio-h").removeAttribute("hidden");
+        document.getElementById("chimio-h").setAttribute("hidden", "");
+        document.getElementById("chirurgie-h").setAttribute("hidden", "");
+        document.getElementById("hormo-h").setAttribute("hidden", "");
     } else if (chirurgie.checked) {
         document.getElementById("chirurgie-h").removeAttribute("hidden");
+        document.getElementById("chimio-h").setAttribute("hidden", "");
+        document.getElementById("radio-h").setAttribute("hidden", "");
+        document.getElementById("hormo-h").setAttribute("hidden", "");
     } else if (hormo.checked) {
         document.getElementById("hormo-h").removeAttribute("hidden");
+        document.getElementById("chimio-h").setAttribute("hidden", "");
+        document.getElementById("chirurgie-h").setAttribute("hidden", "");
+        document.getElementById("radio-h").setAttribute("hidden", "");
     }
 
 }
@@ -651,7 +661,7 @@ function showPec() {
 //     console.log(myMap);
 //     var myMapJson = JSON.stringify(myMap);
 //     console.log(myMapJson)
-//     fetch("http://localhost:8081/api/consultation/calc-ctnm", {
+//     fetch("http://localhost:8081/mcda/api/consultation/calc-ctnm", {
 //         method: "post",
 //         headers: {
 //             "Content-type": "application/json"
@@ -693,7 +703,7 @@ function getTraitment() {
         "menopause_output": output
     };
 
-    console.log(myMap);
+    // console.log(myMap);
     var myMapJson = JSON.stringify(myMap);
     console.log(myMapJson)
     fetch("http://localhost:8081/mcda/api/treatment/chimio", {
@@ -704,10 +714,10 @@ function getTraitment() {
         body: myMapJson
     }).then((response) => response.json())
         .then((data) => {
-            console.log("this is traitment ");
+            // console.log("this is traitment ");
             traitment = data.protocole
-            console.log(data)
-            console.log(data.protocole)
+            // console.log(data)
+            // console.log(data.protocole)
             document.getElementById("chimio-a").innerHTML = traitment.join(" <br> ");
         })
         .catch(error => {
