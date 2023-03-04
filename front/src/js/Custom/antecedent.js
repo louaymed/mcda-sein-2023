@@ -93,30 +93,6 @@ function EnableOptions() {
     var radio_br = document.getElementsByClassName("radio-br");
 
 
-    // // set chimio options hidden 
-    // for (var i = 0; i < chim_br.length; i++) {
-    //     chim_br[i].setAttribute("hidden", "");
-    // }
-    // document.getElementById("chimio-title").setAttribute("hidden", "");
-    // document.getElementById("proto-label").setAttribute("hidden", "");
-    // document.getElementById("proto").setAttribute("hidden", "");
-    // document.getElementById("proto-autre-label").setAttribute("hidden", "");
-    // document.getElementById("proto-autre").setAttribute("hidden", "");
-
-    // // set raio options hidden
-    // for (var i = 0; i < radio_br.length; i++) {
-    //     radio_br[i].setAttribute("hidden", "");
-    // }
-    // document.getElementById("radio-title").setAttribute("hidden", "");
-    // document.getElementById("dose-label").setAttribute("hidden", "");
-    // document.getElementById("dose").setAttribute("hidden", "");
-    // document.getElementById("vol-label").setAttribute("hidden", "");
-    // document.getElementById("vol").setAttribute("hidden", "");
-    // document.getElementById("ddf-label").setAttribute("hidden", "");
-    // document.getElementById("ddf").setAttribute("hidden", "");
-
-
-
 
 
     // protocole options
@@ -188,6 +164,8 @@ function EnableOptions() {
         document.getElementById("proto").setAttribute("hidden", "");
         document.getElementById("proto-autre-label").setAttribute("hidden", "");
         document.getElementById("proto-autre").setAttribute("hidden", "");
+        document.getElementById("dose-cumu-label").setAttribute("hidden", "");
+        document.getElementById("dose-cumu").setAttribute("hidden", "");
 
         // enable radio options 
         for (var i = 0; i < radio_br.length; i++) {
@@ -212,7 +190,10 @@ function EnableOptions() {
         document.getElementById("proto").setAttribute("hidden", "");
         document.getElementById("proto-autre-label").setAttribute("hidden", "");
         document.getElementById("proto-autre").setAttribute("hidden", "");
-        // set raio options hidden
+        document.getElementById("dose-cumu-label").setAttribute("hidden", "");
+        document.getElementById("dose-cumu").setAttribute("hidden", "");
+
+        // set radio options hidden
         for (var i = 0; i < radio_br.length; i++) {
             radio_br[i].setAttribute("hidden", "");
         }
