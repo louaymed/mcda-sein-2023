@@ -8,6 +8,16 @@
   justify-content: space-between;
 }
 
+.sub-saisie_header {
+  display: flex;
+  justify-content: start;
+}
+
+/* .nav-btn {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  
+} */
+
 .scroll {
   overflow-x: auto;
   /* hides horizontal scrollbar */
@@ -17,7 +27,7 @@
 body {
   font-family: 'Montserrat';
   font-size: 16px;
-  
+
 }
 
 .global {
@@ -245,6 +255,15 @@ fieldset {
   /* font-size: 4px; */
   display: block;
 }
+
+.sub-onglet {
+  /* font-size: 4px; */
+  display: block;
+  margin: 15px;
+  padding: 15px;
+}
+
+
 
 .scroll {
   overflow-x: scroll;

@@ -25,15 +25,18 @@ var sexe = "Homme";
 
 // set first screen to Habtitude onglet
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("habitude-h").click();
+    document.getElementById("profile-h").click();
 })
+
+
+
 
 
 ///////////////////////
 // global Autre text Field Function
 function enableAutre(that) {
     var id = that.id;
-    console.log(id + "-autre-label");
+    // console.log(id + "-autre-label");
 
     // set them hidden first just incase
     document.getElementById(id + "-autre-label").setAttribute("hidden", "");
@@ -94,8 +97,15 @@ function openOnglet(event, ongletName) {
 
     document.getElementById(ongletName).style.display = "block";
     event.currentTarget.className += "actif";
+    // console.log("event.currentTarget:", event.currentTarget);
     event.currentTarget.classList.replace("btn-light", "btn-primary");
 }
+
+
+
+///////////////////////
+
+
 
 function disableButton(label) {
     if (label.innerHTML == "Non") {
