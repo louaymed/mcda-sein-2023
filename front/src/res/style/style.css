@@ -254,6 +254,7 @@ fieldset {
 .onglet {
   /* font-size: 4px; */
   display: block;
+  padding-bottom: 15px;
 }
 
 .sub-onglet {

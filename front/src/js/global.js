@@ -674,6 +674,12 @@ function showPec() {
         document.getElementById("chirurgie-h").setAttribute("hidden", "");
         document.getElementById("radio-h").setAttribute("hidden", "");
     }
+    else {
+        document.getElementById("chimio-h").setAttribute("hidden", "");
+        document.getElementById("chirurgie-h").setAttribute("hidden", "");
+        document.getElementById("radio-h").setAttribute("hidden", "");
+        document.getElementById("hormo-h").setAttribute("hidden", "");
+    }
 
 }
 

@@ -89,75 +89,34 @@ function disableThoraxOptions(thorac) {
 }
 
 function EnableOptions() {
-    console.log(document.getElementById("trait").value)
-    if (document.getElementById("trait").selectedOptions.length > 1) {
-
-        // enable chimio options
-        document.getElementById("chimio-title").removeAttribute("hidden");
-        document.getElementById("proto-label").removeAttribute("hidden");
-        document.getElementById("proto").removeAttribute("hidden");
+    var chim_br = document.getElementsByClassName("chim-br");
+    var radio_br = document.getElementsByClassName("radio-br");
 
 
-        // enable radio options 
-        document.getElementById("radio-title").removeAttribute("hidden");
-        document.getElementById("dose-label").removeAttribute("hidden");
-        document.getElementById("dose").removeAttribute("hidden");
-        document.getElementById("vol-label").removeAttribute("hidden");
-        document.getElementById("vol").removeAttribute("hidden");
-        document.getElementById("ddf-label").removeAttribute("hidden");
-        document.getElementById("ddf").removeAttribute("hidden");
-    } else if (document.getElementById("trait").value == 1) {
+    // // set chimio options hidden 
+    // for (var i = 0; i < chim_br.length; i++) {
+    //     chim_br[i].setAttribute("hidden", "");
+    // }
+    // document.getElementById("chimio-title").setAttribute("hidden", "");
+    // document.getElementById("proto-label").setAttribute("hidden", "");
+    // document.getElementById("proto").setAttribute("hidden", "");
+    // document.getElementById("proto-autre-label").setAttribute("hidden", "");
+    // document.getElementById("proto-autre").setAttribute("hidden", "");
 
-        // enable chimio options
-        document.getElementById("chimio-title").removeAttribute("hidden");
-        document.getElementById("proto-label").removeAttribute("hidden");
-        document.getElementById("proto").removeAttribute("hidden");
+    // // set raio options hidden
+    // for (var i = 0; i < radio_br.length; i++) {
+    //     radio_br[i].setAttribute("hidden", "");
+    // }
+    // document.getElementById("radio-title").setAttribute("hidden", "");
+    // document.getElementById("dose-label").setAttribute("hidden", "");
+    // document.getElementById("dose").setAttribute("hidden", "");
+    // document.getElementById("vol-label").setAttribute("hidden", "");
+    // document.getElementById("vol").setAttribute("hidden", "");
+    // document.getElementById("ddf-label").setAttribute("hidden", "");
+    // document.getElementById("ddf").setAttribute("hidden", "");
 
-        // set raio options hidden
-        document.getElementById("radio-title").setAttribute("hidden", "");
-        document.getElementById("dose-label").setAttribute("hidden", "");
-        document.getElementById("dose").setAttribute("hidden", "");
-        document.getElementById("vol-label").setAttribute("hidden", "");
-        document.getElementById("vol").setAttribute("hidden", "");
-        document.getElementById("ddf-label").setAttribute("hidden", "");
-        document.getElementById("ddf").setAttribute("hidden", "");
 
-    } else if (document.getElementById("trait").value == 2) {
 
-        // set chimio options hidden 
-        document.getElementById("chimio-title").setAttribute("hidden", "");
-        document.getElementById("proto-label").setAttribute("hidden", "");
-        document.getElementById("proto").setAttribute("hidden", "");
-        document.getElementById("proto-autre-label").setAttribute("hidden", "");
-        document.getElementById("proto-autre").setAttribute("hidden", "");
-
-        // enable radio options 
-        document.getElementById("radio-title").removeAttribute("hidden");
-        document.getElementById("dose-label").removeAttribute("hidden");
-        document.getElementById("dose").removeAttribute("hidden");
-        document.getElementById("vol-label").removeAttribute("hidden");
-        document.getElementById("vol").removeAttribute("hidden");
-        document.getElementById("ddf-label").removeAttribute("hidden");
-        document.getElementById("ddf").removeAttribute("hidden");
-
-    } else {
-
-        // set chimio options hidden 
-        setAttribute("hidden", "");
-        document.getElementById("proto-label").setAttribute("hidden", "");
-        document.getElementById("proto").setAttribute("hidden", "");
-        document.getElementById("proto-autre-label").setAttribute("hidden", "");
-        document.getElementById("proto-autre").setAttribute("hidden", "");
-
-        // set raio options hidden
-        document.getElementById("radio-title").setAttribute("hidden", "");
-        document.getElementById("dose-label").setAttribute("hidden", "");
-        document.getElementById("dose").setAttribute("hidden", "");
-        document.getElementById("vol-label").setAttribute("hidden", "");
-        document.getElementById("vol").setAttribute("hidden", "");
-        document.getElementById("ddf-label").setAttribute("hidden", "");
-        document.getElementById("ddf").setAttribute("hidden", "");
-    }
 
 
     // protocole options
@@ -170,6 +129,104 @@ function EnableOptions() {
         document.getElementById("dose-cumu-label").setAttribute("hidden", "");
         document.getElementById("dose-cumu").setAttribute("hidden", "");
     }
+
+    console.log(document.getElementById("trait").value)
+
+
+    if (document.getElementById("trait").selectedOptions.length > 1) {
+
+        // enable chimio options
+        for (var i = 0; i < chim_br.length; i++) {
+            chim_br[i].removeAttribute("hidden");
+        }
+        document.getElementById("chimio-title").removeAttribute("hidden");
+        document.getElementById("proto-label").removeAttribute("hidden");
+        document.getElementById("proto").removeAttribute("hidden");
+
+
+        // enable radio options 
+        for (var i = 0; i < radio_br.length; i++) {
+            radio_br[i].removeAttribute("hidden");
+        }
+        document.getElementById("radio-title").removeAttribute("hidden");
+        document.getElementById("dose-label").removeAttribute("hidden");
+        document.getElementById("dose").removeAttribute("hidden");
+        document.getElementById("vol-label").removeAttribute("hidden");
+        document.getElementById("vol").removeAttribute("hidden");
+        document.getElementById("ddf-label").removeAttribute("hidden");
+        document.getElementById("ddf").removeAttribute("hidden");
+    } else if (document.getElementById("trait").value == 1) {
+
+        // enable chimio options
+        for (var i = 0; i < chim_br.length; i++) {
+            chim_br[i].removeAttribute("hidden");
+        }
+        document.getElementById("chimio-title").removeAttribute("hidden");
+        document.getElementById("proto-label").removeAttribute("hidden");
+        document.getElementById("proto").removeAttribute("hidden");
+
+        // set radio options hidden
+        for (var i = 0; i < radio_br.length; i++) {
+            radio_br[i].setAttribute("hidden", "");
+        }
+        document.getElementById("radio-title").setAttribute("hidden", "");
+        document.getElementById("dose-label").setAttribute("hidden", "");
+        document.getElementById("dose").setAttribute("hidden", "");
+        document.getElementById("vol-label").setAttribute("hidden", "");
+        document.getElementById("vol").setAttribute("hidden", "");
+        document.getElementById("ddf-label").setAttribute("hidden", "");
+        document.getElementById("ddf").setAttribute("hidden", "");
+
+    } else if (document.getElementById("trait").value == 2) {
+
+        // set chimio options hidden 
+        for (var i = 0; i < chim_br.length; i++) {
+            chim_br[i].setAttribute("hidden", "");
+        }
+        document.getElementById("chimio-title").setAttribute("hidden", "");
+        document.getElementById("proto-label").setAttribute("hidden", "");
+        document.getElementById("proto").setAttribute("hidden", "");
+        document.getElementById("proto-autre-label").setAttribute("hidden", "");
+        document.getElementById("proto-autre").setAttribute("hidden", "");
+
+        // enable radio options 
+        for (var i = 0; i < radio_br.length; i++) {
+            radio_br[i].removeAttribute("hidden");
+        }
+        document.getElementById("radio-title").removeAttribute("hidden");
+        document.getElementById("dose-label").removeAttribute("hidden");
+        document.getElementById("dose").removeAttribute("hidden");
+        document.getElementById("vol-label").removeAttribute("hidden");
+        document.getElementById("vol").removeAttribute("hidden");
+        document.getElementById("ddf-label").removeAttribute("hidden");
+        document.getElementById("ddf").removeAttribute("hidden");
+
+    } else {
+
+        // set chimio options hidden 
+        for (var i = 0; i < chim_br.length; i++) {
+            chim_br[i].setAttribute("hidden", "");
+        }
+        document.getElementById("chimio-title").setAttribute("hidden", "");
+        document.getElementById("proto-label").setAttribute("hidden", "");
+        document.getElementById("proto").setAttribute("hidden", "");
+        document.getElementById("proto-autre-label").setAttribute("hidden", "");
+        document.getElementById("proto-autre").setAttribute("hidden", "");
+        // set raio options hidden
+        for (var i = 0; i < radio_br.length; i++) {
+            radio_br[i].setAttribute("hidden", "");
+        }
+        document.getElementById("radio-title").setAttribute("hidden", "");
+        document.getElementById("dose-label").setAttribute("hidden", "");
+        document.getElementById("dose").setAttribute("hidden", "");
+        document.getElementById("vol-label").setAttribute("hidden", "");
+        document.getElementById("vol").setAttribute("hidden", "");
+        document.getElementById("ddf-label").setAttribute("hidden", "");
+        document.getElementById("ddf").setAttribute("hidden", "");
+    }
+
+
+
 }
 
 

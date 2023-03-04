@@ -48,8 +48,11 @@ function disableRecons(recons) {
     if (recons.value == "0") {
         document.getElementById("recons-label").removeAttribute("hidden");
         document.getElementById("recons").removeAttribute("hidden");
+        document.getElementById("chir-br").removeAttribute("hidden");
     } else {
         document.getElementById("recons-label").setAttribute("hidden", "");
         document.getElementById("recons").setAttribute("hidden", "");
+        document.getElementById("chir-br").setAttribute("hidden", "");
+
     }
 }

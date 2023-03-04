@@ -25,6 +25,7 @@
   <script type="text/javascript" src="src/js/Custom/bilan.js"></script>
   <script type="text/javascript" src="src/js/Custom/examen.js"></script>
   <script type="text/javascript" src="src/js/Custom/biopsie.js"></script>
+  <script type="text/javascript" src="src/js/Custom/bilan-pre.js"></script>
   <script type="text/javascript" src="src/js/Custom/post_request_phase2.js"></script>
 
 
@@ -74,14 +75,17 @@
               <button id="bilan-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'bilan-extension');">Bilan
                 d'Extension</button>
               <button id="PEC-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'PEC');">PEC</button>
-              <button id="chimio-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'chimio');"
+              <button id="chimio-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'chimio-o');"
                 hidden>Chimio</button>
-              <button id="radio-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'Radio');"
+              <button id="radio-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'radio-o');"
                 hidden>Radio</button>
               <button id="chirurgie-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'chirurgie-o');"
                 hidden>Chirurgie</button>
-              <button id="hormo-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'Hormo');"
+              <button id="hormo-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'hormo-o');"
                 hidden>Hormo</button>
+              <button id="bilan-pre-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'bilan-pre-o');">Bilan
+                Préthérapautique</button>
+
             </div>
           </div>
         </div>
@@ -312,7 +316,7 @@
                   <!-- Autre Text Field  -->
                   <label id="detail-path-ben-autre-label" for="detail-path-ben-autre" hidden> Autre :</label>
                   <input id="detail-path-ben-autre" type="text" placeholder="" hidden>
-                  <br class="my-br" hidden>
+                  <br>
                   <br class="my-br" hidden>
                   <label id="trait-label" for="thorac-vol" hidden> Traitement reçu :</label>
                   <select id="trait" hidden onchange="EnableOptions()" multiple size="2">
@@ -320,10 +324,10 @@
                     <option value="1">Chimiotherapie</option>
                     <option value="2">Radiotherapie</option>
                   </select>
-
+                  <br>
+                
 
                   <!-- If Chimiotherapie -->
-                  <br>
                   <h4 id="chimio-title" hidden>Chimiothérapie :</h4>
                   <label id="proto-label" for="thorac-vol" hidden> Protocole :</label>
                   <select id="proto" hidden onchange="enableAutre(this)" onclick="EnableOptions()">
@@ -331,27 +335,27 @@
                     <option value="1">Anthracyclines</option>
                     <option value="autre">Autre</option>
                   </select>
-                  <br>
+                  <br class="chim-br" hidden>
                   <label id="dose-cumu-label" for="dose-cumu" hidden> Dose cumulée :</label>
                   <input type="number" id="dose-cumu" hidden>
-                  <br>
+                  <br class="chim-br" hidden>
                   <label id="proto-autre-label" for="proto-autre" hidden> Autre :</label>
                   <input type="text" id="proto-autre" hidden>
-                  <br>
+                  <br class="chim-br" hidden>
 
 
                   <!-- If Radiotherapie -->
-                  <br>
+                
                   <h4 id="radio-title" hidden>Radiothérapie :</h4>
                   <label id="dose-label" for="dose-cumu" hidden> Dose :</label>
                   <input type="number" id="dose" placehoder="Gy" hidden>
-                  <br>
+                  <br class="radio-br" hidden>
                   <label id="vol-label" for="vol-cumu" hidden> Volume :</label>
                   <input type="text" id="vol" hidden>
-                  <br>
+                  <br class="radio-br" hidden>
                   <label id="ddf-label" for="ddf" hidden> DDF :</label>
                   <input type="date" id="ddf" hidden>
-                  <br>
+                  <br class="radio-br" hidden>
 
 
 
@@ -825,7 +829,7 @@
                   <div>
                     <label id="b-siege-label" for="b-siege-options"> Siège : </label>
                     <select id="b-siege-options" required
-                      onchange="enableAutre(this); enableSeigeNav(); enableAdeno(this)" >
+                      onchange="enableAutre(this); enableSeigeNav(); enableAdeno(this)">
                       <option value=""> </option>
                       <option value="0"> Sein Droite</option>
                       <option value="1"> Sein Gauche </option>
@@ -1619,7 +1623,7 @@
                 <div id="bilan-extension" class="onglet">
                   <div class="row">
                     <div class="col-sm-10">
-                      <h2 class="titre_champ">Bilan d'Extension:</h2>
+                      <h2 class="titre_champ">Bilan d'Extension</h2>
                     </div>
                     <div class="col-sm-2">
                       <button type="button" class="btn btn-next" name="button" onclick="nav7()">Next</button>
@@ -1723,7 +1727,16 @@
 
                 <!--PEC Onglet -->
                 <div id="PEC" class="onglet">
-                  <h2 class="titre_champ">Prise En Charge Initial :</h2>
+                  <!-- Title -->
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <h3 class="titre_champ">Prise En Charge Initial</h3>
+                    </div>
+                    <!-- <div class="col-sm-4 text-right">
+                        <button type="button" class="btn btn-next" name="button" onclick="nav6()">Next</button>
+                      </div> -->
+                  </div>
+                  <!--End Title -->
                   <form>
                     <!-- <h4>Recommandation :</h4> -->
                     <label id="chimio-label" for="chimio">Chimiothérapie :</label>
@@ -1736,7 +1749,7 @@
                       <option value="2">Chimiothérapie paliative</option>
                     </select>
                     <br>
-                    <label id="r" for="radio hidden">Radiothérapie:</label>
+                    <label id="r" for="radio">Radiothérapie:</label>
                     <input type="checkbox" id="radio" name="radio">
                     <br>
                     <label id="c" for="chirurgie">Chirurgie:</label>
@@ -1773,8 +1786,17 @@
                 <!--End PEC Onglet -->
 
                 <!-- Chimio Onglet -->
-                <div id="chimio" class="onglet">
-                  <h2 class="titre_champ">Protocoles Recommandés :</h2>
+                <div id="chimio-o" class="onglet">
+                  <!-- Title -->
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <h2 class="titre_champ">Protocoles Recommandés :</h2>
+                    </div>
+                    <!-- <div class="col-sm-4 text-right">
+                          <button type="button" class="btn btn-next" name="button" onclick="nav6()">Next</button>
+                        </div> -->
+                  </div>
+                  <!--End Title -->
                   <p id="chimio-a">Loading</p>
                 </div>
                 <!--End Chimio Onglet -->
@@ -1784,7 +1806,16 @@
                 <!-- Chirurgie Onglet -->
 
                 <div id="chirurgie-o" class="onglet">
-                  <h2 class="titre_champ"> Chirurgie :</h2>
+                  <!-- Title -->
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <h2 class="titre_champ"> Chirurgie </h2>
+                    </div>
+                    <!-- <div class="col-sm-4 text-right">
+                          <button type="button" class="btn btn-next" name="button" onclick="nav6()">Next</button>
+                        </div> -->
+                  </div>
+                  <!--End Title -->
                   <label id="chir-m-label" for="chir-m">Chirurgie mammaire :</label>
                   <select id="chir-m" onchange="disableChirMam(this)">
                     <option value=""></option>
@@ -1798,7 +1829,7 @@
                     <option value="1">Conservratise</option>
                     <option value="0">Radicale</option>
                   </select>
-                  <br>
+                  <br id="chir-br" hidden>
                   <label id="recons-label" for="recons" hidden>Reconstruction mammaire :</label>
                   <select id="recons" hidden>
                     <option value=""></option>
@@ -1856,13 +1887,140 @@
                 </div>
                 <!--End Chirurgie Onglet -->
 
+
+
                 <!--Radio Onglet -->
+                <div id="radio-o" class="onglet">
+                  <!-- Title -->
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <h2 class="titre_champ"> Radiothérapie</h2>
+                    </div>
+                    <!-- <div class="col-sm-4 text-right">
+                          <button type="button" class="btn btn-next" name="button" onclick="nav6()">Next</button>
+                        </div> -->
+                  </div>
+                  <!--End Title -->
+                  <label id="radio-dose-label" for="radio-dose">Dose :</label>
+                  <input type="number" id="radio-dose" placeholder="Dose">
+                  <br>
+                  <label id="radio-vol-label" for="radio-vol">Volume Cible :</label>
+                  <input type="text" id="radio-vol" placeholder="Volume Cible">
+                  <br>
+                  <label id="etal-label" for="etal">Etalement :</label>
+                  <input type="number" id="etal" placeholder="Dose/Séance">
+
+                  <br>
+                  <label id="date-prev-label" for="date-prev">Date Prévue :</label>
+                  <input type="date" id="date-prev">
+                </div>
                 <!--End Radio Onglet -->
+
+
 
                 <!--Hormono Onglet -->
                 <!--End Hormono Onglet -->
 
 
+
+
+                <!-- Bilan Préthérapautique -->
+                <div id="bilan-pre-o" class="onglet">
+                  <!-- Title -->
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <h2 class="titre_champ">Bilan Préthérapautique</h2>
+                    </div>
+                    <!-- <div class="col-sm-4 text-right">
+                          <button type="button" class="btn btn-next" name="button" onclick="nav6()">Next</button>
+                        </div> -->
+                  </div>
+
+
+                  <h2>Bilans Biologiques</h2>
+
+                  <!--End Title -->
+
+                  <br>
+                  <label id="nfs-label" for="nfs">NFS :</label>
+                  <input type="checkbox" id="nfs">
+                  <br>
+                  <label id="grp-san-label" for="grp-san">Groupe Saunguin:</label>
+                  <input type="checkbox" id="grp-san">
+                  <br>
+                  <label id="b-hep-label" for="b-hep">Bilan Hépatique:</label>
+                  <input type="checkbox" id="b-hep">
+                  <br>
+                  <label id="b-ren-label" for="b-ren">Bilan rénale:</label>
+                  <input type="checkbox" id="b-ren">
+                  <br>
+                  <label id="cais-label" for="cais">CAIS-3:</label>
+                  <input type="checkbox" id="cais">
+                  <br>
+                  <label id="dpd-label" for="dpd">Dosage DPD:</label>
+                  <input type="checkbox" id="dpd">
+                  <br>
+                  <label id="sir-v">Sirologie Virale:</label>
+                  <label id="hiv-label" for="hiv">HIV</label>
+                  <input type="checkbox" id="hiv">
+                  <label id="hep-c-label" for="hep-c">Hépatite C</label>
+                  <input type="checkbox" id="hep-c">
+                  <label id="hep-b-label" for="hep-b">Hépatite B</label>
+                  <input type="checkbox" id="hep-b">
+
+                  <br>
+                  <label id="pose-label" for="pose">Pose de site implantable :</label>
+                  <select id="pose" onchange="affDate()">
+                    <option value=""></option>
+                    <option value="0">Non</option>
+                    <option value="1">Oui </option>
+                  </select>
+                  <label id="date-ren-label" for="date-ren" hidden>Date Rendez-vous :</label>
+                  <input type="date" id="date-ren" hidden>
+
+                  <br>
+                  <label id="oncofer-label" for="oncofer">Consultation d'oncoferilité :</label>
+                  <select id="oncofer">
+                    <option value=""></option>
+                    <option value="0">Non</option>
+                    <option value="1">Oui </option>
+                    <option value="2">Refus Patient </option>
+                  </select>
+                  <br>
+                  <label id="pose-label" for="pose">Echocardiaque :</label>
+                  <select id="pose">
+                    <option value=""></option>
+                    <option value="0">Non</option>
+                    <option value="1">Oui </option>
+                  </select>
+
+                  <br>
+                  <label id="pose-label" for="pose">Soins dentaires :</label>
+                  <select id="pose">
+                    <option value=""></option>
+                    <option value="0">Non</option>
+                    <option value="1">Oui </option>
+                  </select>
+                  <br>
+                  <label id="pose-label" for="pose">Consultation d'annonce avec psychologue :</label>
+                  <select id="pose">
+                    <option value=""></option>
+                    <option value="0">Non</option>
+                    <option value="1">Oui </option>
+                  </select>
+                  <br>
+                  <label id="preth-autre-label" for="preth-autre"> Autres :</label>
+                  <input id="preth-autre" type="text" placeholder="Autres">
+                </div>
+                <!-- End Bilan Préthérapautique -->
+
+
+
+
+
+
+
+                <!-- ///////////////////////////////////////////////////////////////// -->
                 <!-- End Global Section divs -->
               </div>
             </div>
