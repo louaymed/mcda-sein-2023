@@ -325,7 +325,7 @@
                     <option value="2">Radiotherapie</option>
                   </select>
                   <br>
-                
+
 
                   <!-- If Chimiotherapie -->
                   <h4 id="chimio-title" hidden>Chimiothérapie :</h4>
@@ -345,7 +345,7 @@
 
 
                   <!-- If Radiotherapie -->
-                
+
                   <h4 id="radio-title" hidden>Radiothérapie :</h4>
                   <label id="dose-label" for="dose-cumu" hidden> Dose :</label>
                   <input type="number" id="dose" placehoder="Gy" hidden>
@@ -828,8 +828,7 @@
 
                   <div>
                     <label id="b-siege-label" for="b-siege-options"> Siège : </label>
-                    <select id="b-siege-options" required
-                      onchange="enableAutre(this); enableSeigeNav(); enableAdeno(this)">
+                    <select id="b-siege-options" required onchange="enableAutre(this); enableSeigeNav(); " multiple>
                       <option value=""> </option>
                       <option value="0"> Sein Droite</option>
                       <option value="1"> Sein Gauche </option>
@@ -837,7 +836,7 @@
                       <option value="autre">Autre </option>
                     </select>
                     <label id="adeno-label" for="adeno-options" hidden> Adénopathie : </label>
-                    <select id="adeno-options" required hidden onchange="enableSeigeNav()">
+                    <select id="adeno-options" required hidden onchange="enableSeigeNav()" multiple>
                       <option value=""> </option>
                       <option value="0"> Axillaire homolatérale </option>
                       <option value="1"> Axillaire controlatérale</option>
