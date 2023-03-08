@@ -52,9 +52,9 @@ function enableAutre(that) {
     }
 
 }
-
-
 ///////////////////////
+
+
 // global Date Field Function
 function enableDate(there) {
     var id = there.id;
