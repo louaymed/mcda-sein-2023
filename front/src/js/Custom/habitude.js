@@ -46,6 +46,15 @@ function enableActiv() {
     document.getElementById("activ-type").setAttribute("hidden", "")
   }
 }
+function enablePassif() {
+  if (document.getElementById("tabac").value == "Non") {
+    document.getElementById("passif-label").removeAttribute("hidden");
+    document.getElementById("passif").removeAttribute("hidden");
+  } else {
+    document.getElementById("passif-label").setAttribute("hidden", "");
+    document.getElementById("passif").setAttribute("hidden", "")
+  }
+}
 
 
 

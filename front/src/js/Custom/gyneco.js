@@ -68,4 +68,32 @@ function disableProd(stimul) {
         document.getElementById("prod-label").setAttribute("hidden", "");
         document.getElementById("stimul-prod").setAttribute("hidden", "");
     }
-}  
+}
+
+function enableDDR() {
+    if (document.getElementById("menopose").value == "Non Ménoposée") {
+        document.getElementById("ddr-label").removeAttribute("hidden");
+        document.getElementById("ddr").removeAttribute("hidden");
+    } else if (document.getElementById("menopose").value == "Ménoposée") {
+        document.getElementById("age-m-label").removeAttribute("hidden");
+        document.getElementById("age-m").removeAttribute("hidden");
+    } else {
+        document.getElementById("ddr-label").setAttribute("hidden", "");
+        document.getElementById("ddr").setAttribute("hidden", "");
+        document.getElementById("age--label").setAttribute("hidden", "");
+        document.getElementById("age-").setAttribute("hidden", "");
+    }
+}
+
+
+function enableSA() {
+    if (document.getElementById("grossesse-option").value == 1) {
+        document.getElementById("sa-label").removeAttribute("hidden");
+        document.getElementById("sa").removeAttribute("hidden");
+    } else {
+        document.getElementById("sa-label").setAttribute("hidden", "");
+        document.getElementById("dsadr").setAttribute("hidden", "");
+
+
+    }
+}

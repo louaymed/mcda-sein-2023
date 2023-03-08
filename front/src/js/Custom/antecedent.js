@@ -1,68 +1,3 @@
-function disableMommyOptions(mamm) {
-    var myBrElements = document.getElementsByClassName("my-br");
-    if (mamm.value == "") {
-        document.getElementById("trait-label").setAttribute("hidden", "");
-        document.getElementById("trait").setAttribute("hidden", "");
-        // common label
-        document.getElementById("detail-path-label").setAttribute("hidden", "");
-        // set both lists hidden
-        document.getElementById("detail-path").setAttribute("hidden", "");
-        document.getElementById("detail-path-ben").setAttribute("hidden", "");
-
-
-        for (var i = 0; i < myBrElements.length; i++) {
-            myBrElements[i].setAttribute("hidden", "");
-        }
-    } else if (mamm.value == 1) {
-
-        // set malgne values hidden
-        // common label
-        document.getElementById("detail-path-label").setAttribute("hidden", "");
-        document.getElementById("detail-path").setAttribute("hidden", "");
-        // second feild
-        document.getElementById("trait-label").setAttribute("hidden", "");
-        document.getElementById("trait").setAttribute("hidden", "");
-        for (var i = 0; i < myBrElements.length; i++) {
-            myBrElements[i].setAttribute("hidden", "");
-        }
-
-
-
-        // enable benigne values
-        // common label
-        document.getElementById("detail-path-label").removeAttribute("hidden");
-        document.getElementById("detail-path-ben").removeAttribute("hidden");
-        for (var i = 0; i < myBrElements.length - 1; i++) {
-            myBrElements[i].removeAttribute("hidden");
-        }
-
-    } else {
-
-        // set benigne values hidden 
-        // common label
-        document.getElementById("detail-path-label").setAttribute("hidden", "");
-        document.getElementById("detail-path-ben").setAttribute("hidden", "");
-        // second feild
-        document.getElementById("trait-label").setAttribute("hidden", "");
-        document.getElementById("trait").setAttribute("hidden", "");
-        for (var i = 0; i < myBrElements.length; i++) {
-            myBrElements[i].setAttribute("hidden", "");
-        }
-
-        // enable maligne values
-        // common label
-        document.getElementById("detail-path-label").removeAttribute("hidden");
-        document.getElementById("detail-path").removeAttribute("hidden");
-        // second field
-        document.getElementById("trait-label").removeAttribute("hidden");
-        document.getElementById("trait").removeAttribute("hidden");
-        for (var i = 0; i < myBrElements.length; i++) {
-            myBrElements[i].removeAttribute("hidden");
-        }
-    }
-}
-
-
 function disableThoraxOptions(thorac) {
     var myBrElements = document.getElementsByClassName("ant-r-br");
     if (thorac.value == "" || thorac.value == 0) {
@@ -112,18 +47,14 @@ function EnableOptions() {
     if (document.getElementById("trait").selectedOptions.length > 1) {
 
         // enable chimio options
-        for (var i = 0; i < chim_br.length; i++) {
-            chim_br[i].removeAttribute("hidden");
-        }
+
         document.getElementById("chimio-title").removeAttribute("hidden");
         document.getElementById("proto-label").removeAttribute("hidden");
         document.getElementById("proto").removeAttribute("hidden");
 
 
         // enable radio options 
-        for (var i = 0; i < radio_br.length; i++) {
-            radio_br[i].removeAttribute("hidden");
-        }
+
         document.getElementById("radio-title").removeAttribute("hidden");
         document.getElementById("dose-label").removeAttribute("hidden");
         document.getElementById("dose").removeAttribute("hidden");
@@ -134,17 +65,13 @@ function EnableOptions() {
     } else if (document.getElementById("trait").value == 1) {
 
         // enable chimio options
-        for (var i = 0; i < chim_br.length; i++) {
-            chim_br[i].removeAttribute("hidden");
-        }
+
         document.getElementById("chimio-title").removeAttribute("hidden");
         document.getElementById("proto-label").removeAttribute("hidden");
         document.getElementById("proto").removeAttribute("hidden");
 
         // set radio options hidden
-        for (var i = 0; i < radio_br.length; i++) {
-            radio_br[i].setAttribute("hidden", "");
-        }
+
         document.getElementById("radio-title").setAttribute("hidden", "");
         document.getElementById("dose-label").setAttribute("hidden", "");
         document.getElementById("dose").setAttribute("hidden", "");
@@ -156,9 +83,7 @@ function EnableOptions() {
     } else if (document.getElementById("trait").value == 2) {
 
         // set chimio options hidden 
-        for (var i = 0; i < chim_br.length; i++) {
-            chim_br[i].setAttribute("hidden", "");
-        }
+
         document.getElementById("chimio-title").setAttribute("hidden", "");
         document.getElementById("proto-label").setAttribute("hidden", "");
         document.getElementById("proto").setAttribute("hidden", "");
@@ -168,9 +93,7 @@ function EnableOptions() {
         document.getElementById("dose-cumu").setAttribute("hidden", "");
 
         // enable radio options 
-        for (var i = 0; i < radio_br.length; i++) {
-            radio_br[i].removeAttribute("hidden");
-        }
+
         document.getElementById("radio-title").removeAttribute("hidden");
         document.getElementById("dose-label").removeAttribute("hidden");
         document.getElementById("dose").removeAttribute("hidden");
@@ -182,9 +105,7 @@ function EnableOptions() {
     } else {
 
         // set chimio options hidden 
-        for (var i = 0; i < chim_br.length; i++) {
-            chim_br[i].setAttribute("hidden", "");
-        }
+
         document.getElementById("chimio-title").setAttribute("hidden", "");
         document.getElementById("proto-label").setAttribute("hidden", "");
         document.getElementById("proto").setAttribute("hidden", "");
@@ -194,9 +115,7 @@ function EnableOptions() {
         document.getElementById("dose-cumu").setAttribute("hidden", "");
 
         // set radio options hidden
-        for (var i = 0; i < radio_br.length; i++) {
-            radio_br[i].setAttribute("hidden", "");
-        }
+
         document.getElementById("radio-title").setAttribute("hidden", "");
         document.getElementById("dose-label").setAttribute("hidden", "");
         document.getElementById("dose").setAttribute("hidden", "");
@@ -209,9 +128,6 @@ function EnableOptions() {
 
 
 }
-
-
-
 
 
 
@@ -233,4 +149,110 @@ function blockNext(data) {
         document.getElementById("type-cancer").disabled = false;
         document.getElementById("enquete").disabled = false;
     }
+}
+
+// navbar routing function
+function openSubSubOnglet(event, SubongletName) {
+    var i, tabDiv, tabBtn, onglets;
+    tabDiv = document.getElementsByClassName("sub-sub-onglet");
+    tabBtn = document.getElementsByClassName("btn");
+    for (i = 0; i < tabDiv.length; i++) {
+        tabDiv[i].style.display = "none";
+    }
+    for (i = 0; i < tabBtn.length; i++) {
+        tabBtn[i].classList.replace("btn-primary", "btn-light");
+    }
+    onglets = document.getElementsByClassName("onglet");
+    for (i = 0; i < tabDiv.length; i++) {
+        onglets[i].className = onglets[i].className.replace(" actif", "");
+    }
+
+    document.getElementById(SubongletName).style.display = "block";
+    event.currentTarget.className += "actif";
+    // console.log("event.currentTarget:", event.currentTarget);
+    event.currentTarget.classList.replace("btn-light", "btn-primary");
+}
+
+
+function enableChirMam(mam) {
+    var mam = document.querySelectorAll("#mamm option:checked");
+
+    mam.forEach(function (option) {
+        var mamValue = option.value;
+        if (mamValue != "") {
+            if (mamValue == 1) {
+                document.getElementById("benigne-o-h").removeAttribute("hidden");
+                document.getElementById("benigne-o").removeAttribute("hidden");
+                document.getElementById("benigne-o-h").click();
+            } else {
+
+                document.getElementById("benigne-o-h").setAttribute("hidden", "");
+                document.getElementById("benigne-o").setAttribute("hidden", "");
+
+            }
+
+            if (mamValue == 2) {
+                document.getElementById("maligne-o-h").removeAttribute("hidden");
+                document.getElementById("maligne-o").removeAttribute("hidden");
+                document.getElementById("maligne-o-h").click();
+            } else {
+
+                document.getElementById("maligne-o-h").setAttribute("hidden", "");
+                document.getElementById("maligne-o").setAttribute("hidden", "");
+            }
+
+
+        } else {
+            document.getElementById("maligne-o-h").setAttribute("hidden", "");
+            document.getElementById("maligne-o").setAttribute("hidden", "");
+            document.getElementById("maligne-o-h").setAttribute("hidden", "");
+            document.getElementById("maligne-o").setAttribute("hidden", "");
+        }
+    })
+}
+
+
+
+function enableProtoMal() {
+    var trait = document.querySelectorAll("#trait option:checked");
+    var selectedTraits = [];
+    for (var i = 0; i < trait.length; i++) {
+        selectedTraits.push(trait[i].value);
+    }
+    // console.log(selectedTraits);
+
+
+
+    trait.forEach(function (option) {
+        var traitValue = option.value;
+        if (traitValue != "") {
+            if (traitValue == 1) {
+                document.getElementById("chimio-p-h").removeAttribute("hidden");
+                document.getElementById("chimio-p").removeAttribute("hidden");
+                document.getElementById("chimio-p-h").click();
+            } else {
+                if (selectedTraits.includes('1') == false) {
+                    document.getElementById("chimio-p-h").setAttribute("hidden", "");
+                    document.getElementById("chimio-p").setAttribute("hidden", "");
+                }
+            }
+
+            if (traitValue == 2) {
+                document.getElementById("radio-p-h").removeAttribute("hidden");
+                document.getElementById("radio-p").removeAttribute("hidden");
+                document.getElementById("radio-p-h").click();
+            } else {
+                if (selectedTraits.includes('2') == false) {
+                    document.getElementById("radio-p-h").setAttribute("hidden", "");
+                    document.getElementById("radio-p").setAttribute("hidden", "");
+                }
+            }
+
+        } else {
+            document.getElementById("chimio-p-h").setAttribute("hidden", "");
+            document.getElementById("chimio-p").setAttribute("hidden", "");
+            document.getElementById("radio-p-h").setAttribute("hidden", "");
+            document.getElementById("radio-p").setAttribute("hidden", "");
+        }
+    })
 }

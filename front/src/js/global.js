@@ -521,6 +521,8 @@ function getCrise() {
 
 }
 
+
+
 function enableChimioType(that) {
     if (that.id == "chimio") {
         if (document.getElementById("chimio").checked) {
@@ -549,20 +551,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function getMet() {
-
-        // set recommendations hidden
-        // document.getElementById("chimio-label").setAttribute("hidden", "");
-        // document.getElementById("chimio").setAttribute("hidden", "");
-        // document.getElementById("chimio-type-label").setAttribute("hidden", "");
-        // document.getElementById("chimio-type").setAttribute("hidden", "");
-        // document.getElementById("r").setAttribute("hidden", "");
-        // document.getElementById("radio").setAttribute("hidden", "");
-        // document.getElementById("c").setAttribute("hidden", "");
-        // document.getElementById("chirurgie").setAttribute("hidden", "");
-        // document.getElementById("h").setAttribute("hidden", "");
-        // document.getElementById("hormo").setAttribute("hidden", "");
-
-
 
         sexe = document.getElementById("sexe-select").value;
         age = document.getElementById("age").value;
@@ -653,36 +641,34 @@ function showPec() {
     var chirurgie = document.getElementById("chirurgie");
     var hormo = document.getElementById("hormo");
 
-    if (chimio.checked) {
-        document.getElementById("chimio-h").removeAttribute("hidden");
+    if (chimio.checked || radio.checked || chirurgie.checked || hormo.checked) {
+        if (chimio.checked) {
+            document.getElementById("chimio-h").removeAttribute("hidden");
+        } else {
+            document.getElementById("chimio-h").setAttribute("hidden", "");
+        }
+        if (radio.checked) {
+            document.getElementById("radio-h").removeAttribute("hidden");
+        } else {
+            document.getElementById("radio-h").setAttribute("hidden", "");
+        }
+        if (chirurgie.checked) {
+            document.getElementById("chirurgie-h").removeAttribute("hidden");
+        } else {
+            document.getElementById("chirurgie-h").setAttribute("hidden", "");
+        }
+        if (hormo.checked) {
+            document.getElementById("hormo-h").removeAttribute("hidden");
+        } else {
+            document.getElementById("hormo-h").setAttribute("hidden", "");
+        }
+    } else {
+        document.getElementById("chimio-h").setAttribute("hidden", "");
         document.getElementById("radio-h").setAttribute("hidden", "");
         document.getElementById("chirurgie-h").setAttribute("hidden", "");
         document.getElementById("hormo-h").setAttribute("hidden", "");
-    } else if (radio.checked) {
-        document.getElementById("radio-h").removeAttribute("hidden");
-        document.getElementById("chimio-h").setAttribute("hidden", "");
-        document.getElementById("chirurgie-h").setAttribute("hidden", "");
-        document.getElementById("hormo-h").setAttribute("hidden", "");
-    } else if (chirurgie.checked) {
-        document.getElementById("chirurgie-h").removeAttribute("hidden");
-        document.getElementById("chimio-h").setAttribute("hidden", "");
-        document.getElementById("radio-h").setAttribute("hidden", "");
-        document.getElementById("hormo-h").setAttribute("hidden", "");
-    } else if (hormo.checked) {
-        document.getElementById("hormo-h").removeAttribute("hidden");
-        document.getElementById("chimio-h").setAttribute("hidden", "");
-        document.getElementById("chirurgie-h").setAttribute("hidden", "");
-        document.getElementById("radio-h").setAttribute("hidden", "");
     }
-    else {
-        document.getElementById("chimio-h").setAttribute("hidden", "");
-        document.getElementById("chirurgie-h").setAttribute("hidden", "");
-        document.getElementById("radio-h").setAttribute("hidden", "");
-        document.getElementById("hormo-h").setAttribute("hidden", "");
-    }
-
 }
-
 
 
 // CTNM

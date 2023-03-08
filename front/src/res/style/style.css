@@ -131,6 +131,7 @@ header img {
   column-width: 200px;
 } */
 
+
 .lecture_section {
   background-color: #E8E7E7;
   height: 750px;
@@ -258,6 +259,13 @@ fieldset {
 }
 
 .sub-onglet {
+  /* font-size: 4px; */
+  display: block;
+  margin: 15px;
+  padding: 15px;
+}
+
+.sub-sub-onglet {
   /* font-size: 4px; */
   display: block;
   margin: 15px;

@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 },)
 
-// nav abr routing function
+// navbar routing function
 function openSubOnglet(event, SubongletName) {
     var i, tabDiv, tabBtn, onglets;
     tabDiv = document.getElementsByClassName("sub-onglet");
