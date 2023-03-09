@@ -200,7 +200,7 @@ function nav3() {
 
 function nav4() {
     // onclick="navigate('person', 'habitude-h', 'sexe-display','age-display');
-    document.getElementById("ctnm-h").click();
+    document.getElementById("examen-h").click();
 }
 function nav5() {
     // onclick="navigate('person', 'habitude-h', 'sexe-display','age-display');
@@ -221,9 +221,9 @@ function nav7() {
 
 // T
 document.addEventListener("DOMContentLoaded", function () {
-    var ctnm = document.getElementById("ctnm");
-    if (ctnm) {
-        ctnm.addEventListener('submit', calcT);
+    var clinique = document.getElementById("clinique");
+    if (clinique) {
+        clinique.addEventListener('click', calcT);
     }
 },)
 
@@ -317,9 +317,9 @@ function getHer2() {
 
 // CTNM
 document.addEventListener("DOMContentLoaded", function () {
-    var ctnm = document.getElementById("ctnm");
+    var ctnm = document.getElementById("clin-next");
     if (ctnm) {
-        ctnm.addEventListener('submit', getCtnm);
+        ctnm.addEventListener('click', getCtnm);
     }
 },)
 
@@ -671,53 +671,6 @@ function showPec() {
         document.getElementById("hormo-h").setAttribute("hidden", "");
     }
 }
-
-
-// CTNM
-// document.addEventListener("DOMContentLoaded", function () {
-//     var biopsie = document.getElementById("biopsie");
-//     if (biopsie) {
-//         biopsie.addEventListener('submit', getCtnm);
-//     }
-// },)
-
-// var CTNM;
-// function getCtnm() {
-//     var N = document.getElementById("description-n-option").value;
-//     var M = document.getElementById("metastase-suspecte-option").value;
-//     console.log("this N");
-//     console.log(N);
-//     console.log("this M");
-//     console.log(M);
-
-//     var myMap = {
-//         T: T,
-//         N: N,
-//         M: M,
-//     };
-//     console.log(myMap);
-//     var myMapJson = JSON.stringify(myMap);
-//     console.log(myMapJson)
-//     fetch("http://localhost:8081/mcda/api/consultation/calc-ctnm", {
-//         method: "post",
-//         headers: {
-//             "Content-type": "application/json"
-//         },
-//         body: myMapJson
-//     }).then((response) => response.text())
-//         .then((data) => {
-//             console.log("this is CTNM ");
-//             CTNM = data
-//             console.log(CTNM)
-//             document.getElementById("ctnm-display").innerHTML = CTNM;
-//         })
-//         .catch(error => {
-//             console.log("Error", error);
-
-//         })
-// }
-
-
 
 
 //Protocole
