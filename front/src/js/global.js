@@ -11,7 +11,7 @@ var rh;
 var CTNM;
 var spectre_BRCA;
 //Menopose output
-var output;
+var output = "Non";
 // crise viscerale
 var crise;
 // sexe
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // global Autre text Field Function
 function enableAutre(that) {
     var id = that.id;
-    // console.log(id + "-autre-label");
+    console.log(id + "-autre-label");
 
     // set them hidden first just incase
     document.getElementById(id + "-autre-label").setAttribute("hidden", "");
@@ -289,7 +289,7 @@ function getHer2() {
     var rhe = document.getElementById("rhe_options").value;
     var rhp = document.getElementById("rhp_options").value;
 
-    if (rhe == 1 || rhp == 1) {
+    if (rhe == 2 || rhp == 2) {
         var rhe = document.getElementById("rhe_options").value;
         var rhp = document.getElementById("rhp_options").value;
         rh = "Positif";
@@ -471,7 +471,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function getBilan() {
     var scin = document.getElementById("scin").value;
-    var pet = document.getElementById("pet").value;
+    var conc = document.getElementById("conc").value;
 
 
     // m_ossuse
@@ -482,11 +482,13 @@ function getBilan() {
     }
     // console.log(m_ossuse)
     // M
-    if (scin == 0 && pet == 0) {
+    if (scin == 0 && conc == 0) {
         M = "M0";
     } else {
         M = "M1";
     }
+    console.log(M)
+
 
 }
 

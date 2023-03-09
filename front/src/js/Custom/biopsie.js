@@ -164,3 +164,139 @@ function enableSeigeNav() {
 }
 
 
+
+function enableFish(that) {
+    var id = that.id;
+    console.log(id);
+    if (id == "her2_options") {
+        if (document.getElementById(id).value == 1) {
+            document.getElementById("fish-label").removeAttribute("hidden");
+            document.getElementById("fish").removeAttribute("hidden");
+
+
+        } else {
+            document.getElementById("fish-label").setAttribute("hidden", "");
+            document.getElementById("fish").setAttribute("hidden", "");
+        }
+    } else if (id == "d-her2_options") {
+        if (document.getElementById(id).value == 1) {
+            document.getElementById("d-fish-label").removeAttribute("hidden");
+            document.getElementById("d-fish").removeAttribute("hidden");
+
+
+        } else {
+            document.getElementById("d-fish-label").setAttribute("hidden", "");
+            document.getElementById("d-fish").setAttribute("hidden", "");
+        }
+
+    } else if (id == "ah-her2_options") {
+        if (document.getElementById(id).value == 1) {
+            document.getElementById("ah-fish-label").removeAttribute("hidden");
+            document.getElementById("ah-fish").removeAttribute("hidden");
+
+
+        } else {
+            document.getElementById("ah-fish-label").setAttribute("hidden", "");
+            document.getElementById("ah-fish").setAttribute("hidden", "");
+        }
+
+    } else if (id == "ac-her2_options") {
+        if (document.getElementById(id).value == 1) {
+            document.getElementById("ac-fish-label").removeAttribute("hidden");
+            document.getElementById("ac-fish").removeAttribute("hidden");
+
+
+        } else {
+            document.getElementById("ac-fish-label").setAttribute("hidden", "");
+            document.getElementById("ac-fish").setAttribute("hidden", "");
+        }
+    } else if (id == "sh-her2_options") {
+        if (document.getElementById(id).value == 1) {
+            document.getElementById("sh-fish-label").removeAttribute("hidden");
+            document.getElementById("sh-fish").removeAttribute("hidden");
+
+
+        } else {
+            document.getElementById("sh-fish-label").setAttribute("hidden", "");
+            document.getElementById("sh-fish").setAttribute("hidden", "");
+        }
+    } else if (id == "sc-her2_options") {
+        if (document.getElementById(id).value == 1) {
+            document.getElementById("sc-fish-label").removeAttribute("hidden");
+            document.getElementById("sc-fish").removeAttribute("hidden");
+
+
+        } else {
+            document.getElementById("sc-fish-label").setAttribute("hidden", "");
+            document.getElementById("sc-fish").setAttribute("hidden", "");
+        }
+    } else if (id == "a-her2_options") {
+        if (document.getElementById(id).value == 1) {
+            document.getElementById("a-fish-label").removeAttribute("hidden");
+            document.getElementById("a-fish").removeAttribute("hidden");
+
+        } else {
+            document.getElementById("a-fish-label").setAttribute("hidden", "");
+            document.getElementById("a-fish").setAttribute("hidden", "");
+        }
+    }
+
+
+}
+
+function enableFishRes() {
+    console.log(document.getElementById("fish").value == 1)
+    if (document.getElementById("fish").value == 1) {
+        console.log(document.getElementById("fish").value == 1)
+        document.getElementById("res-label").removeAttribute("hidden");
+        document.getElementById("res").removeAttribute("hidden");
+    } else {
+        document.getElementById("res-label").setAttribute("hidden", "");
+        document.getElementById("res").setAttribute("hidden", "");
+    }
+
+    if (document.getElementById("d-fish").value == 1) {
+        document.getElementById("d-res-label").removeAttribute("hidden");
+        document.getElementById("d-res").removeAttribute("hidden");
+    } else {
+        document.getElementById("d-res-label").setAttribute("hidden", "");
+        document.getElementById("d-res").setAttribute("hidden", "");
+    }
+
+    if (document.getElementById("ah-fish").value == 1) {
+        document.getElementById("ah-res-label").removeAttribute("hidden");
+        document.getElementById("ah-res").removeAttribute("hidden");
+    } else {
+        document.getElementById("ah-res-label").setAttribute("hidden", "");
+        document.getElementById("ah-res").setAttribute("hidden", "");
+    }
+    if (document.getElementById("ac-fish").value == 1) {
+        document.getElementById("ac-res-label").removeAttribute("hidden");
+        document.getElementById("ac-res").removeAttribute("hidden");
+    } else {
+        document.getElementById("ac-res-label").setAttribute("hidden", "");
+        document.getElementById("ac-res").setAttribute("hidden", "");
+    }
+    if (document.getElementById("sh-fish").value == 1) {
+        document.getElementById("sh-res-label").removeAttribute("hidden");
+        document.getElementById("sh-res").removeAttribute("hidden");
+    } else {
+        document.getElementById("sh-res-label").setAttribute("hidden", "");
+        document.getElementById("sh-res").setAttribute("hidden", "");
+    }
+    if (document.getElementById("sc-fish").value == 1) {
+        document.getElementById("sc-res-label").removeAttribute("hidden");
+        document.getElementById("sc-res").removeAttribute("hidden");
+    } else {
+        document.getElementById("sc-res-label").setAttribute("hidden", "");
+        document.getElementById("sc-res").setAttribute("hidden", "");
+    }
+    if (document.getElementById("a-fish").value == 1) {
+        document.getElementById("a-res-label").removeAttribute("hidden");
+        document.getElementById("a-res").removeAttribute("hidden");
+    } else {
+        document.getElementById("a-res-label").setAttribute("hidden", "");
+        document.getElementById("a-res").setAttribute("hidden", "");
+    }
+
+}

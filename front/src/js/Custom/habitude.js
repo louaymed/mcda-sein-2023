@@ -60,10 +60,12 @@ function enablePassif() {
 
 function disableSevrage(tabac) {
   document.getElementById("tabac-display").innerHTML = tabac.value;
-  if (tabac.value == "Non") {
-    document.getElementById("Sevrage").disabled = true;
+  if (tabac.value == "Non" || tabac.value == "") {
+    document.getElementById("sevrage-label").setAttribute("hidden", "");
+    document.getElementById("Sevrage").setAttribute("hidden", "");
   } else {
-    document.getElementById("Sevrage").disabled = false;
+    document.getElementById("sevrage-label").removeAttribute("hidden");
+    document.getElementById("Sevrage").removeAttribute("hidden");
   }
   if (tabac.value != "Cigarette") {
     document.getElementById("paquetannee-label").setAttribute("hidden", "");
@@ -95,9 +97,11 @@ function disableSevrage(tabac) {
 
 function disableAlcSev(alcool) {
   if (alcool.value == "") {
-    document.getElementById("a-sevrage").disabled = true;
+    document.getElementById("a-sevrage-label").setAttribute("hidden", "");
+    document.getElementById("a-sevrage").setAttribute("hidden", "");
   } else {
-    document.getElementById("a-sevrage").disabled = false;
+    document.getElementById("a-sevrage-label").removeAttribute("hidden");
+    document.getElementById("a-sevrage").removeAttribute("hidden");
   }
   if (alcool.value == "") {
     // document.getElementById("alcool-display").innerHTML = tabac.value;

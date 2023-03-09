@@ -185,7 +185,6 @@ function enableChirMam(mam) {
                 document.getElementById("benigne-o").removeAttribute("hidden");
                 document.getElementById("benigne-o-h").click();
             } else {
-
                 document.getElementById("benigne-o-h").setAttribute("hidden", "");
                 document.getElementById("benigne-o").setAttribute("hidden", "");
 
@@ -200,11 +199,9 @@ function enableChirMam(mam) {
                 document.getElementById("maligne-o-h").setAttribute("hidden", "");
                 document.getElementById("maligne-o").setAttribute("hidden", "");
             }
-
-
         } else {
-            document.getElementById("maligne-o-h").setAttribute("hidden", "");
-            document.getElementById("maligne-o").setAttribute("hidden", "");
+            document.getElementById("benigne-o-h").setAttribute("hidden", "");
+            document.getElementById("benigne-o").setAttribute("hidden", "");
             document.getElementById("maligne-o-h").setAttribute("hidden", "");
             document.getElementById("maligne-o").setAttribute("hidden", "");
         }
