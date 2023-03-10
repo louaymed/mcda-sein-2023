@@ -1,25 +1,49 @@
 function disableStatutMeno(statut) {
     var myBrElements = document.getElementsByClassName("dose-horm-br");
 
-    if (statut.value == "PériMénoposée") {
-        document.getElementById("dosage-label").removeAttribute("hidden");
-        document.getElementById("dosage-option").removeAttribute("hidden");
-        for (var i = 0; i < myBrElements.length; i++) {
-            myBrElements[i].removeAttribute("hidden");
-        }
-    } else if (statut.value == "Ménoposée") {
+    if (statut.value == "Non Ménoposée") {
+        document.getElementById("ddr-label").removeAttribute("hidden");
+        document.getElementById("ddr").removeAttribute("hidden");
+        document.getElementById("age-label").setAttribute("hidden", "");
+        document.getElementById("age").setAttribute("hidden", "");
         document.getElementById("grossesse-label").setAttribute("hidden", "");
-        document
-            .getElementById("grossesse-option")
-            .setAttribute("hidden", "");
-    } else {
-        document.getElementById("grossesse-label").removeAttribute("hidden");
-        document.getElementById("grossesse-option").removeAttribute("hidden");
+        document.getElementById("grossesse-option").setAttribute("hidden", "");
         document.getElementById("dosage-label").setAttribute("hidden", "");
         document.getElementById("dosage-option").setAttribute("hidden", "");
-        for (var i = 0; i < myBrElements.length; i++) {
-            myBrElements[i].setAttribute("hidden", "");
-        }
+
+    } else if (statut.value == "PériMénoposée") {
+        document.getElementById("dosage-label").removeAttribute("hidden");
+        document.getElementById("dosage-option").removeAttribute("hidden");
+        document.getElementById("ddr-label").setAttribute("hidden", "");
+        document.getElementById("ddr").setAttribute("hidden", "");
+        document.getElementById("age-label").setAttribute("hidden", "");
+        document.getElementById("age").setAttribute("hidden", "");
+        document.getElementById("grossesse-label").setAttribute("hidden", "");
+        document.getElementById("grossesse-option").setAttribute("hidden", "");
+
+
+    } else if (statut.value == "Ménoposée") {
+        document.getElementById("age-m-label").removeAttribute("hidden");
+        document.getElementById("age-m").removeAttribute("hidden");
+        document.getElementById("grossesse-label").setAttribute("hidden", "");
+        document.getElementById("grossesse-option").setAttribute("hidden", "");
+       
+        document.getElementById("dosage-label").setAttribute("hidden", "");
+        document.getElementById("dosage-option").setAttribute("hidden", "");
+        document.getElementById("ddr-label").setAttribute("hidden", "");
+        document.getElementById("ddr").setAttribute("hidden", "");
+
+
+    } else {
+        document.getElementById("ddr-label").setAttribute("hidden", "");
+        document.getElementById("ddr").setAttribute("hidden", "");
+        document.getElementById("age-label").setAttribute("hidden", "");
+        document.getElementById("age").setAttribute("hidden", "");
+        document.getElementById("grossesse-label").setAttribute("hidden", "");
+        document.getElementById("grossesse-option").setAttribute("hidden", "");
+        document.getElementById("dosage-label").setAttribute("hidden", "");
+        document.getElementById("dosage-option").setAttribute("hidden", "");
+      
     }
 }
 
@@ -50,15 +74,15 @@ function disableContra(allait) {
     }
 }
 
-function disableStimu(G) {
-    if (G.value != 0) {
-        document.getElementById("stimul-label").removeAttribute("hidden");
-        document.getElementById("stimul-option").removeAttribute("hidden");
-    } else {
-        document.getElementById("stimul-label").setAttribute("hidden", "");
-        document.getElementById("stimul-option").setAttribute("hidden", "");
-    }
-}
+// function disableStimu(G) {
+//     if (G.value != 0) {
+//         document.getElementById("stimul-label").removeAttribute("hidden");
+//         document.getElementById("stimul-option").removeAttribute("hidden");
+//     } else {
+//         document.getElementById("stimul-label").setAttribute("hidden", "");
+//         document.getElementById("stimul-option").setAttribute("hidden", "");
+//     }
+// }
 
 function disableProd(stimul) {
     if (stimul.value == "1") {
@@ -71,18 +95,7 @@ function disableProd(stimul) {
 }
 
 function enableDDR() {
-    if (document.getElementById("menopose").value == "Non Ménoposée") {
-        document.getElementById("ddr-label").removeAttribute("hidden");
-        document.getElementById("ddr").removeAttribute("hidden");
-    } else if (document.getElementById("menopose").value == "Ménoposée") {
-        document.getElementById("age-m-label").removeAttribute("hidden");
-        document.getElementById("age-m").removeAttribute("hidden");
-    } else {
-        document.getElementById("ddr-label").setAttribute("hidden", "");
-        document.getElementById("ddr").setAttribute("hidden", "");
-        document.getElementById("age--label").setAttribute("hidden", "");
-        document.getElementById("age-").setAttribute("hidden", "");
-    }
+
 }
 
 

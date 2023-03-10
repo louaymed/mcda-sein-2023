@@ -17,11 +17,12 @@ function openSubOnglet(event, SubongletName) {
     for (i = 0; i < tabBtn.length; i++) {
         tabBtn[i].classList.replace("btn-primary", "btn-light");
     }
-    onglets = document.getElementsByClassName("onglet");
+    onglets = document.getElementsByClassName("sub-onglet");
     for (i = 0; i < tabDiv.length; i++) {
         onglets[i].className = onglets[i].className.replace(" actif", "");
     }
 
+    console.log(document.getElementById(SubongletName))
     document.getElementById(SubongletName).style.display = "block";
     event.currentTarget.className += "actif";
     // console.log("event.currentTarget:", event.currentTarget);

@@ -5,7 +5,7 @@
 
 .saisie_header {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
 }
 
 .sub-saisie_header {
@@ -189,8 +189,39 @@ select {
   font-size: 16px;
   line-height: 20px;
   /* identical to box height */
+  color: #2663EE;
+}
 
 
+
+input {
+  outline: 0;
+  padding: 4px;
+  background: #DCEBFD;
+  border: 0.75px solid #2663EE;
+  border-radius: 12px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+  color: #2663EE;
+}
+
+
+textarea {
+  outline: 0;
+  padding: 4px;
+  background: #DCEBFD;
+  border: 0.75px solid #2663EE;
+  border-radius: 12px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
   color: #2663EE;
 }
 
@@ -305,4 +336,41 @@ fieldset {
 
 
 
+}
+
+table {
+  outline: 0;
+  padding: 4px;
+  background: #DCEBFD;
+  border: 0.75px solid #2663EE;
+  border-radius: 12px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+  color: #233368;
+
+}
+
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }

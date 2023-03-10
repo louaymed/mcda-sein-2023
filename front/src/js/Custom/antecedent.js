@@ -142,12 +142,16 @@ function disableEnqOptions(enq) {
 }
 
 function blockNext(data) {
-    if (data.value == "0") {
-        document.getElementById("type-cancer").disabled = true;
-        document.getElementById("enquete").disabled = true;
+    if (data.value != "0" && data.value != "") {
+        document.getElementById("type-cancer-label").removeAttribute("hidden");
+        document.getElementById("type-cancer").removeAttribute("hidden");
+        document.getElementById("enquete-label").removeAttribute("hidden");
+        document.getElementById("enquete").removeAttribute("hidden");
     } else {
-        document.getElementById("type-cancer").disabled = false;
-        document.getElementById("enquete").disabled = false;
+        document.getElementById("type-cancer-label").setAttribute("hidden", "");
+        document.getElementById("type-cancer").setAttribute("hidden", "");
+        document.getElementById("enquete-label").setAttribute("hidden", "");
+        document.getElementById("enquete").setAttribute("hidden", "");
     }
 }
 
@@ -245,11 +249,36 @@ function enableProtoMal() {
                 }
             }
 
+            if (traitValue == 3) {
+                document.getElementById("hormo-p-h").removeAttribute("hidden");
+                document.getElementById("hormo-p").removeAttribute("hidden");
+                document.getElementById("hormo-p-h").click();
+            } else {
+                if (selectedTraits.includes('3') == false) {
+                    document.getElementById("hormo-p-h").setAttribute("hidden", "");
+                    document.getElementById("hormo-p").setAttribute("hidden", "");
+                }
+            }
+
         } else {
             document.getElementById("chimio-p-h").setAttribute("hidden", "");
             document.getElementById("chimio-p").setAttribute("hidden", "");
             document.getElementById("radio-p-h").setAttribute("hidden", "");
             document.getElementById("radio-p").setAttribute("hidden", "");
+            document.getElementById("hormo-p-h").setAttribute("hidden", "");
+            document.getElementById("hormo-p").setAttribute("hidden", "");
         }
     })
+}
+
+
+
+function enableCastra(that) {
+    if (that.value == "1") {
+        document.getElementById("cast-type-label").removeAttribute("hidden");;
+        document.getElementById("cast-type").removeAttribute("hidden");
+    } else {
+        document.getElementById("cast-type-label").setAttribute("hidden", "");
+        document.getElementById("cast-type").setAttribute("hidden", "");
+    }
 }

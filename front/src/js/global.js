@@ -31,6 +31,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+function changeNav() {
+    console.log(document.getElementById("big-choice").value == 1)
+    if (document.getElementById("big-choice").value == 1) {
+        document.getElementById("pec-in").setAttribute("hidden", "");
+        document.getElementById("pec-act").removeAttribute("hidden")
+
+    } else {
+        document.getElementById("pec-in").removeAttribute("hidden");
+        document.getElementById("pec-act").setAttribute("hidden", "");
+
+    }
+}
+
 
 ///////////////////////
 // global Autre text Field Function
@@ -706,12 +719,29 @@ function getTraitment() {
         .then((data) => {
             // console.log("this is traitment ");
             traitment = data.protocole
-            // console.log(data)
-            // console.log(data.protocole)
-            document.getElementById("chimio-a").innerHTML = traitment.join(" <br> ");
+            var tableBody = document.querySelector("#myTable tbody");
+            var select = document.querySelector("#prot-select");
+            traitment.forEach(value => {
+                // console.log(value);
+                var newRow = tableBody.insertRow(-1);
+                var valueCell = newRow.insertCell(0);
+                valueCell.textContent = value;
+
+
+                // Loop through the data and add each value to a new option in the select element
+                var option = document.createElement("option");
+                console.log(value)
+                option.textContent = value;
+                select.appendChild(option);
+
+            });
         })
         .catch(error => {
             console.log("Error", error);
 
         })
 }
+
+
+
+

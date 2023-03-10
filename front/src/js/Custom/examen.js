@@ -18,3 +18,37 @@ function enableLesion(that) {
         }
     }
 }
+
+
+
+
+function enableEcho(echo) {
+    var echo = document.getElementById("echo").value;
+
+    if (echo != "") {
+        if (echo == 1) {
+            document.getElementById("echo-sein-d-o-h").removeAttribute("hidden");
+            document.getElementById("echo-sein-d-o").removeAttribute("hidden");
+            document.getElementById("echo-sein-d-o-h").click();
+            document.getElementById("echo-sein-g-o-h").removeAttribute("hidden");
+            document.getElementById("echo-sein-g-o").removeAttribute("hidden");
+            document.getElementById("echo-sein-g-o-h").click();
+        } else {
+            document.getElementById("echo-sein-d-o-h").setAttribute("hidden", "");
+            document.getElementById("echo-sein-d-o").setAttribute("hidden", "");
+            document.getElementById("echo-sein-g-o-h").setAttribute("hidden", "");
+            document.getElementById("echo-sein-g-o").setAttribute("hidden", "");
+        }
+
+    } else {
+        document.getElementById("echo-sein-d-o-h").setAttribute("hidden", "");
+        document.getElementById("echo-sein-d-o").setAttribute("hidden", "");
+        document.getElementById("echo-sein-g-o-h").setAttribute("hidden", "");
+        document.getElementById("echo-sein-g-o").setAttribute("hidden", "");
+
+
+    }
+}
+
+
+
