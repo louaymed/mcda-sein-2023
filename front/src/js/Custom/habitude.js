@@ -189,10 +189,20 @@ function disableAlcSev(alcool) {
 function enableMutliTabac(tabac) {
   var tabac = document.querySelectorAll("#tabac option:checked");
   var selected = [];
+  var aff = [];
   for (var i = 0; i < tabac.length; i++) {
     selected.push(tabac[i].value);
+    aff.push(tabac[i].text);
   }
   console.log(selected);
+
+  if (selected.value != "") {
+    console.log("this is me")
+    document.getElementById("tabac-fiche").removeAttribute("hidden");
+    document.getElementById("tabac-display").innerHTML = aff;
+  } else {
+    document.getElementById("tabac-fiche").setAttribute("hidden", "");
+  }
 
 
   tabac.forEach(function (option) {

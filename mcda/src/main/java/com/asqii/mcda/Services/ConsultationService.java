@@ -250,64 +250,55 @@ public class ConsultationService {
         return consultationRepository.findById(id);
     }
 
-    public String calculerT(Integer classe_tumeur, String description_t) {
+    public String calculerT(Integer classe_tumeur, int description_t) {
         String t = "";
-        if (description_t.equals("T0")) {
+        if (description_t == 5) {
             t = "T0";
-        } else if (description_t.equals("Tis")) {
+        } else if (description_t == 6) {
             t = "Tis";
         } else if (classe_tumeur <= 20) {
-            if (description_t.equals(
-                    "Extension à la paroi thoracique (côtes, muscles intercostaux) en excluant les muscles pectoraux")) {
+            if (description_t == 1) {
                 t = "T4a";
-            } else if (description_t.equals(
-                    "Œdème (y compris peau d'orange) et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du même sein")) {
+            } else if (description_t == 2) {
                 t = "T4b";
-            } else if (description_t.equals(
-                    "Extension à la paroi thoracique avec œdème et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du même sein")) {
+            } else if (description_t == 3) {
                 t = "T4c";
-            } else if (description_t.equals("Œdème/érythème atteignant plus du 1/3 du sein")) {
+            } else if (description_t == 4) {
                 t = "T4d";
-            } else if (description_t.equals("Tumeur palpable")) {
+            } else if (description_t == 7) {
                 t = "T1";
             }
         } else if (21 <= classe_tumeur && classe_tumeur <= 50) {
-            if (description_t.equals(
-                    "Extension à la paroi thoracique (côtes, muscles intercostaux) en excluant les muscles pectoraux")) {
+            if (description_t == 1) {
                 t = "T4a";
-            } else if (description_t.equals(
-                    "Œdème (y compris peau d'orange) et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du même sein")) {
+            } else if (description_t == 2) {
                 t = "T4b";
-            } else if (description_t.equals(
-                    "Extension à la paroi thoracique avec œdème et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du même sein")) {
+            } else if (description_t == 3) {
                 t = "T4c";
-            } else if (description_t.equals("Œdème/érythème atteignant plus du 1/3 du sein")) {
+            } else if (description_t == 4) {
                 t = "T4d";
-            } else if (description_t.equals("Tumeur palpable")) {
+            } else if (description_t == 7) {
                 t = "T2";
             }
         } else if (classe_tumeur >= 50) {
-            if (description_t.equals(
-                    "Extension à la paroi thoracique (côtes, muscles intercostaux) en excluant les muscles pectoraux")) {
+            if (description_t == 1) {
                 t = "T4a";
-            } else if (description_t.equals(
-                    "Œdème (y compris peau d'orange) et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du même sein")) {
+            } else if (description_t == 2) {
                 t = "T4b";
-            } else if (description_t.equals(
-                    "Extension à la paroi thoracique avec œdème et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du même sein")) {
+            } else if (description_t == 3) {
                 t = "T4c";
-            } else if (description_t.equals("Œdème/érythème atteignant plus du 1/3 du sein")) {
-                t = "T4d";
-            } else if (description_t.equals("Tumeur palpable")) {
-                t = "T3";
             }
+        } else if (description_t == 4) {
+            t = "T4d";
+        } else if (description_t == 7) {
+            t = "T3";
         }
         return t;
 
     }
 
     public String calculerCtnm(String t, String n, String m) {
-        String[] T = { "T0", "T1", "T2", "T3", "T4a", "T4b", "T4c", "T4d","Tis" };
+        String[] T = { "T0", "T1", "T2", "T3", "T4a", "T4b", "T4c", "T4d", "Tis" };
         String[] N = { "N0", "N1", "N2", "N3" };
         String[] M = { "M0", "Mx" };
         String ctnm = "";

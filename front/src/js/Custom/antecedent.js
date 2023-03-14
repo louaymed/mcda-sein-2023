@@ -1,3 +1,58 @@
+function affATCD(atcd) {
+    var option = atcd.options[atcd.selectedIndex];
+    var text = option.text;
+    console.log(text);
+    if (atcd.value != "") {
+        console.log("this is me")
+        document.getElementById("atcdm-fiche").removeAttribute("hidden");
+        document.getElementById("atcdm-display").innerHTML = text;
+    } else {
+        document.getElementById("atcdm-fiche").setAttribute("hidden", "");
+    }
+}
+
+
+
+
+
+function affATCDM(atcd) {
+    var option = atcd.options[atcd.selectedIndex];
+    var text = option.text;
+    // console.log(text);
+    if (atcd.value != "") {
+        document.getElementById("atcdc-fiche").removeAttribute("hidden");
+        if (atcd.value == 1) {
+
+            document.getElementById("atcdc-display").innerHTML = "Bénigne";
+
+        } else {
+            document.getElementById("atcdc-display").innerHTML = "Maligne";
+        }
+        document.getElementById("pat-fiche").removeAttribute("hidden");
+
+    } else {
+        document.getElementById("atcdc-fiche").setAttribute("hidden", "");
+        document.getElementById("pat-fiche").setAttribute("hidden", "");
+
+    }
+}
+
+function affPat(that) {
+    if (that.id == "detail-path") {
+        var option = that.options[that.selectedIndex];
+        var text = option.text;
+        console.log(text);
+        document.getElementById("pat-display").innerHTML = text;
+    } else {
+        var option = that.options[that.selectedIndex];
+        var text = option.text;
+        console.log(text);
+        document.getElementById("pat-display").innerHTML = text;
+    }
+
+}
+
+
 function disableThoraxOptions(thorac) {
     var myBrElements = document.getElementsByClassName("ant-r-br");
     if (thorac.value == "" || thorac.value == 0) {
@@ -143,15 +198,11 @@ function disableEnqOptions(enq) {
 
 function blockNext(data) {
     if (data.value != "0" && data.value != "") {
-        document.getElementById("type-cancer-label").removeAttribute("hidden");
-        document.getElementById("type-cancer").removeAttribute("hidden");
-        document.getElementById("enquete-label").removeAttribute("hidden");
-        document.getElementById("enquete").removeAttribute("hidden");
+        document.getElementById("fam-sub").removeAttribute("hidden");
+
     } else {
-        document.getElementById("type-cancer-label").setAttribute("hidden", "");
-        document.getElementById("type-cancer").setAttribute("hidden", "");
-        document.getElementById("enquete-label").setAttribute("hidden", "");
-        document.getElementById("enquete").setAttribute("hidden", "");
+        document.getElementById("fam-sub").setAttribute("hidden", "");
+
     }
 }
 
@@ -166,7 +217,7 @@ function openSubSubOnglet(event, SubongletName) {
     for (i = 0; i < tabBtn.length; i++) {
         tabBtn[i].classList.replace("btn-primary", "btn-light");
     }
-    onglets = document.getElementsByClassName("onglet");
+    onglets = document.getElementsByClassName("sub-sub-onglet");
     for (i = 0; i < tabDiv.length; i++) {
         onglets[i].className = onglets[i].className.replace(" actif", "");
     }
@@ -179,37 +230,43 @@ function openSubSubOnglet(event, SubongletName) {
 
 
 function enableChirMam(mam) {
-    var mam = document.querySelectorAll("#mamm option:checked");
 
-    mam.forEach(function (option) {
-        var mamValue = option.value;
-        if (mamValue != "") {
-            if (mamValue == 1) {
-                document.getElementById("benigne-o-h").removeAttribute("hidden");
-                document.getElementById("benigne-o").removeAttribute("hidden");
-                document.getElementById("benigne-o-h").click();
+    if (mam != "") {
+        document.getElementById("maam-ch").removeAttribute("hidden");
+        var mam = document.querySelectorAll("#mamm option:checked");
+
+        mam.forEach(function (option) {
+            var mamValue = option.value;
+            if (mamValue != "") {
+                if (mamValue == 1) {
+                    document.getElementById("benigne-o-h").removeAttribute("hidden");
+                    document.getElementById("benigne-o").removeAttribute("hidden");
+                    document.getElementById("benigne-o-h").click();
+                } else {
+                    document.getElementById("benigne-o-h").setAttribute("hidden", "");
+                    document.getElementById("benigne-o").setAttribute("hidden", "");
+
+                }
+
+                if (mamValue == 2) {
+                    document.getElementById("maligne-o-h").removeAttribute("hidden");
+                    document.getElementById("maligne-o").removeAttribute("hidden");
+                    document.getElementById("maligne-o-h").click();
+                } else {
+
+                    document.getElementById("maligne-o-h").setAttribute("hidden", "");
+                    document.getElementById("maligne-o").setAttribute("hidden", "");
+                }
             } else {
                 document.getElementById("benigne-o-h").setAttribute("hidden", "");
                 document.getElementById("benigne-o").setAttribute("hidden", "");
-
-            }
-
-            if (mamValue == 2) {
-                document.getElementById("maligne-o-h").removeAttribute("hidden");
-                document.getElementById("maligne-o").removeAttribute("hidden");
-                document.getElementById("maligne-o-h").click();
-            } else {
-
                 document.getElementById("maligne-o-h").setAttribute("hidden", "");
                 document.getElementById("maligne-o").setAttribute("hidden", "");
             }
-        } else {
-            document.getElementById("benigne-o-h").setAttribute("hidden", "");
-            document.getElementById("benigne-o").setAttribute("hidden", "");
-            document.getElementById("maligne-o-h").setAttribute("hidden", "");
-            document.getElementById("maligne-o").setAttribute("hidden", "");
-        }
-    })
+        })
+    } else {
+        document.getElementById("maam-ch").setAttribute("hidden", "");
+    }
 }
 
 

@@ -33,14 +33,15 @@ public class ConsultationController {
 
     public ConsultationController(ConsultationService consultationService) {
         this.consultationService = consultationService;
-}
+    }
+
     @PostMapping("/taille")
     @ResponseBody
     public String calculerT(@RequestBody Map<String, String> tum) {
         Integer classe_tumeur = 0;
-        String desc = "";
+        int desc;
         classe_tumeur = Integer.parseInt(tum.get("taille"));
-        desc = tum.get("desc");
+        desc = Integer.parseInt(tum.get("desc"));
         System.out.println(classe_tumeur);
         System.out.println(desc);
         return consultationService.calculerT(classe_tumeur, desc);

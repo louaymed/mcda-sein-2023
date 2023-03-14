@@ -48,69 +48,6 @@
         </div>
       </header>
 
-      <!-- <nav id="navbar">
-        <div class="row">
-          <div class="col-sm-8 saisie_header">
-            <div>
-              <select
-                id="big-choice"
-                onchange="changeNav();"
-                style="background: #bfbfbf; color: #0a007a; border: none; border-radius: 5px; width: 150px; padding: 7px; margin-right: 15px"
-              >
-                <option value="0">Traitement Initial</option>
-                <option value="1">Traitement Actuel</option>
-              </select>
-            </div> -->
-
-      <!-- Pec Initial -->
-      <!-- <div id="pec-in" class="row">
-              <div class="scroll row saisie_header" style="overflow: auto; padding-left: 30px">
-                <div>
-                  <button id="profile-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'profil')">Profile</button>
-                  <button id="habitude-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'habitudes')">Habitudes</button>
-                  <button id="antecedent-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'antecedents');">Antécédents</button>
-                  <button id="gyneco-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'gyneco');">Gynéco</button>
-                  <button id="clinique-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'clinique');">Clinique</button>
-                  <button id="examen-h" class="btn btn-light col-sm-3" onclick="openOnglet(event, 'examen-diagnostic');">
-                    Examens Complémentaires
-                  </button>
-                  <button id="biopsie-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'biopsie');">Biopsie</button>
-                  <button id="bilan-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'bilan-extension');">Bilan d'Extension</button>
-                  <button id="PEC-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'PEC');">PEC</button>
-                  <button id="chimio-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'chimio-o');" hidden>Chimio</button>
-                  <button id="radio-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'radio-o');" hidden>Radio</button>
-                  <button id="chirurgie-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'chirurgie-o');" hidden>Chirurgie</button>
-                  <button id="hormo-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'hormo-o');" hidden>Hormo</button>
-                  <button id="bilan-pre-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'bilan-pre-o');">Bilan Préthérapautique</button>
-                </div>
-              </div>
-            </div> -->
-
-      <!-- Pec Actuel -->
-      <!-- <div id="pec-act" hidden>
-              <div class="scroll row saisie_header" style="overflow: auto; padding-left: 30px">
-                <div>
-                  <button id="profile-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'profil')">Profile</button>
-                  <button id="habitude-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'habitudes')">Habitudes</button>
-                  <button id="antecedent-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'antecedents');">Antécédents</button>
-                  <button id="gyneco-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'gyneco');">Gynéco</button>
-                  <button id="clinique-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'clinique');">Clinique</button>
-                  <button id="examen-h" class="btn btn-light col-sm-3" onclick="openOnglet(event, 'examen-diagnostic');">
-                    Examens Complémentaires
-                  </button>
-                  <button id="biopsie-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'biopsie');">Biopsie</button>
-                  <button id="bilan-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'bilan-extension');">Bilan d'Extension</button>
-                  <button id="PEC-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'PEC');">PEC</button>
-                  <button id="chimio-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'chimio-o');" hidden>Chimio</button>
-                  <button id="radio-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'radio-o');" hidden>Radio</button>
-                  <button id="chirurgie-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'chirurgie-o');" hidden>Chirurgie</button>
-                  <button id="hormo-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'hormo-o');" hidden>Hormo</button>
-                  <button id="bilan-pre-h" class="btn btn-light col-sm-2" onclick="openOnglet(event, 'bilan-pre-o');">Bilan Préthérapautique</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
       <!-- Nav Bar -->
       <nav id="navbar">
         <div class="row">
@@ -400,7 +337,7 @@
                       </div>
                     </div>
                     <label id="atcd-med-label"> Antécédents médicaux :</label>
-                    <select size="4" id="atcd-med" multiple onchange="enableAutre(this)">
+                    <select size="4" id="atcd-med" multiple onchange="enableAutre(this); affATCD(this);">
                       <option value="hta">HTA</option>
                       <option value="diabete">Diabète</option>
                       <option value="cardiaque">Insuffisance Cardiaque</option>
@@ -412,14 +349,14 @@
 
                     <br />
                     <label id="atcd-chirugie"> Antécédents Chirurgie mammaire :</label>
-                    <select id="mamm" onchange="enableChirMam(this)">
+                    <select id="mamm" onchange="enableChirMam(this); affATCDM(this);">
                       <option value="">Non</option>
                       <option value="1">Pathologie bénigne mammaire</option>
                       <option value="2">Pathologie maligne mammaire</option>
                     </select>
 
-                    <div id="maam-ch">
-                      <nav id="navbar-b">
+                    <div id="maam-ch" hidden>
+                      <nav id="navbar-P">
                         <div class="row">
                           <div class="col-sm-10" style="margin-top: 30px; margin-left: 30px">
                             <div class="scroll row sub-saisie_header" style="overflow: auto">
@@ -437,7 +374,7 @@
                       <!-- Benigne -->
                       <div id="benigne-o" class="sub-onglet" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)" hidden>
                         <label id="detail-path-label" for="thorac-date"> Détails de la Pathologie :</label>
-                        <select id="detail-path" onchange="enableAutre(this)">
+                        <select id="detail-path" onchange="enableAutre(this); affPat(this);">
                           <option value=""></option>
                           <option value="1">Adénofibronme</option>
                           <option value="2">DFK</option>
@@ -454,8 +391,8 @@
 
                       <!-- Maligne -->
                       <div id="maligne-o" class="sub-onglet" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)" hidden>
-                        <label id="detail-path-label" for="thorac-date"> Détails de la Pathologie :</label>
-                        <select id="detail-path-ben" onchange="enableAutre(this)">
+                        <label id="m-detail-path-label" for="thorac-date"> Détails de la Pathologie :</label>
+                        <select id="m-detail-path-ben" onchange="enableAutre(this); affPat(this);">
                           <option value=""></option>
                           <option value="1">Carsinome canalaire infiltrant</option>
                           <option value="2">Carsinome lobulaire infiltrant</option>
@@ -465,8 +402,8 @@
 
                         <!-- Autre Text Field  -->
 
-                        <label id="detail-path-ben-autre-label" for="detail-path-ben-autre" hidden> Autre :</label>
-                        <input id="detail-path-ben-autre" type="text" placeholder="" hidden />
+                        <label id="m-detail-path-ben-autre-label" for="detail-path-ben-autre" hidden> Autre :</label>
+                        <input id="m-detail-path-ben-autre" type="text" placeholder="" hidden />
                         <br />
                         <br />
                         <label id="trait-label" for="thorac-vol"> Traitement reçu :</label>
@@ -582,44 +519,47 @@
                       <option value="0">Non</option>
                       <option value="1">Oui</option>
                     </select>
+                    <div id="fam-sub" hidden>
+                      <br />
+                      <br />
+                      <label id="type-cancer-label" for="type-cancer"> Type de Cancer :</label>
+                      <select id="type-cancer" size="4" style="height: 34pt margin-top=15px" multiple onchange="enableAutre(this)">
+                        <option value="Aucun">Aucun</option>
+                        <option value="Sein">Sein</option>
+                        <option value="Ovaire">Ovaire</option>
+                        <option value="Pancréas">Pancréas</option>
+                        <option value="Prostate">Prostate</option>
+                        <option value="Cerveau">Cerveau</option>
+                        <option value="Poumon">Poumon</option>
+                        <option value="Lymphome de Hodgkin">Lymphome de Hodgkin</option>
+                        <option value="Colorectal">Colorectal</option>
+                        <option value="Gastrique">Gastrique</option>
+                        <option value="Hépatobiliaire">Hépatobiliaire</option>
+                        <option value="autre">Autre</option>
+                      </select>
+                      <!-- Autre Text Field  -->
+                      <label id="type-cancer-autre-label" for="type-cancer-autre" hidden> Autre :</label>
+                      <input id="type-cancer-autre" type="text" placeholder="" hidden />
+                      <br />
+                      <label id="enquete-label" for="enquete">Enquête Génétique : </label>
+                      <select id="enquete" onchange="disableEnqOptions(this)" hidden>
+                        <option value=""></option>
+                        <option value="Non">Non précisé</option>
+                        <option value="Non">Non faite</option>
+                        <option value="Oui">Faite</option>
+                      </select>
+                      <label for="result" id="result-label" hidden>Résultat :</label>
+                      <select id="result" hidden onchange="enableAutre(this)">
+                        <option value="Non">Pas de mutation BRCA</option>
+                        <option value="Oui">Mutation BRCA</option>
+                        <option value="autre">Autre</option>
+                      </select>
+                      <br />
+                      <label id="result-autre-label" for="result-autre" hidden> Autre :</label>
+                      <input id="result-autre" type="text" placeholder="" hidden />
+                    </div>
                     <br />
-                    <br />
-                    <label id="type-cancer-label" for="type-cancer" hidden> Type de Cancer :</label>
-                    <select id="type-cancer" size="4" style="height: 34pt margin-top=15px" multiple onchange="enableAutre(this)" hidden>
-                      <option value="Aucun">Aucun</option>
-                      <option value="Sein">Sein</option>
-                      <option value="Ovaire">Ovaire</option>
-                      <option value="Pancréas">Pancréas</option>
-                      <option value="Prostate">Prostate</option>
-                      <option value="Cerveau">Cerveau</option>
-                      <option value="Poumon">Poumon</option>
-                      <option value="Lymphome de Hodgkin">Lymphome de Hodgkin</option>
-                      <option value="Colorectal">Colorectal</option>
-                      <option value="Gastrique">Gastrique</option>
-                      <option value="Hépatobiliaire">Hépatobiliaire</option>
-                      <option value="autre">Autre</option>
-                    </select>
-                    <!-- Autre Text Field  -->
-                    <label id="type-cancer-autre-label" for="type-cancer-autre" hidden> Autre :</label>
-                    <input id="type-cancer-autre" type="text" placeholder="" hidden />
-                    <br />
-                    <label id="enquete-label" for="enquete" hidden>Enquête Génétique : </label>
-                    <select id="enquete" onchange="disableEnqOptions(this)" hidden>
-                      <option value=""></option>
-                      <option value="Non">Non précisé</option>
-                      <option value="Non">Non faite</option>
-                      <option value="Oui">Faite</option>
-                    </select>
-                    <label for="result" id="result-label" hidden>Résultat :</label>
-                    <select id="result" hidden onchange="enableAutre(this)">
-                      <option value="Non">Pas de mutation BRCA</option>
-                      <option value="Oui">Mutation BRCA</option>
-                      <option value="autre">Autre</option>
-                    </select>
-                    <br />
-                    <label id="result-autre-label" for="result-autre" hidden> Autre :</label>
-                    <input id="result-autre" type="text" placeholder="" hidden />
-                    <br />
+
                     <label id="autre-label" for="autre-homme"> Remarques :</label>
                     <input id="autre-homme" type="text-area" placeholder="" />
                   </div>
@@ -639,12 +579,11 @@
                       </div>
                     </div>
                     <!--End Title -->
-
                     <label id="gestie">Gestité Parité : </label>
                     <label id="G-label" for="thorac-dose"> G</label>
-                    <input id="G" type="number" placeholder="" />
+                    <input id="G" type="number" placeholder="" oninput="affgyneco()" />
                     <label id="P-label" for="thorac-dose"> P</label>
-                    <input id="P" type="number" placeholder="" />
+                    <input id="P" type="number" placeholder="" oninput="affgyneco()" />
                     <br />
                     <label id="age-régle">Age de Premières Règles : </label>
                     <input id="age-regle" type="text" placeholder="Age de Premières Règles" />
@@ -657,17 +596,20 @@
                       <option value="PériMénoposée">PériMénopausée</option>
                       <option value="Ménoposée">Ménopausée</option>
                     </select>
-                    <label for="age-m" id="age-m-label" hidden>Age Ménopause :</label>
-                    <input type="text" id="age-m" placeholder="Année" hidden />
-                    <label for="ddr" id="ddr-label" hidden>DDR :</label>
-                    <input type="date" id="ddr" hidden />
-                    <br />
-                    <label for="dosage-option" id="dosage-label" hidden>Dosages_hormonaux_FSH_E2 :</label>
-                    <select id="dosage-option" hidden>
-                      <option value="2">Non Fait</option>
-                      <option value="0">Compatible avec une ménoapuse</option>
-                      <option value="1">Non compatible avec une ménoapuse</option>
-                    </select>
+                    <div id="meno-sub" hidden>
+                      <label for="age-m" id="age-m-label">Age Ménopause :</label>
+                      <input type="text" id="age-m" placeholder="Année" />
+
+                      <label for="ddr" id="ddr-label">DDR :</label>
+                      <input type="date" id="ddr" />
+
+                      <label for="dosage-option" id="dosage-label">Dosages_hormonaux_FSH_E2 :</label>
+                      <select id="dosage-option">
+                        <option value="2">Non Fait</option>
+                        <option value="0">Compatible avec une ménoapuse</option>
+                        <option value="1">Non compatible avec une ménoapuse</option>
+                      </select>
+                    </div>
                     <br />
                     <label id="">Allaitement :</label>
                     <select id="align-option" onchange="disableAllait(this)">
@@ -692,13 +634,13 @@
                     <input id="age-grossesse" type="text" placeholder="Age Première Grossesse" />
                     <br />
                     <label id="grossesse-label">Grossesse :</label>
-                    <select id="grossesse-option" onchange="enableSA()">
+                    <select id="grossesse-option" onchange="enableSA(); affGross();">
                       <option value=""></option>
                       <option value="0">Non</option>
                       <option value="1">Oui</option>
                     </select>
                     <label id="sa-label" hidden>SA :</label>
-                    <input type="number" id="sa" placeholder="Semaine" hidden />
+                    <input type="number" id="sa" placeholder="Semaine" hidden oninput="affGrossSA()" />
                     <br />
                     <label id="stimul-label">Stimulation Ovarienne :</label>
                     <select id="stimul-option" onchange="disableProd(this)">
@@ -735,8 +677,8 @@
                     <br />
                     <br />
 
-                    <div id="clini-nav">
-                      <nav id="navbar-b">
+                    <div id="clini-nav" hidden>
+                      <nav id="navbar-l">
                         <div class="row">
                           <div class="col-sm-10" style="margin-top: 30px; margin-left: 30px">
                             <div class="scroll row sub-saisie_header" style="overflow: auto">
@@ -752,7 +694,7 @@
                       </nav>
 
                       <!-- Sein Droit -->
-                      <div id="sein-g-o" class="sub-onglet" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)" hidden>
+                      <div id="sein-d-o" class="sub-onglet" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)" hidden>
                         <label> Signes Fonctionnels :</label>
                         <select id="signe-associes" onchange="enableAutre(this)" multiple>
                           <option value="1">Douleur</option>
@@ -773,25 +715,19 @@
                           <label id="description-t-label"> Description T: </label>
                           <select id="description-t-option" required>
                             <option value=""></option>
-                            <option value="Extension à la paroi thoracique (côtes, muscles intercostaux) en excluant les muscles pectoraux">
-                              Extension à la paroi thoracique (côtes, muscles intercostaux) en excluant les muscles pectoraux
-                            </option>
-                            <option
-                              value="Œdème (y compris peau d’orange) et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du même sein"
-                            >
+                            <option value="1">Extension à la paroi thoracique (côtes, muscles intercostaux) en excluant les muscles pectoraux</option>
+                            <option value="2">
                               Œdème (y compris peau d’orange) et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du
                               même sein
                             </option>
-                            <option
-                              value="Extension à la paroi thoracique avec œdème et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du même sein"
-                            >
+                            <option value="3">
                               Extension à la paroi thoracique avec œdème et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur
                               la peau du même sein
                             </option>
-                            <option value="Œdème/érythème atteignant plus du 1/3 du sein">Œdème/érythème atteignant plus du 1/3 du sein</option>
-                            <option value="Examen normal">Examen normal</option>
-                            <option value="Maladie du Paget du mamelon<">Maladie du Paget du mamelon</option>
-                            <option value="Tumeur palpable">Tumeur palpable</option>
+                            <option value="4">Œdème/érythème atteignant plus du 1/3 du sein</option>
+                            <option value="5">Examen normal</option>
+                            <option value="6">Maladie du Paget du mamelon</option>
+                            <option value="7">Tumeur palpable</option>
                           </select>
                           <br />
                           <label id="t">Taille: </label>
@@ -821,9 +757,9 @@
                       <!-- End Sein Gauche -->
 
                       <!-- Sein Gauche -->
-                      <div id="sein-d-o" class="sub-onglet" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)" hidden>
+                      <div id="sein-g-o" class="sub-onglet" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)" hidden>
                         <label> Signes Fonctionnels :</label>
-                        <select id="signe-associes" onchange="enableAutre(this)" multiple>
+                        <select id="g-signe-associes" onchange="enableAutre(this)" multiple>
                           <option value="1">Douleur</option>
                           <option value="2">Nodules mammaires</option>
                           <option value="3">Modifications Cutanées</option>
@@ -832,51 +768,45 @@
                           <option value="autre">Autres</option>
                         </select>
                         <!-- Autre Text Field  -->
-                        <label id="signe-associes-autre-label" for="signe-associes-autre" hidden> Autre :</label>
-                        <input id="signe-associes-autre" type="text" placeholder="" hidden />
+                        <label id="g-signe-associes-autre-label" for="signe-associes-autre" hidden> Autre :</label>
+                        <input id="g-signe-associes-autre" type="text" placeholder="" hidden />
                         <br />
                         <br />
                         <div style="padding-top: 30px; padding-left: 15px">
                           <h2>cTNM :</h2>
                           <br />
-                          <label id="description-t-label"> Description T: </label>
-                          <select id="description-t-option" required>
+                          <label id="g-description-t-label"> Description T: </label>
+                          <select id="g-description-t-option" required>
                             <option value=""></option>
-                            <option value="Extension à la paroi thoracique (côtes, muscles intercostaux) en excluant les muscles pectoraux">
-                              Extension à la paroi thoracique (côtes, muscles intercostaux) en excluant les muscles pectoraux
-                            </option>
-                            <option
-                              value="Œdème (y compris peau d’orange) et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du même sein"
-                            >
+                            <option value="1">Extension à la paroi thoracique (côtes, muscles intercostaux) en excluant les muscles pectoraux</option>
+                            <option value="2">
                               Œdème (y compris peau d’orange) et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du
                               même sein
                             </option>
-                            <option
-                              value="Extension à la paroi thoracique avec œdème et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur la peau du même sein"
-                            >
+                            <option value="3">
                               Extension à la paroi thoracique avec œdème et/ou ulcération de la peau du sein, et/ou nodules de perméation situés sur
                               la peau du même sein
                             </option>
-                            <option value="Œdème/érythème atteignant plus du 1/3 du sein">Œdème/érythème atteignant plus du 1/3 du sein</option>
-                            <option value="Examen normal">Examen normal</option>
-                            <option value="Maladie du Paget du mamelon<">Maladie du Paget du mamelon</option>
-                            <option value="Tumeur palpable">Tumeur palpable</option>
+                            <option value="4">Œdème/érythème atteignant plus du 1/3 du sein</option>
+                            <option value="5">Examen normal</option>
+                            <option value="6">Maladie du Paget du mamelon</option>
+                            <option value="7">Tumeur palpable</option>
                           </select>
                           <br />
-                          <label id="t">Taille: </label>
-                          <input id="taille-tumeur" type="number" min="1" max="10" placeholder="Mm" required />
+                          <label id="g-t">Taille: </label>
+                          <input id="g-taille-tumeur" type="number" min="1" max="10" placeholder="Mm" required />
                           <br />
                           <br />
-                          <label for="siege-tumoral">Siège tumoral :</label>
-                          <select name="siege-tumoral" id="siege-tumoral" multiple size="3" style="width: auto; height: auto">
+                          <label for="g-siege-tumoral">Siège tumoral :</label>
+                          <select name="g-siege-tumoral" id="g-siege-tumoral" multiple size="3" style="width: auto; height: auto">
                             <option value="QIE">QIE</option>
                             <option value="QSE">QSE</option>
                             <option value="QII">QII</option>
                             <option value="QSI">QSI</option>
                             <option value="Central">Centrale</option></select
                           ><br />
-                          <label id="description-n-label"> Description N : </label>
-                          <select id="description-n-option" required>
+                          <label id="g-description-n-label"> Description N : </label>
+                          <select id="g-description-n-option" required>
                             <option value=""></option>
                             <option value="N0">Absence de métastase ganglionnaire</option>
                             <option value="N1">Ganglions Axillaire Mobile</option>
@@ -886,17 +816,16 @@
                         </div>
                         <!-- End Sein Gauche -->
                       </div>
-
-                      <label id="metastase-suspecte-label"> Metastase Suspecte :</label>
-                      <select id="metastase-suspecte-option">
-                        <option value=""></option>
-                        <option value="Mx">Non</option>
-                        <option value="Mx">Oui</option>
-                      </select>
-                      <br />
-                      <label id="bonet-sein-label" , for="bonet-sein">Bonnet du Sein :</label>
-                      <input type="text" id="bonet-sein" />
                     </div>
+                    <label id="metastase-suspecte-label"> Metastase Suspecte :</label>
+                    <select id="metastase-suspecte-option">
+                      <option value=""></option>
+                      <option value="Mx">Non</option>
+                      <option value="Mx">Oui</option>
+                    </select>
+                    <br />
+                    <label id="bonet-sein-label" , for="bonet-sein">Bonnet du Sein :</label>
+                    <input type="text" id="bonet-sein" />
                   </div>
                   <!-- End Clinique Onglet -->
 
@@ -913,14 +842,14 @@
                     </div>
                     <!--End Title -->
                     <label id="echo-label"> Echomamographie :</label>
-                    <select id="echo" onchange="enableEcho(this)">
+                    <select id="echo" onchange="enableEcho(this); affEcho();">
                       <option value=""></option>
                       <option value="0">Non</option>
                       <option value="1">Oui</option>
                     </select>
 
-                    <div id="clini-nav">
-                      <nav id="navbar-b">
+                    <div id="echo-nav" hidden>
+                      <nav id="navbar-e">
                         <div class="row">
                           <div class="col-sm-10" style="margin-top: 30px; margin-left: 30px">
                             <div class="scroll row sub-saisie_header" style="overflow: auto">
@@ -948,7 +877,7 @@
                       <!-- Sein Gauche -->
                       <div id="echo-sein-g-o" class="sub-onglet" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)" hidden>
                         <label id="echomamo-g-label"> Echomamographie : </label>
-                        <select id="echomamo-g-options" required>
+                        <select id="echomamo-g-options" required onchange="affEcho()">
                           <option value=""></option>
                           <option value="0">BI-RADS 0</option>
                           <option value="1">BI-RADS 1</option>
@@ -995,7 +924,7 @@
                       <!-- Sein Droit -->
                       <div id="echo-sein-d-o" class="sub-onglet" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)" hidden>
                         <label id="echomamo-d-label"> Echomamographie : </label>
-                        <select id="echomamo-d-options" required>
+                        <select id="echomamo-d-options" required onchange="affEcho()">
                           <option value=""></option>
                           <option value="0">BI-RADS 0</option>
                           <option value="1">BI-RADS 1</option>
@@ -1038,7 +967,7 @@
                         </select>
                       </div>
                     </div>
-
+                    <br />
                     <label id="irm-label"> IRM : </label>
                     <select id="irm-options" required onchange="enableDate(this)">
                       <option value=""></option>
@@ -1180,8 +1109,8 @@
                             <option value=""></option>
                             <option value="0">+</option>
                             <option value="1">++</option>
-                            <option value="2">+++</option></select
-                          ><br />
+                            <option value="2">+++</option>
+                          </select>
                           <label id="fish-label" hidden> FISH: </label>
                           <select id="fish" required hidden onchange="enableFishRes()">
                             <option value=""></option>
@@ -1192,8 +1121,8 @@
                           <select id="res" required hidden>
                             <option value=""></option>
                             <option value="0">Non surexprimé</option>
-                            <option value="1">Surexrpimé</option></select
-                          ><br />
+                            <option value="1">Surexrpimé</option>
+                          </select>
                           <label> Ki67: </label>
                           <select id="ki67_options" required>
                             <option value=""></option>
@@ -1277,8 +1206,8 @@
                             <option value=""></option>
                             <option value="0">+</option>
                             <option value="1">++</option>
-                            <option value="2">+++</option></select
-                          ><br />
+                            <option value="2">+++</option>
+                          </select>
                           <label id="d-fish-label" hidden> FISH: </label>
                           <select id="d-fish" required hidden onchange="enableFishRes()">
                             <option value=""></option>
@@ -1289,8 +1218,8 @@
                           <select id="d-res" required hidden>
                             <option value=""></option>
                             <option value="0">Non surexprimé</option>
-                            <option value="1">Surexrpimé</option></select
-                          ><br />
+                            <option value="1">Surexrpimé</option>
+                          </select>
                           <label> Ki67: </label>
                           <select id="d-ki67_options" required>
                             <option value=""></option>
@@ -1379,8 +1308,8 @@
                             <option value=""></option>
                             <option value="0">+</option>
                             <option value="1">++</option>
-                            <option value="2">+++</option></select
-                          ><br />
+                            <option value="2">+++</option>
+                          </select>
                           <label id="ah-fish-label" hidden> FISH: </label>
                           <select id="ah-fish" required hidden onchange="enableFishRes()">
                             <option value=""></option>
@@ -1391,8 +1320,8 @@
                           <select id="ah-res" required hidden>
                             <option value=""></option>
                             <option value="0">Non surexprimé</option>
-                            <option value="1">Surexrpimé</option></select
-                          ><br />
+                            <option value="1">Surexrpimé</option>
+                          </select>
                           <label> Ki67: </label>
                           <select id="ah-ki67_options" required>
                             <option value=""></option>
@@ -1481,8 +1410,8 @@
                             <option value=""></option>
                             <option value="0">+</option>
                             <option value="1">++</option>
-                            <option value="2">+++</option></select
-                          ><br />
+                            <option value="2">+++</option>
+                          </select>
                           <label id="ac-fish-label" hidden> FISH: </label>
                           <select id="ac-fish" required hidden onchange="enableFishRes()">
                             <option value=""></option>
@@ -1493,8 +1422,8 @@
                           <select id="ac-res" required hidden>
                             <option value=""></option>
                             <option value="0">Non surexprimé</option>
-                            <option value="1">Surexrpimé</option></select
-                          ><br />
+                            <option value="1">Surexrpimé</option>
+                          </select>
                           <label> Ki67: </label>
                           <select id="ac-ki67_options" required>
                             <option value=""></option>
@@ -1583,8 +1512,8 @@
                             <option value=""></option>
                             <option value="0">+</option>
                             <option value="1">++</option>
-                            <option value="2">+++</option></select
-                          ><br />
+                            <option value="2">+++</option>
+                          </select>
                           <label id="sh-fish-label" hidden> FISH: </label>
                           <select id="sh-fish" required hidden onchange="enableFishRes()">
                             <option value=""></option>
@@ -1595,8 +1524,8 @@
                           <select id="sh-res" required hidden>
                             <option value=""></option>
                             <option value="0">Non surexprimé</option>
-                            <option value="1">Surexrpimé</option></select
-                          ><br />
+                            <option value="1">Surexrpimé</option>
+                          </select>
                           <label> Ki67: </label>
                           <select id="sh-ki67_options" required>
                             <option value=""></option>
@@ -1685,8 +1614,8 @@
                             <option value=""></option>
                             <option value="0">+</option>
                             <option value="1">++</option>
-                            <option value="2">+++</option></select
-                          ><br />
+                            <option value="2">+++</option>
+                          </select>
                           <label id="sc-fish-label" hidden> FISH: </label>
                           <select id="sc-fish" required hidden onchange="enableFishRes()">
                             <option value=""></option>
@@ -1697,8 +1626,8 @@
                           <select id="sc-res" required hidden>
                             <option value=""></option>
                             <option value="0">Non surexprimé</option>
-                            <option value="1">Surexrpimé</option></select
-                          ><br />
+                            <option value="1">Surexrpimé</option>
+                          </select>
                           <label> Ki67: </label>
                           <select id="sc-ki67_options" required>
                             <option value=""></option>
@@ -1787,8 +1716,8 @@
                             <option value=""></option>
                             <option value="0">+</option>
                             <option value="1">++</option>
-                            <option value="2">+++</option></select
-                          ><br />
+                            <option value="2">+++</option>
+                          </select>
                           <label id="a-fish-label" hidden> FISH: </label>
                           <select id="a-fish" required hidden onchange="enableFishRes()">
                             <option value=""></option>
@@ -1799,8 +1728,8 @@
                           <select id="a-res" required hidden>
                             <option value=""></option>
                             <option value="0">Non surexprimé</option>
-                            <option value="1">Surexrpimé</option></select
-                          ><br />
+                            <option value="1">Surexrpimé</option>
+                          </select>
                           <label> Ki67: </label>
                           <select id="a-ki67_options" required>
                             <option value=""></option>
@@ -1947,7 +1876,7 @@
                     <br />
                     <hr />
                     <label id="conc-label"> Conclusion :</label>
-                    <select id="conc" onchange="enableSeige()">
+                    <select id="conc" onchange="enableSeige(); getTNM();">
                       <option value=""></option>
                       <option value="0">Pas de Métastase</option>
                       <option value="1">Métastase</option>
@@ -2277,32 +2206,33 @@
             </div>
           </div>
           <!-- Fiche Patient Labels -->
-          <div class="col-sm-4 lecture_section">
+          <div class="col-sm-4" id="fiche">
             <!-- Fiche Labels-->
-            <div>
-              <label>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
-                  <path
-                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
-                  />
-                </svg>
-                Sexe :
-                <span id="sexe-display" class="champs"> </span>
-              </label>
+            <div class="row" style="margin: 10px">
+              <div id="sexe-fiche" hidden>
+                <label>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                    />
+                  </svg>
+                  Sexe :
+                  <span id="sexe-display" class="champs"> </span>
+                </label>
+              </div>
+              <div style="margin-left: 50px" id="age-fiche" hidden>
+                <label>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                    />
+                  </svg>
+                  Age :
+                  <span id="age-display" class="champs"> </span>
+                </label>
+              </div>
             </div>
-            <div>
-              <label>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
-                  <path
-                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
-                  />
-                </svg>
-                Age :
-                <span id="age-display" class="champs"> </span>
-              </label>
-            </div>
-
-            <div>
+            <div id="tabac-fiche" hidden>
               <label>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
                   <path
@@ -2313,30 +2243,142 @@
                 <span id="tabac-display" class="champs"> </span>
               </label>
             </div>
-            <div>
+            <div id="atcdm-fiche" hidden>
               <label>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
                   <path
                     d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
                   />
                 </svg>
-                Sous-type :
-                <span id="soutype-display" class="champs"> </span>
+                ATCD médicaux :
+                <span id="atcdm-display" class="champs"> </span>
+              </label>
+            </div>
+            <div id="atcdc-fiche" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                  />
+                </svg>
+                ATCD Chirurgie Mammaire :
+                <span id="atcdc-display" class="champs"> </span>
+              </label>
+            </div>
+            <div id="pat-fiche" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                  />
+                </svg>
+                Détail de la Pathologie :
+                <span id="pat-display" class="champs"> </span>
+              </label>
+            </div>
+            <div id="gp-fiche" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                  />
+                </svg>
+                GP :
+                <span id="gp-display" class="champs"> </span>
+              </label>
+            </div>
+            <div id="sm-fiche" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                  />
+                </svg>
+                Statut Ménoposique :
+                <span id="sm-display" class="champs"> </span>
+              </label>
+            </div>
+            <div class="row" style="margin: 10px">
+              <div id="gross-fiche" hidden>
+                <label>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                    />
+                  </svg>
+                  Grossesse
+                  <span id="gross-display" class="champs"> </span>
+                </label>
+              </div>
+              <div id="gross-sa-fiche" style="margin-left: 50px" hidden>
+                <label>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                    />
+                  </svg>
+                  SA :
+                  <span id="gsa-display" class="champs"> </span>
+                </label>
+              </div>
+            </div>
+            <div id="d-ctnm-fiche" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                  />
+                </svg>
+                cTNM Droit:
+                <span id="d-ctnm-display" class="champs"> </span>
               </label>
             </div>
 
-            <div>
+            <div id="g-ctnm-fiche" hidden>
               <label>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
                   <path
                     d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
                   />
                 </svg>
-                cTNM :
-                <span id="ctnm-display" class="champs"> </span>
+                cTNM Gauche:
+                <span id="g-ctnm-display" class="champs"> </span>
               </label>
             </div>
-            <div>
+            <div id="d-echo-fiche" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                  />
+                </svg>
+                Echo Droit:
+                <span id="d-echo-display" class="champs"> </span>
+              </label>
+            </div>
+            <div id="g-echo-fiche" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                  />
+                </svg>
+                Echo Gauche:
+                <span id="g-echo-display" class="champs"> </span>
+              </label>
+            </div>
+            <div id="histo-fiche" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                  />
+                </svg>
+                Histologie :
+                <span id="histo-display" class="champs"> </span>
+              </label>
+            </div>
+            <div id="rh-e-fiche" hidden>
               <label>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
                   <path
@@ -2347,7 +2389,7 @@
                 <span id="rh-e-display" class="champs"> </span>
               </label>
             </div>
-            <div>
+            <div id="rh-p-fiche" hidden>
               <label>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
                   <path
@@ -2358,7 +2400,7 @@
                 <span id="rh-p-display" class="champs"> </span>
               </label>
             </div>
-            <div>
+            <div id="her1-fiche" hidden>
               <label>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
                   <path
@@ -2367,6 +2409,39 @@
                 </svg>
                 HER2 :
                 <span id="her1-display" class="champs"> </span>
+              </label>
+            </div>
+            <div id="sous-fiche" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                  />
+                </svg>
+                Sous-type :
+                <span id="soutype-display" class="champs"> </span>
+              </label>
+            </div>
+            <div id="tnm-fiche" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                  />
+                </svg>
+                TNM :
+                <span id="tnm-display" class="champs"> </span>
+              </label>
+            </div>
+            <div id="rcp-fiche" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
+                  />
+                </svg>
+                Décision RCP :
+                <span id="rcp-display" class="champs"> </span>
               </label>
             </div>
           </div>

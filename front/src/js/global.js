@@ -171,9 +171,17 @@ function navigate(divID, nextDivID, ...display) {
         var age = document.getElementById("age").value;
         // console.log(age);
         // console.log("this is :" + data_element[i].value);
-        document.getElementById("sexe-display").innerHTML = sexe;
-        document.getElementById("age-display").innerHTML = age;
+        if (sexe != "") {
+            console.log("this is me")
+            document.getElementById("sexe-fiche").removeAttribute("hidden");
+            document.getElementById("age-fiche").removeAttribute("hidden");
 
+            document.getElementById("sexe-display").innerHTML = sexe;
+            document.getElementById("age-display").innerHTML = age;
+        } else {
+            document.getElementById("sexe-fiche").setAttribute("hidden", "");
+            document.getElementById("age-fiche").setAttribute("hidden", "");
+        }
 
         document.getElementById(display[i]).innerHTML = data_element[i].value;
     }
@@ -234,16 +242,19 @@ function nav7() {
 
 // T
 document.addEventListener("DOMContentLoaded", function () {
-    var clinique = document.getElementById("clinique");
-    if (clinique) {
-        clinique.addEventListener('click', calcT);
+    var seind = document.getElementById("sein-d-o");
+    var seing = document.getElementById("sein-g-o");
+    if (seind || seing) {
+        seind.addEventListener('click', calcT); 
+        seing.addEventListener('click', calcT);
     }
+    
 },)
 
 function calcT() {
     var taille = document.getElementById("taille-tumeur").value;
     var description = document.getElementById("description-t-option").value;
-    // console.log("this is taille :" + JSON.stringify(taille));
+    console.log("this is taille :" + JSON.stringify(taille));
 
     var myMap = {
         taille: taille,
@@ -330,7 +341,7 @@ function getHer2() {
 
 // CTNM
 document.addEventListener("DOMContentLoaded", function () {
-    var ctnm = document.getElementById("clin-next");
+    var ctnm = document.getElementById("clinique");
     if (ctnm) {
         ctnm.addEventListener('click', getCtnm);
     }
@@ -340,10 +351,10 @@ document.addEventListener("DOMContentLoaded", function () {
 function getCtnm() {
     var N = document.getElementById("description-n-option").value;
     var M = document.getElementById("metastase-suspecte-option").value;
-    // console.log("this N");
-    // console.log(N);
-    // console.log("this M");
-    // console.log(M);
+    console.log("this N");
+    console.log(N);
+    console.log("this M");
+    console.log(M);
 
     var myMap = {
         T: T,
@@ -364,12 +375,31 @@ function getCtnm() {
             // console.log("this is CTNM ");
             CTNM = data
             // console.log(CTNM)
-            document.getElementById("ctnm-display").innerHTML = CTNM;
+            if (CTNM != "") {
+
+                console.log("this is me")
+                document.getElementById("d-ctnm-fiche").removeAttribute("hidden");
+                document.getElementById("d-ctnm-display").innerHTML = CTNM;
+            } else {
+                document.getElementById("d-ctnm-fiche").setAttribute("hidden", "");
+            }
+
+
         })
         .catch(error => {
             console.log("Error", error);
 
         })
+}
+
+var tnm;
+function getTNM() {
+    tnm = CTNM.slice(0, -2); // remove the last 2 characters
+    console.log(tnm);
+    tnm = tnm + " " + M;
+    console.log("this is tnm");
+    console.log(tnm)
+    document.getElementById("tnm-display").innerHTML = tnm;
 }
 
 
@@ -386,6 +416,30 @@ document.addEventListener("DOMContentLoaded", function () {
             var HER2 = document.getElementById("her2_options").value;
             var ki67 = document.getElementById("ki67_options").value;
             var soutype;
+
+
+
+            var histo = document.getElementById("histo-options");
+            var option = histo.options[histo.selectedIndex];
+            var histotext = option.text;
+            // console.log(text);
+            document.getElementById("histo-display").innerHTML = histotext;
+
+
+            var rhe = document.getElementById("rhe_options");
+            option = rhe.options[rhe.selectedIndex];
+            var rhetext = option.text;
+            document.getElementById("rh-e-display").innerHTML = rhetext;
+
+            var pr = document.getElementById("rhp_options");
+            option = pr.options[pr.selectedIndex];
+            var prtext = option.text;
+            document.getElementById("rh-p-display").innerHTML = prtext;
+
+            var her2 = document.getElementById("her2_options");
+            option = her2.options[her2.selectedIndex];
+            var her2text = option.text;
+            document.getElementById("her1-display").innerHTML = her2text;
             if (RH_E == "0" && PR == "0" && HER2 == "0") {
                 // console.log("triple negatif");
                 soutype = "triple negatif";
@@ -432,7 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Menopose output
 document.addEventListener("DOMContentLoaded", function () {
-    var genico = document.getElementById("genico");
+    var genico = document.getElementById("gyneco");
     if (genico) {
         genico.addEventListener('click', getMenoOutput);
     }
@@ -442,26 +496,31 @@ document.addEventListener("DOMContentLoaded", function () {
 function getMenoOutput() {
     var statut = document.getElementById("menopose").value;
     var dosage = document.getElementById("dosage-option").value;
-    // console.log(statut)
+    console.log(statut)
 
-    if (statut == "Ménoposé") {
+    if (statut == "Ménoposée") {
         var statut = document.getElementById("menopose").value;
         output = "Oui";
-        // console.log("this is output");
+
+        document.getElementById("sm-display").innerHTML = "Ménoposée";
+        console.log("this is output");
         // console.log(output);
-    } else if (statut == "Non Ménoposé") {
+    } else if (statut == "Non Ménoposée") {
         var statut = document.getElementById("menopose").value;
         output = "Non";
+        document.getElementById("sm-display").innerHTML = "Non Ménoposée";
         // console.log("this is output");
         // console.log(output);
-    } else if (statut == "PériMénoposé") {
+    } else if (statut == "PériMénoposée") {
         var dosage = document.getElementById("dosage-option").value;
         if (dosage == 0) {
             output = "Oui";
+            document.getElementById("sm-display").innerHTML = "Ménoposée";
             // console.log("this is output");
             // console.log(output);
         } else {
             output = "Non";
+            document.getElementById("sm-display").innerHTML = "Non Ménoposée";
             // console.log("this is output");
             // console.log(output);
 
@@ -495,7 +554,7 @@ function getBilan() {
     }
     // console.log(m_ossuse)
     // M
-    if (scin == 0 && conc == 0) {
+    if (conc == 0) {
         M = "M0";
     } else {
         M = "M1";
@@ -646,42 +705,88 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     var decision = document.getElementById("PEC");
     if (decision) {
-        decision.addEventListener('click', showPec);
+        decision.addEventListener('click', getpec);
     }
 },)
 
-function showPec() {
-    var chimio = document.getElementById("chimio");
-    var radio = document.getElementById("radio");
-    var chirurgie = document.getElementById("chirurgie");
-    var hormo = document.getElementById("hormo");
 
-    if (chimio.checked || radio.checked || chirurgie.checked || hormo.checked) {
-        if (chimio.checked) {
-            document.getElementById("chimio-h").removeAttribute("hidden");
+var result = "";
+function getpec() {
+    // Add event listeners to each checkbox
+    document.getElementById("chimio").addEventListener("click", function () {
+        showPec(this);
+    });
+    document.getElementById("radio").addEventListener("click", function () {
+        showPec(this);
+    });
+    document.getElementById("chirurgie").addEventListener("click", function () {
+        showPec(this);
+    });
+    document.getElementById("hormo").addEventListener("click", function () {
+        showPec(this);
+    });
+
+    function showPec(checkbox) {
+        var chimio = document.getElementById("chimio");
+        var radio = document.getElementById("radio");
+        var chirurgie = document.getElementById("chirurgie");
+        var hormo = document.getElementById("hormo");
+        if (chimio.checked || radio.checked || chirurgie.checked || hormo.checked) {
+            if (chimio.checked) {
+                result += "Chimio ";
+                document.getElementById("chimio-h").removeAttribute("hidden");
+            } else {
+                document.getElementById("chimio-h").setAttribute("hidden", "");
+            }
+            if (radio.checked) {
+                result += "Radio ";
+
+                document.getElementById("radio-h").removeAttribute("hidden");
+            } else {
+
+                document.getElementById("radio-h").setAttribute("hidden", "");
+            }
+            if (chirurgie.checked) {
+                result += "Chirurgie ";
+
+                document.getElementById("chirurgie-h").removeAttribute("hidden");
+            } else {
+                document.getElementById("chirurgie-h").setAttribute("hidden", "");
+            }
+            if (hormo.checked) {
+                result += "Hormo ";
+
+                document.getElementById("hormo-h").removeAttribute("hidden");
+            } else {
+                document.getElementById("hormo-h").setAttribute("hidden", "");
+            }
+            if (!checkbox.checked) {
+                if (checkbox == chimio) {
+                    result = result.replace("Chimio ", "");
+                }
+                else if (checkbox == radio) {
+                    result = result.replace("Radio ", "");
+                }
+                else if (checkbox == chirurgie) {
+                    result = result.replace("Chirurgie ", "");
+                }
+                else if (checkbox == hormo) {
+                    result = result.replace("Hormo ", "");
+                }
+            }
+            // If no checkboxes are checked, clear the result
+            if (!chimio.checked && !radio.checked && !chirurgie.checked && !hormo.checked) {
+                result = "";
+            }
+
+            document.getElementById("rcp-display").innerHTML = result;
+
         } else {
             document.getElementById("chimio-h").setAttribute("hidden", "");
-        }
-        if (radio.checked) {
-            document.getElementById("radio-h").removeAttribute("hidden");
-        } else {
             document.getElementById("radio-h").setAttribute("hidden", "");
-        }
-        if (chirurgie.checked) {
-            document.getElementById("chirurgie-h").removeAttribute("hidden");
-        } else {
             document.getElementById("chirurgie-h").setAttribute("hidden", "");
-        }
-        if (hormo.checked) {
-            document.getElementById("hormo-h").removeAttribute("hidden");
-        } else {
             document.getElementById("hormo-h").setAttribute("hidden", "");
         }
-    } else {
-        document.getElementById("chimio-h").setAttribute("hidden", "");
-        document.getElementById("radio-h").setAttribute("hidden", "");
-        document.getElementById("chirurgie-h").setAttribute("hidden", "");
-        document.getElementById("hormo-h").setAttribute("hidden", "");
     }
 }
 
