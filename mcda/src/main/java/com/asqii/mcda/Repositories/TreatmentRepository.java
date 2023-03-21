@@ -20,4 +20,16 @@ public interface TreatmentRepository extends JpaRepository<Treatment, Long> {
                         String spectre_brca,
                         String menopause_output);
 
+        public static final String findMetaProt = "SELECT protocoles FROM metastatique tr WHERE tr.M_osseuse=?1 AND tr.her LIKE ?2 AND tr.rh=?3 AND tr.crise_viscerale=?4 AND tr.mutation_germinale_BRCA=?5  AND tr.statut_menopausique=?6 AND tr.statut_pd_l=?7";
+
+        @Query(value = findMetaProt, nativeQuery = true)
+        public List<Object[]> findMetaProtocole(
+                        String m_osseuse,
+                        String her,
+                        String rh,
+                        String crise_viscerale,
+                        String spectre_brca,
+                        String menopause_output,
+                        String statut_pd_l);
+
 }

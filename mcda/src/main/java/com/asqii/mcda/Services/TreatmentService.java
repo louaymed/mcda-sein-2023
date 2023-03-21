@@ -26,19 +26,70 @@ public class TreatmentService {
                 payload.replace(key, "N/A");
             }
         }
+        System.out.println(payload.get("rh"));
+        System.out.println(payload.get("rh").equals("Negatifs"));
 
-        List<Object[]> Protocoles = treatmentRepository.findProtocole(
-                payload.get("m_osseuse"),
-                payload.get("her2"),
-                payload.get("rh"),
-                payload.get("crise_viscerale"),
-                payload.get("spectre_brca"),
-                payload.get("menopause_output"));
-        if (Protocoles.isEmpty()) {
-            throw new TreatmentException("No Protocole is found");
+        System.out.println(payload.get("her"));
+        System.out.println(payload.get("her").equals("Surexprime"));
+        if (payload.get("rh").equals("Negatifs")) {
+            // set vide in case rh is negatif
+            payload.put("crise_viscerale", "vide");
+            payload.put("spectre_brca", "vide");
+            payload.put("menopause_output", "vide");
+            System.out.println("Im rh");
+            System.out.println(payload);
+            List<Object[]> Protocoles = treatmentRepository.findMetaProtocole(
+                    payload.get("m_osseuse"),
+                    payload.get("her"),
+                    payload.get("rh"),
+                    payload.get("crise_viscerale"),
+                    payload.get("spectre_brca"),
+                    payload.get("menopause_output"),
+                    payload.get("statut_pd_l"));
+            if (Protocoles.isEmpty()) {
+                throw new TreatmentException("No Protocole is found");
+            } else {
+                return Protocoles;
+            }
+
+        } else if (payload.get("her").equals("Surexprime")) {
+            payload.put("crise_viscerale", "vide");
+            payload.put("spectre_brca", "vide");
+            payload.put("menopause_output", "vide");
+            payload.put("statut_pd_l", "vide");
+            System.out.println("Im her");
+            System.out.println(payload);
+            List<Object[]> Protocoles = treatmentRepository.findMetaProtocole(
+                    payload.get("m_osseuse"),
+                    payload.get("her"),
+                    payload.get("rh"),
+                    payload.get("crise_viscerale"),
+                    payload.get("spectre_brca"),
+                    payload.get("menopause_output"),
+                    payload.get("statut_pd_l"));
+            if (Protocoles.isEmpty()) {
+                throw new TreatmentException("No Protocole is found");
+            } else {
+                return Protocoles;
+            }
         } else {
-            return Protocoles;
+            System.out.println("Im here");
+            System.out.println(payload);
+            List<Object[]> Protocoles = treatmentRepository.findMetaProtocole(
+                    payload.get("m_osseuse"),
+                    payload.get("her"),
+                    payload.get("rh"),
+                    payload.get("crise_viscerale"),
+                    payload.get("spectre_brca"),
+                    payload.get("menopause_output"),
+                    payload.get("statut_pd_l"));
+            if (Protocoles.isEmpty()) {
+                throw new TreatmentException("No Protocole is found");
+            } else {
+                return Protocoles;
+            }
         }
+
     }
 
 }

@@ -11,11 +11,13 @@ var rh;
 var CTNM;
 var spectre_BRCA;
 //Menopose output
-var output = "Non";
+var output = "Non menopausee";
 // crise viscerale
 var crise;
 // sexe
 var sexe = "Homme";
+
+var statut_pd_l = "vide";
 
 //End Global Variables
 
@@ -313,22 +315,23 @@ function getHer2() {
     var rhe = document.getElementById("rhe_options").value;
     var rhp = document.getElementById("rhp_options").value;
 
-    if (rhe == 2 || rhp == 2) {
+    if (rhe > 0 || rhp > 0) {
         var rhe = document.getElementById("rhe_options").value;
         var rhp = document.getElementById("rhp_options").value;
-        rh = "Positif";
+        rh = "Positifs";
     } else {
         var rhe = document.getElementById("rhe_options").value;
         var rhp = document.getElementById("rhp_options").value;
-        rh = "Negatif";
+        rh = "Negatifs";
     }
+    console.log(rh)
 
     if (her2_value == 0) {
         her2_value = document.getElementById("her2_options").value;
         her2 = "Non surexprime";
     } else {
         her2_value = document.getElementById("her2_options").value;
-        her2 = "surexprime"
+        her2 = "Surexprime"
     }
     // console.log("RH")
     // console.log(rh)
@@ -533,33 +536,33 @@ function getMenoOutput() {
         document.getElementById("sm-fiche").removeAttribute("hidden");
         if (statut == "Ménoposée") {
             var statut = document.getElementById("menopose").value;
-            output = "Oui";
+            output = "Menopausee";
 
             document.getElementById("sm-display").innerHTML = "Ménoposée";
             console.log("this is output");
             // console.log(output);
         } else if (statut == "Non Ménoposée") {
             var statut = document.getElementById("menopose").value;
-            output = "Non";
+            output = "Menopausee";
             document.getElementById("sm-display").innerHTML = "Non Ménoposée";
             // console.log("this is output");
             // console.log(output);
         } else if (statut == "PériMénoposée") {
             var dosage = document.getElementById("dosage-option").value;
             if (dosage == 0) {
-                output = "Oui";
+                output = "Menopausee";
                 document.getElementById("sm-display").innerHTML = "Ménoposée";
                 // console.log("this is output");
                 // console.log(output);
             } else {
-                output = "Non";
+                output = "Menopausee";
                 document.getElementById("sm-display").innerHTML = "Non Ménoposée";
                 // console.log("this is output");
                 // console.log(output);
 
             }
         } else {
-            output = "Non";
+            output = "Menopausee";
             document.getElementById("sm-display").innerHTML = "Non Ménoposée";
         }
     } else {
@@ -836,11 +839,12 @@ var traitment;
 function getTraitment() {
     var myMap = {
         "m_osseuse": m_ossuse,
-        "her2": her2,
+        "her": her2,
         "rh": rh,
         "crise_viscerale": crise,
         "spectre_brca": spectre_BRCA,
-        "menopause_output": output
+        "menopause_output": output,
+        "statut_pd_l": statut_pd_l,
     };
 
     // console.log(myMap);
@@ -858,6 +862,10 @@ function getTraitment() {
             traitment = data.protocole
             var tableBody = document.querySelector("#myTable tbody");
             var select = document.querySelector("#prot-select");
+
+            // Empty the table first
+            tableBody.innerHTML = "";
+
             traitment.forEach(value => {
                 // console.log(value);
                 var newRow = tableBody.insertRow(-1);
